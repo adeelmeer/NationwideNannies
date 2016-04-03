@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<link href="~/Content/owl.carousel.css" rel="stylesheet">
+
+<script src="~/Scripts/responsiveslides.min.js"></script>
+<script src="~/Scripts/owl.carousel.js"></script>
+<script>
+		$(function () {
+		  $("#slider").responsiveSlides({
+			auto:true,
+			nav: false,
+			speed: 500,
+			namespace: "callbacks",
+			pager:true,
+		  });
+		});
+</script>
+
+
+<script>
+		$(document).ready(function() {
+		$("#owl-demo").owlCarousel({
+			items : 1,
+			lazyLoad : true,
+			autoPlay : true,
+			navigation : false,
+			navigationText :  false,
+			pagination : true,
+		});
+		});
+</script>
+
+		<!---banner--->
+<div class="slider">
+    <div class="callbacks_container">
+        <ul class="rslides" id="slider">
+            <div class="slid banner1">
+                <div class="caption">
+                    <h3>1400 Anastasia Avenue</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec pellentesque ex. Morbi iaculis mi in varius auctor. Nullam feugiat erat .</p>
+                    <a href="#" class="button">know more</a>
+                </div>
+            </div>
+            <div class="slid banner2">
+                <div class="caption">
+                    <h3>Oakland, NJ94605</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec pellentesque ex. Morbi iaculis mi in varius auctor. Nullam feugiat erat .</p>
+                    <a href="#" class="button">know more</a>
+                </div>
+            </div>
+            <div class="slid banner3">
+                <div class="caption">
+                    <h3>Florida 5, Pinecrest, FL</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec pellentesque ex. Morbi iaculis mi in varius auctor. Nullam feugiat erat .</p>
+                    <a href="#" class="button">know more</a>
+                </div>
+            </div>
+        </ul>
+    </div>
+</div>
+<!---banner--->

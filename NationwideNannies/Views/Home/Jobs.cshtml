@@ -1,0 +1,64 @@
+﻿@model NationwideNannies.Models.NannyJobEmployment
+@using NationwideNannies.Utils
+
+@{
+    ViewBag.Title = "Jobs";
+}
+
+<div class="content">
+    <div class="contact">
+        <div class="container">
+
+            <div class="contact-form">
+                @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    <div class="col-md-6">
+                        <label>First Name</label> @Html.TextBoxFor(m => m.FirstName, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name</label> @Html.TextBoxFor(m => m.LastName, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>City</label> @Html.TextBoxFor(m => m.City)
+                    </div>
+                    <div class="col-md-6">
+                        <label>Right to work in UK</label> @Html.DropDownListFor(m => m.EligibleToWork, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.Radius, LookupValuesHelper.GetJobRadius())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Experience with age groups</label> @Html.DropDownListFor(m => m.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Upload Resume</label> <input type="file" name="resume" required="required" />
+                    </div>
+                    <div class="col-md-6">
+                        <label>Upload Photo</label> <input type="file" name="image" required="required" />
+                    </div>
+                    <div class="col-md-12">
+                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                    </div>
+
+                    <div class="col-md-12">
+                        <input type="submit" value="Submit">
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+

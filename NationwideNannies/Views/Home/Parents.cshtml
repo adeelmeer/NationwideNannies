@@ -1,0 +1,60 @@
+﻿@model NationwideNannies.Models.ParentRequest
+@using NationwideNannies.Utils
+
+@{
+    ViewBag.Title = "Parents";
+}
+
+<div class="content">
+    <div class="contact">
+        <div class="container">
+
+            <div class="contact-form">
+                @using (Html.BeginForm("Parents", "Home", FormMethod.Post))
+                {
+                    <div class="col-md-6">
+                        <label>First Name</label> @Html.TextBoxFor(m => m.FirstName, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Last Name</label> @Html.TextBoxFor(m => m.LastName, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>City</label> @Html.TextBoxFor(m => m.City, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Salary /week</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Nanny Type</label> @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Qualified Nannies Only</label> @Html.DropDownListFor(m => m.QualifiedNannies, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Child Age Group</label> @Html.DropDownListFor(m => m.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                    </div>                    
+                    <div class="col-md-12">
+                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                    </div>
+
+                    <div class="col-md-12">
+                        <input type="submit" value="Submit">
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
