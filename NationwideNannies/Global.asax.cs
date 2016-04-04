@@ -1,5 +1,8 @@
-﻿using System;
+﻿using log4net.Config;
+using NationwideNannies.Utils;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +19,12 @@ namespace NationwideNannies
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile));
+
+            Helper.CreateFolder(Constants.FolderUploadedResumes);
+            Helper.CreateFolder(Constants.FolderUploadedPhotos);
+           
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using NationwideNannies.Models;
+﻿using NationwideNannies.Logging;
+using NationwideNannies.Models;
+using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,7 @@ namespace NationwideNannies.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {
+        {            
             return View();
         }
 
@@ -49,12 +51,8 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
-            //product.ImageMimeType = image.ContentType;
-            //product.ImageData = new byte[image.ContentLength];
-            //image.InputStream.Read(product.ImageData, 0, image.ContentLength);
-
-            var streamImage = image.InputStream;
-            var streamResume = resume.InputStream;
+            Helper.SaveUploadedFile(model.FirstName, model.LastName, resume, Constants.FolderUploadedResumes);
+            Helper.SaveUploadedFile(model.FirstName, model.LastName, image, Constants.FolderUploadedPhotos);
 
             // save files i blob
 

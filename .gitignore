@@ -14,6 +14,9 @@ x64/
 build/
 [Bb]in/
 [Oo]bj/
+Nationwide-Nannies-Logs/
+Uploaded_Resumes/
+Uploaded_Photos/
 
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/

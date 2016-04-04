@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -76,9 +79,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NationwideNannies.Logging\NationwideNannies.Logging.csproj">
+      <Project>{4f48d2e5-f829-4a47-95d6-3bdec2254994}</Project>
+      <Name>NationwideNannies.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NationwideNannies.Models\NationwideNannies.Models.csproj">
       <Project>{016156eb-13c2-4054-acb4-53fc304b3e01}</Project>
       <Name>NationwideNannies.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NationwideNannies.Utils\NationwideNannies.Utils.csproj">
+      <Project>{25d266e0-65ee-4d4b-8e4f-79ac024a06f5}</Project>
+      <Name>NationwideNannies.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

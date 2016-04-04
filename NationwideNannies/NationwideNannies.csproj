@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -281,6 +284,10 @@
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">
       <Project>{f212554b-45cb-4ef7-8c78-64cbff4edf62}</Project>
       <Name>NationwideNannies.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NationwideNannies.Logging\NationwideNannies.Logging.csproj">
+      <Project>{4f48d2e5-f829-4a47-95d6-3bdec2254994}</Project>
+      <Name>NationwideNannies.Logging</Name>
     </ProjectReference>
     <ProjectReference Include="..\NationwideNannies.Models\NationwideNannies.Models.csproj">
       <Project>{016156eb-13c2-4054-acb4-53fc304b3e01}</Project>
