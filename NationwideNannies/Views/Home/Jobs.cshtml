@@ -6,8 +6,15 @@
 }
 
 <div class="content">
-    <div class="contact">
+    <div class="about-section">
         <div class="container">
+            <h2>Candidate Application Form</h2>
+
+            <div class="about-info" style="margin-bottom:0px;">
+                <p>Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs. 
+                <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.</p>
+                <p>If you are interested in a particular vacancy, please state the advert title in your cover statement below. </p>
+            </div>
 
             <div class="contact-form">
                 @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -61,4 +68,6 @@
         </div>
     </div>
 </div>
+
+
 

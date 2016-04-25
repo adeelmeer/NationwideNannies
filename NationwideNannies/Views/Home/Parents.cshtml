@@ -6,8 +6,16 @@
 }
 
 <div class="content">
-    <div class="contact">
+    <div class="about-section">
         <div class="container">
+            <h2>Client Registration Form</h2>
+
+            <div class="about-info" style="margin-bottom:0px;">
+
+                <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
+
+                <p>Please note the below form is for <span style="font-weight:bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration:underline;">click here</a></p>
+            </div>
 
             <div class="contact-form">
                 @using (Html.BeginForm("Parents", "Home", FormMethod.Post))
@@ -44,7 +52,7 @@
                     </div>
                     <div class="col-md-6">
                         <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                    </div>                    
+                    </div>
                     <div class="col-md-12">
                         <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
                     </div>
@@ -57,4 +65,11 @@
 
         </div>
     </div>
+
 </div>
+
+
+
+
+
+

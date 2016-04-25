@@ -21,6 +21,11 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         public ActionResult Parents()
         {
             ParentRequest model = new ParentRequest();
@@ -51,11 +56,11 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
+            // save files to disk
             Helper.SaveUploadedFile(model.FirstName, model.LastName, resume, Constants.FolderUploadedResumes);
             Helper.SaveUploadedFile(model.FirstName, model.LastName, image, Constants.FolderUploadedPhotos);
 
-            // save files i blob
-
+            
             // update model with file ids
 
             // get email content
@@ -68,10 +73,6 @@ namespace NationwideNannies.Controllers
 
             return View("JobsThankyou");
         }
-
-        public ActionResult Contact()
-        {
-            return View();
-        }
+    
     }
 }

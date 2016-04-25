@@ -35,7 +35,7 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <div class="navbar-brand">
-                                <h1><a href="index.html">Refinement</a></h1>
+                                <h1><a href="/">Nationwide Nannies</a></h1>
                             </div>
                         </div>
 
@@ -43,9 +43,44 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
                                 <li class="@Html.IsMenuSelected("/")"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-                                <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About</a></li>
-                                <li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
-                                <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/services/Nannies">Nannies</a></li>
+                                        <li><a href="/services/Nurses">Maternity/ Night Nurses</a></li>
+                                        <li><a href="/services/BabySitters">Baby Sitters</a></li>
+                                        <li><a href="/services/EmergencyChildcare">Emergency Childcare</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clients<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/clients/EmployThroughUs">Employ through us?</a></li>
+                                        <li><a href="/clients/EmployingNanny">Employing a Nanny</a></li>
+                                        <li><a href="/clients/StartYourNannySearch">Start your nanny search!</a></li>
+                                        <li><a href="/home/parents">Client Registration Form</a></li>
+                                        <li><a href="/clients/ChildcareQualificationsGuide">Childcare Qualifications Guide</a></li>
+                                        <li><a href="/clients/EmployerResponsibilities">Employer’s Responsibilities</a></li>
+                                        <li><a href="/clients/TermsConditions">Terms and Conditions</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Candidates<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="/Candidates/WorkingWithYou">Working with You</a></li>
+                                        <li><a href="/Candidates/RoleResponsibilitiesNanny">Role and Responsibilities of a nanny</a></li>
+                                        <li><a href="/Candidates/ObtainQualification">Obtain a Qualification</a></li>
+                                        <li><a href="/Candidates/SelectionNannies">Selection process: nannies</a></li>
+                                        <li><a href="/Candidates/SelectionBabySitters">Selection process: baby sitters</a></li>
+                                        <li><a href="/home/jobs">Candidate Application Form</a></li>
+                                        <li><a href="/Candidates/CurrentVacancies">Current Vacancies</a></li>
+                                    </ul>
+                                </li>
+                                <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
+                                <li class="@Html.IsMenuSelected("/home/contactus")"><a href="/home/contact">Contact Us</a></li>
+                                @*<li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
+                                <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
+                                
                                 @*<li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
                                     <ul class="dropdown-menu">
@@ -55,7 +90,7 @@
                                     </ul>
                                 </li>*@
                                 @*<li><a href="codes.html">Codes</a></li>*@
-                                @*<li><a href="contact.html">Contact</a></li>*@
+                                
                             </ul>
 
                         </div><!-- /.navbar-collapse -->

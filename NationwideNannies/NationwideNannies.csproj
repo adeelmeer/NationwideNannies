@@ -279,6 +279,22 @@
     <Content Include="Views\Home\Jobs.cshtml" />
     <Content Include="Views\Home\ParentThankyou.cshtml" />
     <Content Include="Views\Home\JobsThankyou.cshtml" />
+    <Content Include="Views\Services\Nannies.cshtml" />
+    <Content Include="Views\Services\Nurses.cshtml" />
+    <Content Include="Views\Services\BabySitters.cshtml" />
+    <Content Include="Views\Services\EmergencyChildcare.cshtml" />
+    <Content Include="Views\Clients\EmployThroughUs.cshtml" />
+    <Content Include="Views\Clients\EmployingNanny.cshtml" />
+    <Content Include="Views\Clients\StartYourNannySearch.cshtml" />
+    <Content Include="Views\Clients\ChildcareQualificationsGuide.cshtml" />
+    <Content Include="Views\Clients\EmployerResponsibilities.cshtml" />
+    <Content Include="Views\Clients\TermsConditions.cshtml" />
+    <Content Include="Views\Candidates\WorkingWithYou.cshtml" />
+    <Content Include="Views\Candidates\RoleResponsibilitiesNanny.cshtml" />
+    <Content Include="Views\Candidates\ObtainQualification.cshtml" />
+    <Content Include="Views\Candidates\SelectionNannies.cshtml" />
+    <Content Include="Views\Candidates\SelectionBabySitters.cshtml" />
+    <Content Include="Views\Candidates\CurrentVacancies.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">

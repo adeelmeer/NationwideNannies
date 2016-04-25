@@ -72,8 +72,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CandidatesController.cs" />
+    <Compile Include="ClientsController.cs" />
     <Compile Include="HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

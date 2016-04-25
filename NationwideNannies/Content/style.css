@@ -52,6 +52,7 @@ body {
     padding: 0 0;
     margin: 0 0;
     font-family: 'Open Sans', sans-serif;
+    background-color:#F0F8FF;
 }
 
 .header-top {
@@ -163,7 +164,8 @@ body {
 }
 
 .header {
-    background: url(../images/banner2.jpg) no-repeat 0px 0px;
+    /*background: url(../images/banner2.jpg) no-repeat 0px 0px;*/
+    background-color:#333d47;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -562,19 +564,25 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 /*--- slider-css --*/
 .banner1 {
-    background: url(../images/bnr1.jpg) no-repeat 0px 0px;
+    background: url(../images/bnr1.png) no-repeat 0px 0px;
     background-size: cover;
     min-height: 650px;
 }
 
 .banner2 {
-    background: url(../images/bnr2.jpg) no-repeat 0px 0px;
+    background: url(../images/bnr2.png) no-repeat 0px 0px;
     background-size: cover;
     min-height: 650px;
 }
 
 .banner3 {
-    background: url(../images/bnr3.jpg) no-repeat 0px 0px;
+    background: url(../images/bnr3.png) no-repeat 0px 0px;
+    background-size: cover;
+    min-height: 650px;
+}
+
+.banner4 {
+    background: url(../images/bnr4.png) no-repeat 0px 0px;
     background-size: cover;
     min-height: 650px;
 }
@@ -699,7 +707,7 @@ a.button {
 
 .about-section {
     padding: 4em 0;
-    text-align: center;
+    /*text-align: center;*/
 }
 
 .about-info p {
@@ -711,6 +719,13 @@ a.button {
 
 .about-info {
     margin: 3em 0;
+}
+
+.about-info ul {
+    margin-left: 3em;
+    font-size: 1em;
+    line-height: 1.8em;
+    color: #646464;
 }
 
 .why-choose {
@@ -1470,7 +1485,7 @@ h2.typoh2 {
         margin: 16em 0em 0 9em;
     }
 
-    .banner1, .banner2, .banner3 {
+    .banner1, .banner2, .banner3, .banner4 {
         min-height: 550px;
     }
 
@@ -1488,7 +1503,7 @@ h2.typoh2 {
         margin: 13em 0em 0 7em;
     }
 
-    .banner1, .banner2, .banner3 {
+    .banner1, .banner2, .banner3, .banner4 {
         min-height: 520px;
     }
 
@@ -1611,7 +1626,7 @@ h2.typoh2 {
         font-size: 1.7em;
     }
 
-    .banner1, .banner2, .banner3 {
+    .banner1, .banner2, .banner3, .banner4 {
         min-height: 380px;
     }
 
@@ -2281,4 +2296,19 @@ h2.typoh2 {
     .contact-form input[type="submit"] {
         width: 27%;
     }
+}
+
+.nanny-table {
+    border-collapse:separate !important;
+    border: 1px solid black;
+}
+
+.nanny-table  td {
+    border: 1px solid black;
+    border-collapse:separate !important;
+    padding:5px;
+}
+
+.paragraph-header{
+    font-weight:bold;
 }
