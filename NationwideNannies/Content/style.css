@@ -25,6 +25,10 @@ label {
     clear: both;
 }
 
+p {
+    text-align: justify;
+}
+
 .col-md-6 {
     margin-top: 10px;
 }
@@ -52,7 +56,7 @@ body {
     padding: 0 0;
     margin: 0 0;
     font-family: 'Open Sans', sans-serif;
-    background-color:#F0F8FF;
+    background-color: #F0F8FF;
 }
 
 .header-top {
@@ -165,7 +169,7 @@ body {
 
 .header {
     /*background: url(../images/banner2.jpg) no-repeat 0px 0px;*/
-    background-color:#333d47;
+    background-color: #236B8E;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -506,7 +510,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .footer-section {
     padding: 2em 0;
     text-align: center;
-    background: #222;
+    background: #236B8E;
 }
 
 .social-icons i:hover {
@@ -721,12 +725,12 @@ a.button {
     margin: 3em 0;
 }
 
-.about-info ul {
-    margin-left: 3em;
-    font-size: 1em;
-    line-height: 1.8em;
-    color: #646464;
-}
+    .about-info ul {
+        margin-left: 3em;
+        font-size: 1em;
+        line-height: 1.8em;
+        color: #646464;
+    }
 
 .why-choose {
     padding: 4em 0;
@@ -2299,16 +2303,27 @@ h2.typoh2 {
 }
 
 .nanny-table {
-    border-collapse:separate !important;
+    border-collapse: separate !important;
     border: 1px solid black;
 }
 
-.nanny-table  td {
-    border: 1px solid black;
-    border-collapse:separate !important;
-    padding:5px;
+    .nanny-table td {
+        border: 1px solid black;
+        border-collapse: separate !important;
+        padding: 5px;
+    }
+
+.paragraph-header {
+    font-weight: bold;
 }
 
-.paragraph-header{
-    font-weight:bold;
+.divBox {
+    border: 2px solid black;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.divCenter{
+    margin:auto;
+    width:70%;
 }
