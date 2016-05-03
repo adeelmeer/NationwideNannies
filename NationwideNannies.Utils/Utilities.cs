@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using System.IO;
 using NationwideNannies.Logging;
 using System.Web;
+using System.Net.Mail;
 
 namespace NationwideNannies.Utils
 {
-    public static class Helper
+    public static class Utilities
     {
         public static bool CreateFolder(string folderName, bool inAppFolder = true)
         {
@@ -30,12 +31,12 @@ namespace NationwideNannies.Utils
             }
             catch (Exception ex)
             {
-                Log4NetLogger.ExceptionTrace(ex, "[Helper]CreateFolder()");
+                Log4NetLogger.ExceptionTrace(ex, "[Utilities]CreateFolder()");
                 return false;
             }
         }
 
-        public static void SaveUploadedFile(string firstName, string LastName, HttpPostedFileBase uploadedFile, string folderName)
+        public static string SaveUploadedFile(string firstName, string LastName, HttpPostedFileBase uploadedFile, string folderName)
         {
             if (string.IsNullOrWhiteSpace(firstName) ||
                 string.IsNullOrWhiteSpace(LastName) ||                
@@ -43,7 +44,7 @@ namespace NationwideNannies.Utils
                  uploadedFile.InputStream == null||
                 string.IsNullOrWhiteSpace(uploadedFile.FileName))
             {
-                return;
+                return string.Empty;
             }
 
             string fileName = uploadedFile.FileName;
@@ -51,9 +52,25 @@ namespace NationwideNannies.Utils
             string folder = HttpContext.Current.Server.MapPath("~/" + folderName);
             string fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
             string ext = Path.GetExtension(fileName);
-            string filePath = string.Format("{0}\\{1}_{2}_{3}_{4}{5}", folder, firstName, LastName, fileNameWithoutExt, DateTime.Now.ToString("MMddyyyyHHmmss"), ext);
+            string finalFileName = string.Format("{0}_{1}_{2}_{3}{4}", firstName, LastName, fileNameWithoutExt, DateTime.Now.ToString("MMddyyyyHHmmss"), ext);
+            
+            string filePath = string.Format("{0}\\{1}", folder, finalFileName);
 
             SaveToFile(filePath, uploadedFile.InputStream);
+
+            return finalFileName;
+        }
+
+        public static string GetAbsoluteFilePath(string folderName, string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(folderName) || string.IsNullOrWhiteSpace(fileName))
+            {
+                return string.Empty;
+            }
+
+            string folder = HttpContext.Current.Server.MapPath("~/" + folderName);
+            string fullPath = string.Format("{0}\\{1}", folder, fileName);
+            return fullPath;
         }
 
         public static void SaveToFile(string fullFilePath, Stream stream)
@@ -78,6 +95,42 @@ namespace NationwideNannies.Utils
             {
                 string message = string.Format("[Helper]SaveToFile() fullFilePath:{0}", fullFilePath);
                 Log4NetLogger.ExceptionTrace(ex, message);
+            }
+        }
+
+        public static void SendEmail(string toEmail, string subject, string body, List<string> attachmentFilePaths = null)
+        {
+            try
+            {
+                using (var message = new MailMessage())
+                {
+
+
+
+                    message.IsBodyHtml = true;
+                    body = body.Replace(System.Environment.NewLine, "<br />");
+
+                    if (attachmentFilePaths != null)
+                    {
+
+                        foreach (var path in attachmentFilePaths)
+                        {
+                            if (!string.IsNullOrWhiteSpace(path))
+                                message.Attachments.Add(new Attachment(path));
+                        }
+                    }
+
+                    message.Body = body;
+                    message.Subject = subject;
+                    message.To.Add(toEmail);
+
+                    var client = new SmtpClient();
+                    client.Send(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[Utilities]SendEmail()");
             }
         }
     }

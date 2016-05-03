@@ -22,8 +22,8 @@ namespace NationwideNannies
 
             XmlConfigurator.Configure(new FileInfo(AppDomain.CurrentDomain.SetupInformation.ConfigurationFile));
 
-            Helper.CreateFolder(Constants.FolderUploadedResumes);
-            Helper.CreateFolder(Constants.FolderUploadedPhotos);
+            Utilities.CreateFolder(Constants.FolderUploadedResumes);
+            Utilities.CreateFolder(Constants.FolderUploadedPhotos);
            
         }
     }

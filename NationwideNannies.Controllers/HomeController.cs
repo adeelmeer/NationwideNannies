@@ -3,6 +3,7 @@ using NationwideNannies.Models;
 using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,7 @@ namespace NationwideNannies.Controllers
     public class HomeController : Controller
     {
         public ActionResult Index()
-        {            
+        {
             return View();
         }
 
@@ -57,22 +58,28 @@ namespace NationwideNannies.Controllers
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
             // save files to disk
-            Helper.SaveUploadedFile(model.FirstName, model.LastName, resume, Constants.FolderUploadedResumes);
-            Helper.SaveUploadedFile(model.FirstName, model.LastName, image, Constants.FolderUploadedPhotos);
+            string filePathResume = Utilities.SaveUploadedFile(model.FirstName, model.LastName, resume, Constants.FolderUploadedResumes);
+            string filePathPhoto = Utilities.SaveUploadedFile(model.FirstName, model.LastName, image, Constants.FolderUploadedPhotos);
 
-            
-            // update model with file ids
+
+            // update model with file paths
+            model.ResumeFilePath = filePathResume;
+            model.ImageFilePath = filePathPhoto;
 
             // get email content
             string emailText = model.GetEmailText();
             string emailSubject = "Nationwide Nannies";
+            string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
 
             // add code to send email
+            string fullPathResume = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedResumes, filePathResume);
+            string fullPathPhoto = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedPhotos, filePathPhoto);
+            Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
 
             // add code to save form data in database
 
             return View("JobsThankyou");
         }
-    
+
     }
 }

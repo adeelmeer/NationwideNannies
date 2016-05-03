@@ -46,7 +46,7 @@ namespace NationwideNannies.Utils
 
         public static SelectList GetJobRadius()
         {
-            List<string> types = new List<string>() { "5", "10", "25", "50" };
+            List<string> types = new List<string>() { "5", "10", "15", "20" };
             SelectList selectList = new SelectList(types);
             return selectList;
         }

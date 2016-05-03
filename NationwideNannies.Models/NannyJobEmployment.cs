@@ -13,17 +13,39 @@ namespace NationwideNannies.Models
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string PostalCode { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public string City { get; set; }
+        public string PhoneAlt { get; set; }
+        public string PreferedPosition { get; set; }
+        public string JobDurationType { get; set; } // short term or long term
+        public string JobType { get; set; } //Live in, live out, junior nanny/mother’s helper, nanny house keeper, day time, evening/weekends, any time
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public DateTime DBSDate { get; set; }
+        public string Nationality { get; set; }
+        public string MaritalStatus { get; set; }
+        public string HaveChildren { get; set; }
+        public string ChildrenDetails { get; set; }
+        public string HaveCriminalConvictions { get; set; }
+        public string CriminalConvictionDetails { get; set; }
+        public string HaveMedicalConditions { get; set; }
+        public string MedicalConditionDetails { get; set; }
+        public string IsOfstedRegistered { get; set; }
+        public DateTime OfstedDate { get; set; }
+        public int DaysSickLastYear { get; set; }
+        public int ExpectedSalary { get; set; }
         public string EligibleToWork { get; set; }
         public string Radius { get; set; }
         public string EmploymentType { get; set; }
         public string ChildAgeGroup { get; set; }
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }
-        public int ImageFileId { get; set; }
-        public int ResumeFileId { get; set; }
+        public string ImageFilePath { get; set; }
+        public string ResumeFilePath { get; set; }
+        public bool AcceptTermComditions { get; set; }
 
 
         public string GetEmailText()
