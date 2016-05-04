@@ -1,5 +1,4 @@
-﻿using poliSYS.Common;
-using poliSYS.Helpers;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -11,27 +10,27 @@ namespace NationwideNannies.Utils
 {
    public class DBHelper
     {
-        public static DBInfo GetDbInfoFromConnectionString(string connectionStringName)
-        {
-            var connString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connString);
-            string dbServer = builder.DataSource;
-            string dbInstance = builder.InitialCatalog;
-            var user = builder.UserID;
-            var password = builder.Password;
+        //public static DBInfo GetDbInfoFromConnectionString(string connectionStringName)
+        //{
+        //    var connString = System.Configuration.ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+        //    SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder(connString);
+        //    string dbServer = builder.DataSource;
+        //    string dbInstance = builder.InitialCatalog;
+        //    var user = builder.UserID;
+        //    var password = builder.Password;
 
-            DBInfo dbInfo = new DBInfo(dbServer, dbInstance, user, password);
+        //    DBInfo dbInfo = new DBInfo(dbServer, dbInstance, user, password);
 
-            return dbInfo;
-        }
+        //    return dbInfo;
+        //}
 
-        public static HelperFacade GetHelperFacade()
-        {
-            var dbInfo = DBHelper.GetDbInfoFromConnectionString("CMSTAT");
-            HelperFacade hf = new HelperFacade();
-            hf.DbInformation = dbInfo;
+        //public static HelperFacade GetHelperFacade()
+        //{
+        //    var dbInfo = DBHelper.GetDbInfoFromConnectionString("nanny");
+        //    HelperFacade hf = new HelperFacade();
+        //    hf.DbInformation = dbInfo;
 
-            return hf;
-        }
+        //    return hf;
+        //}
     }
 }

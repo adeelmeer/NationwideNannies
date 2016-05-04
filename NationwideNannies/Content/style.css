@@ -55,7 +55,9 @@ ul {
 body {
     padding: 0 0;
     margin: 0 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Crimson Text', 'serif';
+    color:#000000;
+    font-size:1.5em;
     background-color: #F0F8FF;
 }
 
@@ -91,7 +93,7 @@ body {
     text-decoration: none;
     color: #fff;
     font-size: 1.5em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     text-transform: capitalize;
     letter-spacing: 2px;
     line-height: .5em;
@@ -99,7 +101,7 @@ body {
 
 .navbar-default .navbar-nav > li > a {
     color: #fff;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     font-size: 1.4em;
 }
 
@@ -143,7 +145,7 @@ body {
     display: block;
     padding: 10px 20px;
     color: #000;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     font-size: 1.2em;
 }
 
@@ -169,7 +171,8 @@ body {
 
 .header {
     /*background: url(../images/banner2.jpg) no-repeat 0px 0px;*/
-    background-color: #236B8E;
+    /*background-color: #236B8E;*/
+    background-color: #000000;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -202,7 +205,7 @@ body {
         color: #fff;
         font-size: 3.5em;
         text-transform: capitalize;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-family: 'Crimson Text', 'serif';
     }
 
 .rslides li {
@@ -297,7 +300,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     font-size: 1.8em;
     padding: 0.5em 0 0;
     color: #fff;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
 }
 
 .header-bg {
@@ -318,9 +321,9 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 3.5em;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
-        color: #1F527D;
+        font-size: 3em;
+        font-family: 'Crimson Text', 'serif';
+        color: #000000;
         text-align: center;
     }
 
@@ -338,7 +341,7 @@ ul.callbacks_tabs.callbacks1_tabs {
         margin: 0;
         color: #282828;
         font-size: 1.8em;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-family: 'Crimson Text', 'serif';
     }
 
     .about-grid-left p {
@@ -402,7 +405,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 .student h3, .new-course h3, .testimonial h3, .why-choose h3, .features h3, .service h3 {
     font-size: 3.5em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     color: #1F527D;
     text-transform: capitalize;
 }
@@ -415,7 +418,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 .student-grid h4 {
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     color: #282828;
     text-transform: capitalize;
     margin: .5em 0;
@@ -448,7 +451,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 .course-info h4 {
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     color: #ec3475;
     text-align: left;
     margin-bottom: .5em;
@@ -480,7 +483,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     color: #282828;
     font-size: 1.4em;
     margin: 0.5em 0 0;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
 }
 
 .testimonial {
@@ -715,10 +718,11 @@ a.button {
 }
 
 .about-info p {
-    font-size: 1em;
-    line-height: 1.8em;
+    font-size: 1.5em;
+    /*line-height: 1.8em;*/
     padding: 1em 0;
-    color: #646464;
+    /*color: #646464;*/
+    font-family: 'Crimson Text', 'serif';
 }
 
 .about-info {
@@ -727,9 +731,8 @@ a.button {
 
     .about-info ul {
         margin-left: 3em;
-        font-size: 1em;
-        line-height: 1.8em;
-        color: #646464;
+        font-size: 1.5em;        
+        color: #000000;
     }
 
 .why-choose {
@@ -743,7 +746,7 @@ a.button {
     text-transform: capitalize;
     text-align: left;
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
 }
 
 .choose-grid p {
@@ -767,7 +770,7 @@ a.button {
 
     .team h3 {
         font-size: 3.5em;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-family: 'Crimson Text', 'serif';
         color: #fff;
     }
 
@@ -880,7 +883,7 @@ a.button {
 .ch-info h4 {
     color: #fff;
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     margin: 0 15px;
     padding: 61px 0 0 0;
     height: 110px;
@@ -944,7 +947,7 @@ a.button {
 
     .services h4 {
         font-size: 1.8em;
-        font-family: 'Yanone Kaffeesatz', sans-serif;
+        font-family: 'Crimson Text', 'serif';
         text-transform: capitalize;
         margin: 0.6em 0 0.4em;
         color: #fff;
@@ -984,7 +987,7 @@ a.button {
 
 .feature1 h4 {
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     color: #222;
     padding: 1em 0 0.5em;
     text-transform: capitalize;
@@ -1078,7 +1081,7 @@ a.button {
 
 .service-grid1 h4 {
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     color: #25292e;
     margin: 0em 0 0.5em;
     text-align: left;
@@ -1425,7 +1428,7 @@ h2.typoh2 {
 
 .contact-grid h4, .contact-form h4 {
     font-size: 1.8em;
-    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-family: 'Crimson Text', 'serif';
     text-transform: capitalize;
     color: #222;
     margin: 0 0 1em 0;
@@ -1476,7 +1479,7 @@ h2.typoh2 {
     color: #fff;
     outline: none;
     transition: .5s all;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Crimson Text', 'serif';
 }
 
 .contact-form input.email {
@@ -1570,7 +1573,7 @@ h2.typoh2 {
     }
 
     .about-grid-left p, .student-grid p, .course-info p, .testimonial-info p, .Works-grid p, .header-grid p, .about-info p, .choose-grid p, .services p, .feature2 p, .service-grid1 p {
-        font-size: .965em;
+        font-size: 1.45em;
     }
 
     .testimonial-info h5 {
@@ -1673,7 +1676,7 @@ h2.typoh2 {
     }
 
         .about-grid-left p, .student-grid p, .course-info p, .testimonial-info p, .Works-grid p, .header-grid p, .about-info p, .choose-grid p, .services p, .feature2 p, .service-grid1 p {
-            font-size: .96em;
+            font-size: 1.45em;
         }
 
     .student-grid {
@@ -2243,7 +2246,7 @@ h2.typoh2 {
     }
 
     .about-info p {
-        padding: .5em 0;
+        padding: .75em 0;
     }
 
     .about-img:nth-child(2) {
@@ -2305,6 +2308,7 @@ h2.typoh2 {
 .nanny-table {
     border-collapse: separate !important;
     border: 1px solid black;
+    font-size:1.5em;
 }
 
     .nanny-table td {

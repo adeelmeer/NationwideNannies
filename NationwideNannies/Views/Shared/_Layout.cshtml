@@ -1,9 +1,11 @@
 ﻿@using NationwideNannies.Helpers;
+@using Microsoft.AspNet.Identity
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
+    @*<link href="~/Content/cssreset.css" rel="stylesheet" type="text/css" media="all">*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -17,11 +19,12 @@
     <link href='//fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,200,300,700' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400,800italic,800,700italic,700,600italic,600,400italic,300italic,300' rel='stylesheet' type='text/css'>
 
-    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
+    @*<link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Dancing+Script' rel='stylesheet' type='text/css'>*@
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400italic' rel='stylesheet' type='text/css'>
 
     <script src="~/Scripts/bootstrap.js"></script>
 </head>
@@ -39,11 +42,11 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
-                                
+
                             </button>
                             <div class="navbar-brand">
-                                <h1><a href="/">Nationwide Nannies</a></h1>
-                                @*<img src="/images/logo.jpg" />*@
+                                @*<h1><a href="/">Nationwide Nannies</a></h1>*@
+                                <img  src="/images/logoBlack2.jpg" />
                             </div>
                         </div>
 
@@ -56,7 +59,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="/services/Nannies">Nannies</a></li>
                                         <li><a href="/services/Nurses">Maternity/ Night Nurses</a></li>
-                                        <li><a href="/services/BabySitters">Baby Sitters</a></li>
+                                        <li><a href="/services/BabySitters">Babysitters</a></li>
                                         <li><a href="/services/EmergencyChildcare">Emergency Childcare</a></li>
                                     </ul>
                                 </li>
@@ -65,7 +68,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="/clients/EmployThroughUs">Employ through us?</a></li>
                                         <li><a href="/clients/EmployingNanny">Employing a Nanny</a></li>
-                                        <li><a href="/clients/StartYourNannySearch">Start your nanny search!</a></li>
+                                        <li><a href="/clients/StartYourNannySearch">Nab a Nanny !</a></li>
                                         <li><a href="/home/parents">Client Registration Form</a></li>
                                         <li><a href="/clients/ChildcareQualificationsGuide">Childcare Qualifications Guide</a></li>
                                         <li><a href="/clients/EmployerResponsibilities">Employer’s Responsibilities</a></li>
@@ -79,56 +82,68 @@
                                         <li><a href="/Candidates/RoleResponsibilitiesNanny">Role and Responsibilities of a nanny</a></li>
                                         <li><a href="/Candidates/ObtainQualification">Obtain a Qualification</a></li>
                                         <li><a href="/Candidates/SelectionNannies">Selection process: nannies</a></li>
-                                        <li><a href="/Candidates/SelectionBabySitters">Selection process: baby sitters</a></li>
+                                        <li><a href="/Candidates/SelectionBabySitters">Selection process: babysitters</a></li>
                                         <li><a href="/home/jobs">Candidate Application Form</a></li>
                                         <li><a href="/Candidates/CurrentVacancies">Current Vacancies</a></li>
                                     </ul>
                                 </li>
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
                                 <li class="@Html.IsMenuSelected("/home/contactus")"><a href="/home/contact">Contact Us</a></li>
+
+                                @if (Request.IsAuthenticated)
+                                {
+                                    @**@
+                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <li><a href="javascript:void(0);">Welcome @User.Identity.GetUserName()</a> </li>
+                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                    }
+                                }
+
                                 @*<li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
-                                <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
-                                
-                                @*<li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="gallery.html">Gallery1</a></li>
-                                        <li><a href="gallery.html">Gallery2</a></li>
-                                        <li><a href="gallery.html">Gallery3</a></li>
-                                    </ul>
-                                </li>*@
-                                @*<li><a href="codes.html">Codes</a></li>*@
-                                
-                            </ul>
+                                    <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
 
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav>
+                                    @*<li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="gallery.html">Gallery1</a></li>
+                                                <li><a href="gallery.html">Gallery2</a></li>
+                                                <li><a href="gallery.html">Gallery3</a></li>
+                                            </ul>
+                                        </li>*@
+                                    @*<li><a href="codes.html">Codes</a></li>*@
 
+                                </ul>
+
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+
+                </div>
             </div>
         </div>
-    </div>
-    <!--header-->
+        <!--header-->
 
-    <div class="pageContent">
-        @RenderBody()       
-    </div>
-  
-    <!--footer-->
-    <div class="footer-section">
-        <div class="container">
-            <div class="social-icons">
-                <a href="#"><i class="icon1"></i></a>
-                <a href="#"><i class="icon2"></i></a>
-                <a href="#"><i class="icon3"></i></a>
-                <a href="#"><i class="icon4"></i></a>
-            </div>
-            <div class="footer-top">
-                <p>&copy; 2016 Refinement. All rights reserved .</p>
+        <div class="pageContent">
+            @RenderBody()
+        </div>
+
+        <!--footer-->
+        <div class="footer-section">
+            <div class="container">
+                <div class="social-icons">
+                    <a href="#"><i class="icon1"></i></a>
+                    <a href="#"><i class="icon2"></i></a>
+                    <a href="#"><i class="icon3"></i></a>
+                    <a href="#"><i class="icon4"></i></a>
+                </div>
+                <div class="footer-top">
+                    <p>&copy; 2016 Refinement. All rights reserved .</p>
+                </div>
             </div>
         </div>
-    </div>
-    <!--footer-->
-
-</body>
+        <!--footer-->
+        @RenderSection("scripts", required: false)
+    </body>
 </html>

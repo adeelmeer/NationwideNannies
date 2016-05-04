@@ -1,6 +1,7 @@
 ﻿using NationwideNannies.Logging;
 using NationwideNannies.Models;
 using NationwideNannies.Utils;
+
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -14,6 +15,10 @@ namespace NationwideNannies.Controllers
     {
         public ActionResult Index()
         {
+            //HelperFacade hf = DBHelper.GetHelperFacade();
+
+            //var dt = hf.LoadTable("Customers");
+
             return View();
         }
 
