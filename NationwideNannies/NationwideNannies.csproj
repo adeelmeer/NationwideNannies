@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\cssreset.css" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />

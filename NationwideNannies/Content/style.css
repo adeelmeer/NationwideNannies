@@ -62,7 +62,7 @@ body {
 }
 
 .header-top {
-    margin-top: 1em;
+    margin-top: 0em;
 }
 
 .navbar-brand {
@@ -513,7 +513,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 .footer-section {
     padding: 2em 0;
     text-align: center;
-    background: #236B8E;
+    background: #000000;
 }
 
 .social-icons i:hover {
@@ -573,25 +573,25 @@ ul.callbacks_tabs.callbacks1_tabs {
 .banner1 {
     background: url(../images/bnr1.png) no-repeat 0px 0px;
     background-size: cover;
-    min-height: 650px;
+    min-height: 750px;
 }
 
 .banner2 {
     background: url(../images/bnr2.png) no-repeat 0px 0px;
     background-size: cover;
-    min-height: 650px;
+    min-height: 750px;
 }
 
 .banner3 {
     background: url(../images/bnr3.png) no-repeat 0px 0px;
     background-size: cover;
-    min-height: 650px;
+    min-height: 750px;
 }
 
 .banner4 {
     background: url(../images/bnr4.png) no-repeat 0px 0px;
     background-size: cover;
-    min-height: 650px;
+    min-height: 750px;
 }
 
 .slider {
@@ -631,17 +631,21 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
     .caption h3 {
-        font-size: 2em;
-        text-transform: capitalize;
-        color: #3A3B3C;
-        font-family: 'Righteous', cursive;
+        font-size: 2em;  
+        font-weight:bold;
+        text-align:left;      
+        font-family: 'Crimson Text', 'serif';
+        color:#000000;
     }
 
     .caption p {
-        font-size: 1em;
+        font-size: 1.3em;
+        font-weight:bold;
         color: #222;
-        line-height: 1.8em;
-        padding: 1em 0 2em;
+        font-family: 'Crimson Text', 'serif';
+        padding-bottom:1em;
+        /*line-height: 1.8em;
+        padding: 1em 0 2em;*/
     }
 
 .callbacks_tabs a:after {
@@ -702,7 +706,7 @@ a.button {
 
 /**about**/
 .banr {
-    min-height: 200px !important;
+    min-height: 0px !important;
     padding-bottom: 0em;
 }
 
@@ -720,13 +724,14 @@ a.button {
 .about-info p {
     font-size: 1.5em;
     /*line-height: 1.8em;*/
-    padding: 1em 0;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
     /*color: #646464;*/
     font-family: 'Crimson Text', 'serif';
 }
 
 .about-info {
-    margin: 3em 0;
+    margin: 0;
 }
 
     .about-info ul {
@@ -2330,4 +2335,10 @@ h2.typoh2 {
 .divCenter{
     margin:auto;
     width:70%;
+}
+
+.curlyQuotes{
+    font-size:24.0px;
+    font-family:Helvetica, Arial;
+    color:#000000
 }
