@@ -11,8 +11,7 @@ namespace NationwideNannies.Models
     {
         [Key]
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FullName { get; set; }        
         public string Address { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
@@ -22,10 +21,11 @@ namespace NationwideNannies.Models
         public string PreferedPosition { get; set; }
         public string JobDurationType { get; set; } // short term or long term
         public string JobType { get; set; } //Live in, live out, junior nanny/mother’s helper, nanny house keeper, day time, evening/weekends, any time
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public DateTime DBSDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
+        public DateTime? DBSDate { get; set; }
         public string Nationality { get; set; }
+        public string StayInUKDuration { get; set; }
         public string MaritalStatus { get; set; }
         public string HaveChildren { get; set; }
         public string ChildrenDetails { get; set; }
@@ -34,9 +34,10 @@ namespace NationwideNannies.Models
         public string HaveMedicalConditions { get; set; }
         public string MedicalConditionDetails { get; set; }
         public string IsOfstedRegistered { get; set; }
-        public DateTime OfstedDate { get; set; }
-        public int DaysSickLastYear { get; set; }
-        public int ExpectedSalary { get; set; }
+        public DateTime? OfstedDate { get; set; }
+        public int? DaysSickLastYear { get; set; }
+        public string DaysSickLastYearDetails { get; set; }
+        public int? ExpectedSalary { get; set; }
         public string EligibleToWork { get; set; }
         public string Radius { get; set; }
         public string EmploymentType { get; set; }
@@ -52,8 +53,7 @@ namespace NationwideNannies.Models
         {
             StringBuilder builder = new StringBuilder();
 
-            builder.AppendFormat("First Name: {0} <br/>", this.FirstName);
-            builder.AppendFormat("Last Name: {0} <br/>", this.LastName);
+            builder.AppendFormat("Full Name: {0} <br/>", this.FullName);
             builder.AppendFormat("Email: {0} <br/>", this.Email);
             builder.AppendFormat("Phone: {0} <br/>", this.Phone);
             builder.AppendFormat("City: {0} <br/>", this.City);

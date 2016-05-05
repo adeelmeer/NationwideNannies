@@ -176,7 +176,16 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\cssreset.css" />
+    <Content Include="Content\flexslider.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\lightbox.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\popuo-box.css" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -229,8 +238,14 @@
     <Content Include="images\t4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.flexisel.js" />
+    <Content Include="Scripts\jquery.flexslider.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
+    <Content Include="Scripts\jquery.swipebox.min.js" />
     <Content Include="Scripts\lightbox-plus-jquery.min.js" />
+    <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\responsiveslides.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

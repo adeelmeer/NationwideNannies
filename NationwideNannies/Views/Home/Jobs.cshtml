@@ -11,8 +11,10 @@
             <h2>Candidate Application Form</h2>
 
             <div class="about-info" style="margin-bottom:0px;">
-                <p>Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs. 
-                <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.</p>
+                <p>
+                    Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs.
+                    <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.
+                </p>
                 <p>If you are interested in a particular vacancy, please state the advert title in your cover statement below. </p>
             </div>
 
@@ -20,35 +22,107 @@
                 @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                     <div class="col-md-6">
-                        <label>First Name</label> @Html.TextBoxFor(m => m.FirstName, new { required = "required" })
+                        <label>Full Name</label> @Html.TextBoxFor(m => m.FullName, new { required = "required" })
                     </div>
                     <div class="col-md-6">
-                        <label>Last Name</label> @Html.TextBoxFor(m => m.LastName, new { required = "required" })
+                        <label>Address</label> @Html.TextBoxFor(m => m.Address, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>City</label> @Html.TextBoxFor(m => m.City, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Post code</label> @Html.TextBoxFor(m => m.PostalCode, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Preferred contact number</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Alternate contact number</label> @Html.TextBoxFor(m => m.PhoneAlt)
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
                     </div>
                     <div class="col-md-6">
                         <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
                     </div>
                     <div class="col-md-6">
-                        <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>City</label> @Html.TextBoxFor(m => m.City)
-                    </div>
-                    <div class="col-md-6">
-                        <label>Right to work in UK</label> @Html.DropDownListFor(m => m.EligibleToWork, LookupValuesHelper.GetYesNo())
-                    </div>
-                    <div class="col-md-6">
                         <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.Radius, LookupValuesHelper.GetJobRadius())
                     </div>
                     <div class="col-md-6">
-                        <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                        <label>Right to live &amp; work in UK</label> @Html.DropDownListFor(m => m.EligibleToWork, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Preferred position</label> @Html.DropDownListFor(m => m.PreferedPosition, LookupValuesHelper.PreferedPosition(), new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Position Type</label> @Html.DropDownListFor(m => m.JobType, LookupValuesHelper.PreferedPosition())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Position seeking</label> @Html.DropDownListFor(m => m.JobDurationType, LookupValuesHelper.GetJobDurationType(), new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Hours seeking</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType(), new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Prefered End Date</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Date of last DBS obtained</label> @Html.TextBoxFor(m => m.DBSDate, new { @class = "date-field", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Marital Status</label> @Html.DropDownListFor(m => m.MaritalStatus, LookupValuesHelper.GetMaritalStatus())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Do you have children?</label> @Html.DropDownListFor(m => m.HaveChildren, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Children Age</label> @Html.TextAreaFor(m => m.ChildrenDetails, new { @class = "text-details" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Nationality</label> @Html.TextBoxFor(m => m.Nationality,new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>How long have you been in the UK?</label> @Html.TextBoxFor(m => m.StayInUKDuration, new { required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Do you have any criminal convictions?</label> @Html.DropDownListFor(m => m.HaveCriminalConvictions, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Criminal conviction details</label> @Html.TextAreaFor(m => m.CriminalConvictionDetails, new { @class = "text-details" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Do you have any known medical/health conditions?</label> @Html.DropDownListFor(m => m.HaveMedicalConditions, LookupValuesHelper.GetYesNo())
+                    </div>
+                    <div class="col-md-6">
+                        <label>Medical/health condition details</label> @Html.TextAreaFor(m => m.MedicalConditionDetails, new { @class = "text-details" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Are you Ofsted registered?</label> @Html.DropDownListFor(m => m.IsOfstedRegistered, LookupValuesHelper.GetYesNo())
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Please state date when registration was applied for/issued</label> @Html.TextBoxFor(m => m.OfstedDate)
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Days off sick in the last 12 months</label> @Html.TextBoxFor(m => m.DaysSickLastYear, new { @type = "number", @min = "0", required = "required" })
+                    </div>
+                    <div class="col-md-6">
+                        <label>Comments for sick days</label> @Html.TextAreaFor(m => m.DaysSickLastYearDetails, new { @class = "text-details" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label>Expected Salary</label> @Html.TextBoxFor(m => m.ExpectedSalary, new { @type = "number", @min = "0", required = "required" })
                     </div>
                     <div class="col-md-6">
                         <label>Experience with age groups</label> @Html.DropDownListFor(m => m.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
                     </div>
-                    <div class="col-md-6">
-                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                    </div>
+
                     <div class="col-md-6">
                         <label>Upload Resume</label> <input type="file" name="resume" required="required" />
                     </div>
@@ -56,7 +130,7 @@
                         <label>Upload Photo</label> <input type="file" name="image" required="required" />
                     </div>
                     <div class="col-md-12">
-                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                        <label>Cover letter that will support your application (including skills, languages spoken, training obtained etc </label> @Html.TextAreaFor(m => m.Comments, new { required = "required" })
                     </div>
 
                     <div class="col-md-12">
@@ -68,6 +142,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".date-field").attr("readonly", "readonly");
+        $(".date-field").datepicker({
+            dateFormat: "dd MM yy",
+            showAnim: "slideDown",
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+</script>
 
 
 

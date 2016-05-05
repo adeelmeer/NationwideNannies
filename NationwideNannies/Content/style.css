@@ -58,7 +58,7 @@ body {
     font-family: 'Crimson Text', 'serif';
     color:#000000;
     font-size:1.5em;
-    background-color: #F0F8FF;
+    background-color: #ede7f6;
 }
 
 .header-top {
@@ -107,12 +107,12 @@ body {
 
     .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
         color: #fff;
-        background-color: #1F527D;
+        background-color: #212121;
     }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     color: #fff;
-    background-color: #1F527D;
+    background-color: #212121;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -203,7 +203,7 @@ body {
 
     .caption h3 {
         color: #fff;
-        font-size: 3.5em;
+        font-size: 1.7em;
         text-transform: capitalize;
         font-family: 'Crimson Text', 'serif';
     }
@@ -321,7 +321,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 3em;
+        font-size: 2.3em;
         font-family: 'Crimson Text', 'serif';
         color: #000000;
         text-align: center;
@@ -631,7 +631,7 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
     .caption h3 {
-        font-size: 2em;  
+        font-size: 1.7em;  
         font-weight:bold;
         text-align:left;      
         font-family: 'Crimson Text', 'serif';
@@ -1460,8 +1460,9 @@ h2.typoh2 {
     width: 100%;
     outline: none;
     font-size: .95em;
-    color: #626262;
+    color: #000000;
     padding: 10px 15px;
+    height:40px;
 }
 
 .contact-form textarea {
@@ -1546,7 +1547,7 @@ h2.typoh2 {
     }
 
         .caption h3 {
-            font-size: 1.8em;
+            font-size: 1.7em;
         }
 
     .about-grid-right {
@@ -1566,7 +1567,7 @@ h2.typoh2 {
     }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 3em;
+        font-size: 2.3em;
     }
 
     .student h3, .new-course h3, .testimonial h3, .why-choose h3, .features h3, .service h3, .team h3 {
@@ -1627,7 +1628,7 @@ h2.typoh2 {
     }
 
     .caption h3 {
-        font-size: 2.7em;
+        font-size: 1.7em;
     }
 
     .header {
@@ -1648,7 +1649,7 @@ h2.typoh2 {
     }
 
         .caption h3 {
-            font-size: 1.6em;
+            font-size: 1.7em;
         }
 
 
@@ -1661,7 +1662,7 @@ h2.typoh2 {
     }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 2.8em;
+        font-size: 2.3em;
     }
 
     .about-grid-left h4, .student-grid h4, .course-info h4, .header-grid h4, .choose-grid h4, .services h4, .feature1 h4, .service-grid1 h4, .contact-grid h4, .contact-form h4 {
@@ -1867,12 +1868,12 @@ h2.typoh2 {
     }
 
     .caption h3 {
-        font-size: 2.5em;
+        font-size: 1.7em;
         margin-bottom: 1em;
     }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 2.5em;
+        font-size: 2.3em;
     }
 
     .student h3, .new-course h3, .testimonial h3, .why-choose h3, .features h3, .service h3, .team h3 {
@@ -2027,7 +2028,7 @@ h2.typoh2 {
     }
 
         .caption h3 {
-            font-size: 2em;
+            font-size: 1.7em;
             margin: 0;
         }
 
@@ -2066,7 +2067,7 @@ h2.typoh2 {
     }
 
     .about h2, .about-section h2, .services h2, .gallery-info h2, h2.short, .contact h2 {
-        font-size: 2.4em;
+        font-size: 2.3em;
     }
 
     .student h3, .new-course h3, .testimonial h3, .why-choose h3, .features h3, .service h3, .team h3 {
@@ -2125,7 +2126,7 @@ h2.typoh2 {
     }
 
         .caption h3 {
-            font-size: 1.25em;
+            font-size: 1.7em;
         }
 
 
@@ -2341,4 +2342,8 @@ h2.typoh2 {
     font-size:24.0px;
     font-family:Helvetica, Arial;
     color:#000000
+}
+
+.text-details{
+    min-height:80px !important;
 }

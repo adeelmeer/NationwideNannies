@@ -36,24 +36,35 @@ namespace NationwideNannies.Utils
             }
         }
 
-        public static string SaveUploadedFile(string firstName, string LastName, HttpPostedFileBase uploadedFile, string folderName)
+        public static string RemoveIlleglCharsFromFileName(string filename)
         {
-            if (string.IsNullOrWhiteSpace(firstName) ||
-                string.IsNullOrWhiteSpace(LastName) ||                
-                uploadedFile == null||
-                 uploadedFile.InputStream == null||
+            foreach (char c in System.IO.Path.GetInvalidFileNameChars())
+            {
+                filename = filename.Replace(c.ToString(), string.Empty);
+            }
+
+            return filename.Trim();
+        }
+
+        public static string SaveUploadedFile(string fullName, HttpPostedFileBase uploadedFile, string folderName)
+        {
+            if (string.IsNullOrWhiteSpace(fullName) ||
+                 uploadedFile == null ||
+                 uploadedFile.InputStream == null ||
                 string.IsNullOrWhiteSpace(uploadedFile.FileName))
             {
                 return string.Empty;
             }
+
+            fullName = Utilities.RemoveIlleglCharsFromFileName(fullName);
 
             string fileName = uploadedFile.FileName;
 
             string folder = HttpContext.Current.Server.MapPath("~/" + folderName);
             string fileNameWithoutExt = Path.GetFileNameWithoutExtension(fileName);
             string ext = Path.GetExtension(fileName);
-            string finalFileName = string.Format("{0}_{1}_{2}_{3}{4}", firstName, LastName, fileNameWithoutExt, DateTime.Now.ToString("MMddyyyyHHmmss"), ext);
-            
+            string finalFileName = string.Format("{0}_{1}_{2}_{3}", fullName, fileNameWithoutExt, DateTime.Now.ToString("MMddyyyyHHmmss"), ext);
+
             string filePath = string.Format("{0}\\{1}", folder, finalFileName);
 
             SaveToFile(filePath, uploadedFile.InputStream);

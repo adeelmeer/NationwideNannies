@@ -30,7 +30,7 @@
                         <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
                     </div>
                     <div class="col-md-12">
-                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments, new { required = "required" })
                     </div>
 
                     <div class="col-md-12">

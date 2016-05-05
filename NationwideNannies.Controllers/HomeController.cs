@@ -63,8 +63,8 @@ namespace NationwideNannies.Controllers
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
             // save files to disk
-            string filePathResume = Utilities.SaveUploadedFile(model.FirstName, model.LastName, resume, Constants.FolderUploadedResumes);
-            string filePathPhoto = Utilities.SaveUploadedFile(model.FirstName, model.LastName, image, Constants.FolderUploadedPhotos);
+            string filePathResume = Utilities.SaveUploadedFile(model.FullName, resume, Constants.FolderUploadedResumes);
+            string filePathPhoto = Utilities.SaveUploadedFile(model.FullName, image, Constants.FolderUploadedPhotos);
 
 
             // update model with file paths
