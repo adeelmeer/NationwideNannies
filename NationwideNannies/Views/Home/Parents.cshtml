@@ -5,68 +5,76 @@
     ViewBag.Title = "Parents";
 }
 
-<div class="content">
-    <div class="about-section">
-        <div class="container">
-            <h2>Client Registration Form</h2>
+<div class="clients-bg">
+    <div class="image-blur-div">
 
-            <div class="about-info" style="margin-bottom:0px;">
+        <div class="content">
+            <div class="about-section">
+                <div class="container">
+                    <h2>Client Registration Form</h2>
 
-                <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
+                    <div class="about-info" style="margin-bottom:0px;">
 
-                <p>Please note the below form is for <span style="font-weight:bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration:underline;">click here</a></p>
-            </div>
+                        <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
 
-            <div class="contact-form">
-                @using (Html.BeginForm("Parents", "Home", FormMethod.Post))
-                {
-                    <div class="col-md-6">
-                        <label>First Name</label> @Html.TextBoxFor(m => m.FirstName, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Last Name</label> @Html.TextBoxFor(m => m.LastName, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>City</label> @Html.TextBoxFor(m => m.City, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
-                    </div>
-                    <div class="col-md-6">
-                        <label>Salary /week</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Nanny Type</label> @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType())
-                    </div>
-                    <div class="col-md-6">
-                        <label>Qualified Nannies Only</label> @Html.DropDownListFor(m => m.QualifiedNannies, LookupValuesHelper.GetYesNo())
-                    </div>
-                    <div class="col-md-6">
-                        <label>Child Age Group</label> @Html.DropDownListFor(m => m.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
-                    </div>
-                    <div class="col-md-6">
-                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                    </div>
-                    <div class="col-md-12">
-                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                        <p>Please note the below form is for <span style="font-weight:bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration:underline;">click here</a></p>
                     </div>
 
-                    <div class="col-md-12">
-                        <input type="submit" value="Submit">
+                    <div class="contact-form">
+                        @using (Html.BeginForm("Parents", "Home", FormMethod.Post))
+                        {
+                            <div class="col-md-6">
+                                <label>First Name</label> @Html.TextBoxFor(m => m.FirstName, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Last Name</label> @Html.TextBoxFor(m => m.LastName, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>City</label> @Html.TextBoxFor(m => m.City, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Salary /week</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Nanny Type</label> @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Qualified Nannies Only</label> @Html.DropDownListFor(m => m.QualifiedNannies, LookupValuesHelper.GetYesNo())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Child Age Group</label> @Html.DropDownListFor(m => m.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                            </div>
+                            <div class="col-md-12">
+                                <label>Comments</label> @Html.TextAreaFor(m => m.Comments)
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit">
+                            </div>
+                        }
                     </div>
-                }
+
+                </div>
             </div>
 
         </div>
-    </div>
 
+    </div>
 </div>
+
+
 
 
 

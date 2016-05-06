@@ -4,41 +4,48 @@
 @{
     ViewBag.Title = "Contact";
 }
-<div class="content">
-    <div class="about-section">
-        <div class="container">
-            <h2>Contact US</h2>
+<div class="contactus-bg">
+    <div class="image-blur-div">
 
-            @*<div class="about-info" style="margin-bottom:0px;">
-                <p>Please fill the following form and we will contact you.</p>
-                
-            </div>*@
+        <div class="content">
+            <div class="about-section">
+                <div class="container">
+                    <h2>Contact US</h2>
 
-            <div class="contact-form">
-                @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {
-                    <div class="col-md-6">
-                        <label>Name</label> @Html.TextBoxFor(m => m.Name, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
-                    </div>
-                    <div class="col-md-6">
-                        <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                    </div>
-                    <div class="col-md-12">
-                        <label>Comments</label> @Html.TextAreaFor(m => m.Comments, new { required = "required" })
+                    @*<div class="about-info" style="margin-bottom:0px;">
+                        <p>Please fill the following form and we will contact you.</p>
+
+                    </div>*@
+
+                    <div class="contact-form">
+                        @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="col-md-6">
+                                <label>Name</label> @Html.TextBoxFor(m => m.Name, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Phone</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                            </div>
+                            <div class="col-md-12">
+                                <label>Comments</label> @Html.TextAreaFor(m => m.Comments, new { required = "required" })
+                            </div>
+
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit">
+                            </div>
+                        }
                     </div>
 
-                    <div class="col-md-12">
-                        <input type="submit" value="Submit">
-                    </div>
-                }
+                </div>
             </div>
-
         </div>
+
     </div>
 </div>
+

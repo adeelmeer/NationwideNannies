@@ -56,8 +56,8 @@ body {
     padding: 0 0;
     margin: 0 0;
     font-family: 'Crimson Text', 'serif';
-    color:#000000;
-    font-size:1.5em;
+    color: #000000;
+    font-size: 1.5em;
     background-color: #ede7f6;
 }
 
@@ -631,19 +631,19 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
     .caption h3 {
-        font-size: 1.7em;  
-        font-weight:bold;
-        text-align:left;      
+        font-size: 1.7em;
+        font-weight: bold;
+        text-align: left;
         font-family: 'Crimson Text', 'serif';
-        color:#000000;
+        color: #000000;
     }
 
     .caption p {
         font-size: 1.3em;
-        font-weight:bold;
+        font-weight: bold;
         color: #222;
         font-family: 'Crimson Text', 'serif';
-        padding-bottom:1em;
+        padding-bottom: 1em;
         /*line-height: 1.8em;
         padding: 1em 0 2em;*/
     }
@@ -736,7 +736,7 @@ a.button {
 
     .about-info ul {
         margin-left: 3em;
-        font-size: 1.5em;        
+        font-size: 1.5em;
         color: #000000;
     }
 
@@ -1456,13 +1456,14 @@ h2.typoh2 {
 .contact-form select {
     display: inline-block;
     background: none;
-    border: 1px solid #626262;
+    border: 2px solid #000000;
     width: 100%;
     outline: none;
     font-size: .95em;
+    font-weight:bold;
     color: #000000;
     padding: 10px 15px;
-    height:40px;
+    height: 40px;
 }
 
 .contact-form textarea {
@@ -2314,7 +2315,7 @@ h2.typoh2 {
 .nanny-table {
     border-collapse: separate !important;
     border: 1px solid black;
-    font-size:1.5em;
+    font-size: 1.5em;
 }
 
     .nanny-table td {
@@ -2333,17 +2334,49 @@ h2.typoh2 {
     margin-top: 10px;
 }
 
-.divCenter{
-    margin:auto;
-    width:70%;
+.divCenter {
+    margin: auto;
+    width: 70%;
 }
 
-.curlyQuotes{
-    font-size:24.0px;
-    font-family:Helvetica, Arial;
-    color:#000000
+.curlyQuotes {
+    font-size: 24.0px;
+    font-family: Helvetica, Arial;
+    color: #000000;
 }
 
-.text-details{
-    min-height:80px !important;
+.text-details {
+    min-height: 80px !important;
+}
+
+.image-blur-div {
+    background-color: white;
+    opacity: 0.75;
+    min-height:750px;
+}
+
+.services-bg {
+    background: url(../images/Pic12.png) no-repeat 0px 0px;
+    background-size: cover;
+}
+
+.clients-bg {
+    background: url(../images/DSC_0482.jpg) no-repeat 0px 0px;
+    background-size: cover;
+}
+
+.candidates-bg {
+    background: url(../images/Pic7.png) no-repeat 0px 0px;
+    background-size: cover;
+}
+
+.aboutus-bg {
+    background: url(../images/DSC_0614.jpg) no-repeat 0px 0px;
+    background-size: cover;
+}
+
+.contactus-bg {
+    background: url(../images/DSC_0439.jpg) no-repeat 0px 0px;
+    background-size: cover;
+    min-height:750px;
 }
