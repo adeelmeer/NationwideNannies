@@ -9,6 +9,13 @@ namespace NationwideNannies.Models
 {
     public class NannyJobEmployment
     {
+        public NannyJobEmployment()
+        {
+            HaveCriminalConvictions = "No"; 
+            HaveMedicalConditions = "No";
+            IsOfstedRegistered = "No";
+        }
+
         [Key]
         public int Id { get; set; }
         public string FullName { get; set; }        

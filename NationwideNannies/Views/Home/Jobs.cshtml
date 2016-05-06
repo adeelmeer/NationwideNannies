@@ -137,6 +137,7 @@
                             </div>
 
                             <div class="col-md-12">
+                                <input type="checkbox" name="confirm" value="confirm" required="required"> <span style="font-weight:bold;">I confirm, to the best of my knowledge, that the information provided above is accurate.</span> <br />
                                 <input type="submit" value="Submit">
                             </div>
                         }
@@ -152,16 +153,47 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        $(".date-field").attr("readonly", "readonly");
+    $(document).ready(function () {        
+
+        $(".date-field").keydown(function (e) {
+            e.preventDefault();
+        });
+
         $(".date-field").datepicker({
             dateFormat: "dd MM yy",
             showAnim: "slideDown",
             changeMonth: true,
             changeYear: true
         });
+
+        $('#PreferedPosition').change(function () {
+            var ddlbPreferedPosition = $(this);           
+            var currentValue = ddlbPreferedPosition.val();
+
+            var data = [];
+            if (currentValue == "Nanny") {
+                data = ["Live in", "Live out", "Nanny/Mother’s helper", "Nanny house keeper"];
+            }
+            else if (currentValue == "Maternity/Night nurse") {
+                data = ["Maternity nurse", "Night nurse"];
+            }
+            else {
+                data = ["Day time", "Evening/Weekends", "Any"];
+            }
+
+            var ddlbJobType = $("#JobType");
+            ddlbJobType.empty();
+
+            $.each(data, function (index, item) {
+                ddlbJobType.append(
+                   $('<option>', {
+                       value: item,
+                       text: item
+                   }, '</option>'));
+
+            });
+
+        }).change();
+
     });
 </script>
-
-
-

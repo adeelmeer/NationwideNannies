@@ -46,7 +46,7 @@ namespace NationwideNannies.Utils
 
         public static SelectList PreferedPosition()
         {
-            List<string> types = new List<string>() { "nanny", "maternity/night nurse", "babysitter " };
+            List<string> types = new List<string>() { "Nanny", "Maternity/Night nurse", "Babysitter " };
             SelectList selectList = new SelectList(types);
             return selectList;
         }
