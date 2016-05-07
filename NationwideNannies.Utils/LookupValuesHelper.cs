@@ -16,6 +16,13 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
+        public static SelectList GetHearAboutUsOptions()
+        {
+            List<string> types = new List<string>() { "Marketing email", "Word of mouth", "Social media", "Web Search" };
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
         public static SelectList GetMaritalStatus()
         {
             List<string> types = new List<string>() { "Single", "Married", "Separated" };
@@ -37,6 +44,13 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
+        public static SelectList GetPreferenceTypes()
+        {
+            List<string> types = new List<string>() { "Not necessary", "Essential", "Preferred" };
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
         public static SelectList GetYesNo()
         {
             List<string> types = new List<string>() { "Yes", "No" };
@@ -44,9 +58,23 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
+        public static SelectList GetTypeOfChildCare()
+        {
+            List<string> types = new List<string>() { "Nanny", "Mother’s help", "Nanny housekeeper", "Maternity/Night nurse", "Afterschool help", "Shared nanny", "Babysitter", "Other" };
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
         public static SelectList PreferedPosition()
         {
-            List<string> types = new List<string>() { "Nanny", "Maternity/Night nurse", "Babysitter " };
+            List<string> types = new List<string>() { "Nanny", "Maternity/Night nurse", "Babysitter" };
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
+        public static SelectList GetSchoolType()
+        {
+            List<string> types = new List<string>() { "Nursery", "Playgroup", "School", "Other" };
             SelectList selectList = new SelectList(types);
             return selectList;
         }
