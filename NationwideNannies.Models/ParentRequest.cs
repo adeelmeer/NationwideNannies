@@ -18,7 +18,7 @@ namespace NationwideNannies.Models
         public string Email { get; set; }
         public string Phone { get; set; }
         public string PhoneAlt { get; set; }
-        public string TypeOfChilsdCare { get; set; }
+        public string TypeOfChildCare { get; set; }
         public string JobDurationType { get; set; } // short term or long term
         public string DaysOfWeekRequied { get; set; }
         public string ChildrenDetails { get; set; }
@@ -31,9 +31,9 @@ namespace NationwideNannies.Models
         public string UsedOurServicesDetails { get; set; }
         public string EmploymentType { get; set; }
         public string LiveInOut { get; set; }
-        public int SalaryPerWeek { get; set; }
+        public int? SalaryPerWeek { get; set; }
         public bool ReceiveMarketingEmails { get; set; }
-        public bool IsDeclarationAccepted { get; set; }
+        public bool AcceptTermComditions { get; set; }
         public string QualifiedNannies { get; set; }
         public string ChildAgeGroup { get; set; }
         public string PreferedTimeForCall { get; set; }

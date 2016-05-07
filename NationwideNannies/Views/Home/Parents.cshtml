@@ -48,7 +48,7 @@
                                 <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
                             </div>
                             <div class="col-md-6">
-                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.TypeOfChilsdCare, LookupValuesHelper.GetTypeOfChildCare())
+                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare())
                             </div>
                             <div class="col-md-6">
                                 <label>Length of service</label> @Html.DropDownListFor(m => m.JobDurationType, LookupValuesHelper.GetJobDurationType(), new { required = "required" })
@@ -61,8 +61,11 @@
                                 <label>Live in Status</label> @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType())
                             </div>
 
-                            <div class="col-md-12">
-                                <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.ChildrenDetails, new { @class = "text-details" })
+                            <div class="col-md-6">
+                                <label>Days of the week required </label> @Html.TextAreaFor(m => m.DaysOfWeekRequied, new { @class = "text-details", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.ChildrenDetails, new { @class = "text-details", required = "required" })
                             </div>
                             <div class="col-md-6">
                                 <label>Do they attend?</label> @Html.DropDownListFor(m => m.ChildSchoolType, LookupValuesHelper.GetSchoolType())
@@ -83,7 +86,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label>Salary /week</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0" })
+                                <label>Salary/week (net)</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0", required = "required" })
                             </div>
 
                             <div class="col-md-12">
@@ -91,7 +94,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label>Where did you hear about Nationwide Nannies</label> @Html.DropDownListFor(m => m.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions())
+                                <label>Where did you hear about Nationwide Nannies</label> @Html.DropDownListFor(m => m.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions(), new { required = "required" })
                             </div>
                             <div class="col-md-6">
                                 <label>Have you used any of our services before</label> @Html.DropDownListFor(m => m.HaveUsedOurServices, LookupValuesHelper.GetYesNo())
@@ -106,7 +109,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.IsDeclarationAccepted) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
+                                @Html.CheckBoxFor(m => m.AcceptTermComditions, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
                             </div>
 
                             <div class="col-md-12">
