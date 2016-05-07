@@ -16,5 +16,18 @@ namespace NationwideNannies.Models
         public string Phone { get; set; }
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }
+
+        public string GetEmailText()
+        {
+            StringBuilder builder = new StringBuilder();
+
+            builder.AppendFormat("Name: {0} <br/>", this.Name);
+            builder.AppendFormat("Email: {0} <br/>", this.Email);
+            builder.AppendFormat("Phone: {0} <br/>", this.Phone);            
+            builder.AppendFormat("Prefered Time For Call: {0} <br/>", this.PreferedTimeForCall);
+            builder.AppendFormat("Comments: {0} <br/>", this.Comments);
+            
+            return builder.ToString();
+        }
     }
 }

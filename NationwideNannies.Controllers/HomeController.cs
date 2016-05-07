@@ -32,6 +32,26 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Contact(ContactUs model)
+        {
+            // get email content
+            string emailText = model.GetEmailText();
+            string emailSubject = "Contact Us From";
+            string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
+
+            try
+            {
+                Utilities.SendEmail(toEmail, emailSubject, emailText);
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Contact() send email");
+            }
+
+            return View("ContactUsThankyou");
+        }
+
         public ActionResult Parents()
         {
             ParentRequest model = new ParentRequest();

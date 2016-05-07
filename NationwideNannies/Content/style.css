@@ -58,7 +58,7 @@ body {
     font-family: 'Crimson Text', 'serif';
     color: #000000;
     font-size: 1.5em;
-    background-color: #ede7f6;
+    background-color: #000000;
 }
 
 .header-top {
@@ -118,7 +118,7 @@ body {
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
     color: #fff;
     text-decoration: none;
-    background-color: #1F527D;
+    background-color: #212121;
 }
 
 .navbar {
@@ -138,7 +138,7 @@ body {
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
     color: #fff;
-    background-color: #1F527D;
+    background-color: #212121;
 }
 
 .dropdown-menu > li > a {
@@ -396,17 +396,17 @@ ul.callbacks_tabs.callbacks1_tabs {
 }
 
 .about-grid-right:hover {
-    background: #1F527D;
+    background: #212121;
 }
 
 .aliquam:hover {
-    background: #1F527D;
+    background: #212121;
 }
 
 .student h3, .new-course h3, .testimonial h3, .why-choose h3, .features h3, .service h3 {
     font-size: 3.5em;
     font-family: 'Crimson Text', 'serif';
-    color: #1F527D;
+    color: #212121;
     text-transform: capitalize;
 }
 
@@ -769,7 +769,7 @@ a.button {
 .team {
     padding: 4em 0;
     position: relative;
-    background: #1F527D;
+    background: #212121;
     text-align: center;
 }
 
@@ -968,7 +968,7 @@ a.button {
 }
 
     .ser1:hover {
-        background: #1F527D;
+        background: #212121;
     }
 
 .features {
@@ -1011,13 +1011,13 @@ a.button {
     -o-box-shadow: 0px 0px 10px rgba(119, 119, 119, 0.25);
     display: inline-block;
     padding: 32px;
-    background: #1F527D;
+    background: #212121;
     background: -moz-linear-gradient(top, #03bcfd 0%, #019bd1 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1F527D), color-stop(100%,#1F527D));
-    background: -webkit-linear-gradient(top, #1F527D 0%,#1F527D 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#212121), color-stop(100%,#212121));
+    background: -webkit-linear-gradient(top, #212121 0%,#212121 100%);
     background: -o-linear-gradient(top, #03bcfd 0%,#019bd1 100%);
     background: -ms-linear-gradient(top, #03bcfd 0%,#019bd1 100%);
-    background: linear-gradient(to bottom, #1F527D 0%,#1F527D 100%);
+    background: linear-gradient(to bottom, #212121 0%,#212121 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#03bcfd', endColorstr='#019bd1',GradientType=0 );
     cursor: pointer;
     transition: 0.5s ease;
@@ -1478,7 +1478,7 @@ h2.typoh2 {
 }
 
 .contact-form input[type="submit"] {
-    background: #1F527D;
+    background: #212121;
     border: none;
     padding: 10px 0px;
     width: 10%;
@@ -1811,7 +1811,7 @@ h2.typoh2 {
     }
 
     .navbar-default .navbar-collapse, .navbar-default .navbar-form {
-        border-color: #1F527D;
+        border-color: #212121;
     }
 
     .navbar-toggle {
@@ -1819,11 +1819,11 @@ h2.typoh2 {
     }
 
     .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-        background-color: #ec3475;
+        background-color: #212121;
     }
 
     .navbar-default .navbar-toggle {
-        border-color: #ec3475;
+        border-color: #000000;
     }
 
         .navbar-default .navbar-toggle .icon-bar {
@@ -1837,11 +1837,11 @@ h2.typoh2 {
 
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #fff;
-        background-color: #1F527D;
+        background-color: #212121;
     }
 
     .navbar-toggle {
-        background-color: #ec3475;
+        background-color: #000000;
     }
 
     .navbar-brand {
@@ -2379,4 +2379,15 @@ h2.typoh2 {
     background: url(../images/DSC_0439.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height:750px;
+}
+
+.conactInfo{
+    color:white; 
+    clear:both; 
+    float:right;
+    font-size: 1.5em;
+}
+
+.conactInfo a{
+    color:white;
 }

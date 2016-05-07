@@ -1,6 +1,10 @@
 ﻿@using NationwideNannies.Helpers;
 @using Microsoft.AspNet.Identity
 
+@{
+    string contactEmail = System.Configuration.ConfigurationManager.AppSettings["ContactEmail"];
+}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,6 +117,11 @@
 
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
+
+                    <div class="conactInfo">
+                        Tel:  @System.Configuration.ConfigurationManager.AppSettings["Phone"] @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                        Email: <a href="mailto:@contactEmail">@contactEmail</a>
+                    </div>
                     </nav>
 
                 </div>

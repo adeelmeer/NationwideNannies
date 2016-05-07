@@ -18,7 +18,7 @@
                     </div>*@
 
                     <div class="contact-form">
-                        @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             <div class="col-md-6">
                                 <label>Name</label> @Html.TextBoxFor(m => m.Name, new { required = "required" })

@@ -313,6 +313,7 @@
     <Content Include="Views\Candidates\SelectionNannies.cshtml" />
     <Content Include="Views\Candidates\SelectionBabySitters.cshtml" />
     <Content Include="Views\Candidates\CurrentVacancies.cshtml" />
+    <Content Include="Views\Home\ContactUsThankyou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">
