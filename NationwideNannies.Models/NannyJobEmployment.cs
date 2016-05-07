@@ -46,7 +46,7 @@ namespace NationwideNannies.Models
         public string DaysSickLastYearDetails { get; set; }
         public int? ExpectedSalary { get; set; }
         public string EligibleToWork { get; set; }
-        public string Radius { get; set; }
+        public int Radius { get; set; }
         public string EmploymentType { get; set; }
         public string ChildAgeGroup { get; set; }
         public string PreferedTimeForCall { get; set; }

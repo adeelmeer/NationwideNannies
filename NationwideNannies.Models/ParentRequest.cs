@@ -34,8 +34,7 @@ namespace NationwideNannies.Models
         public int? SalaryPerWeek { get; set; }
         public bool ReceiveMarketingEmails { get; set; }
         public bool AcceptTermComditions { get; set; }
-        public string QualifiedNannies { get; set; }
-        public string ChildAgeGroup { get; set; }
+        public string QualifiedNannies { get; set; }        
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }
 
@@ -51,7 +50,6 @@ namespace NationwideNannies.Models
             builder.AppendFormat("Live in or Live out Nanny: {0} <br/>", this.LiveInOut);
             builder.AppendFormat("SalaryPerWeek: {0} <br/>", this.SalaryPerWeek);
             builder.AppendFormat("Qualified Nannies Only: {0} <br/>", this.QualifiedNannies);
-            builder.AppendFormat("Child Age Group: {0} <br/>", this.ChildAgeGroup);
             builder.AppendFormat("Prefered Time For Call: {0} <br/>", this.PreferedTimeForCall);
             builder.AppendFormat("Comments: {0} <br/>", this.Comments);
 

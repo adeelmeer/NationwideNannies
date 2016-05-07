@@ -1,7 +1,7 @@
-﻿using NationwideNannies.Logging;
+﻿using NationwideNannies.Data;
+using NationwideNannies.Logging;
 using NationwideNannies.Models;
 using NationwideNannies.Utils;
-
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -82,6 +82,8 @@ namespace NationwideNannies.Controllers
             Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
 
             // add code to save form data in database
+            NationWideDbContext dbContext = new NationWideDbContext();
+            dbContext.SaveJobForm(model);
 
             return View("JobsThankyou");
         }
