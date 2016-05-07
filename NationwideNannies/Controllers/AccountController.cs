@@ -93,7 +93,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/VerifyCode
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -107,7 +107,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/VerifyCode
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
@@ -175,7 +175,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
             if (userId == null || code == null)
@@ -188,7 +188,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ForgotPassword
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return View();
@@ -197,7 +197,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/ForgotPassword
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
         {
@@ -224,7 +224,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ForgotPasswordConfirmation
-        [AllowAnonymous]
+        //[AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return View();
@@ -232,7 +232,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ResetPassword
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? View("Error") : View();
@@ -241,7 +241,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/ResetPassword
         [HttpPost]
-        [AllowAnonymous]
+        //[AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
@@ -266,7 +266,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ResetPasswordConfirmation
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return View();
@@ -275,7 +275,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/ExternalLogin
         [HttpPost]
-        [AllowAnonymous]
+      //  [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
@@ -285,7 +285,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/SendCode
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -301,7 +301,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/SendCode
         [HttpPost]
-        [AllowAnonymous]
+       // [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
@@ -320,7 +320,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ExternalLoginCallback
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
@@ -351,7 +351,7 @@ namespace NationwideNannies.Controllers
         //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
-        [AllowAnonymous]
+       // [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
@@ -398,7 +398,7 @@ namespace NationwideNannies.Controllers
 
         //
         // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
+       // [AllowAnonymous]
         public ActionResult ExternalLoginFailure()
         {
             return View();

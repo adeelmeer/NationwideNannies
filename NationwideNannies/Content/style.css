@@ -56,7 +56,7 @@ body {
     padding: 0 0;
     margin: 0 0;
     font-family: 'Crimson Text', 'serif';
-    color: #ffffff;
+    color: #000000;
     font-size: 1.5em;
     background-color: #000000;
 }
@@ -1994,7 +1994,7 @@ h2.typoh2 {
     }
 
     .header {
-        background: url(../images/banner2.jpg) no-repeat -83px 0px;
+        /*background: url(../images/banner2.jpg) no-repeat -83px 0px;*/
         background-size: cover;
         min-height: 254px;
     }
@@ -2076,7 +2076,7 @@ h2.typoh2 {
     }
 
     .banr {
-        background: url(../images/banner2.jpg) no-repeat 0px 0px;
+        /*background: url(../images/banner2.jpg) no-repeat 0px 0px;*/
         background-size: cover;
     }
 
@@ -2116,7 +2116,7 @@ h2.typoh2 {
     }
 
     .header {
-        background: url(../images/banner2.jpg) no-repeat -120px 0px;
+        /*background: url(../images/banner2.jpg) no-repeat -120px 0px;*/
         background-size: cover;
         min-height: 200px;
         padding-bottom: 1em;
@@ -2237,7 +2237,7 @@ h2.typoh2 {
     }
 
     .banr {
-        background: url(../images/banner2.jpg) no-repeat 0px 0px;
+        /*background: url(../images/banner2.jpg) no-repeat 0px 0px;*/
         background-size: cover;
         padding: 0;
         min-height: 70px !important;
@@ -2389,5 +2389,9 @@ h2.typoh2 {
 }
 
 .conactInfo a{
+    color:white;
+}
+
+.form-group .control-label{
     color:white;
 }
