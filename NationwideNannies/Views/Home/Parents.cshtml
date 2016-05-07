@@ -75,7 +75,7 @@
                                 <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
                             </div>
                             <div class="col-md-6">
-                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field", required = "required" })
+                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field"})
                             </div>
 
                             <div class="col-md-6">
@@ -127,7 +127,13 @@
 </div>
 
 
+<script type="text/javascript">
+    $(document).ready(function () {
 
+        window.NationwideFormsFunctions.initialize();
+
+    });
+</script>
 
 
 

@@ -39,5 +39,14 @@ namespace NationwideNannies.Data
             }
         }
 
+        public void SaveParentForm(ParentRequest jobData)
+        {
+            if (jobData != null)
+            {
+                this.ParentRequest.Add(jobData);
+                this.SaveChanges();
+            }
+        }
+
     }
 }

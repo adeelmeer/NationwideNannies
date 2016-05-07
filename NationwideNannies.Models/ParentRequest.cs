@@ -42,17 +42,33 @@ namespace NationwideNannies.Models
         {
             StringBuilder builder = new StringBuilder();
 
-            builder.AppendFormat("First Name: {0} <br/>", this.FullName);
-            builder.AppendFormat("Email: {0} <br/>", this.Email);
-            builder.AppendFormat("Phone: {0} <br/>", this.Phone);
+            builder.AppendFormat("Full Name: {0} <br/>", this.FullName);
+            builder.AppendFormat("Address: {0} <br/>", this.Address);
             builder.AppendFormat("City: {0} <br/>", this.City);
+            builder.AppendFormat("Post code: {0} <br/>", this.PostalCode);
+            builder.AppendFormat("Preferred contact number: {0} <br/>", this.Phone);
+            builder.AppendFormat("Alternate contact number: {0} <br/>", this.PhoneAlt);
+            builder.AppendFormat("Preferred Time for a Call: {0} <br/>", this.PreferedTimeForCall);
+            builder.AppendFormat("Email: {0} <br/>", this.Email);
+            builder.AppendFormat("Type of childcare you are looking for: {0} <br/>", this.TypeOfChildCare);
+            builder.AppendFormat("Length of service: {0} <br/>", this.JobDurationType);
             builder.AppendFormat("Employment Type: {0} <br/>", this.EmploymentType);
-            builder.AppendFormat("Live in or Live out Nanny: {0} <br/>", this.LiveInOut);
-            builder.AppendFormat("SalaryPerWeek: {0} <br/>", this.SalaryPerWeek);
-            builder.AppendFormat("Qualified Nannies Only: {0} <br/>", this.QualifiedNannies);
-            builder.AppendFormat("Prefered Time For Call: {0} <br/>", this.PreferedTimeForCall);
-            builder.AppendFormat("Comments: {0} <br/>", this.Comments);
-
+            builder.AppendFormat("Live in Status: {0} <br/>", this.LiveInOut);
+            builder.AppendFormat("Days of the week required: {0} <br/>", this.DaysOfWeekRequied);
+            builder.AppendFormat("Number of children caring for (including names, date of birth & gender): {0} <br/>", this.ChildrenDetails);
+                  builder.AppendFormat("Do they attend?: {0} <br/>", this.ChildSchoolType);
+            builder.AppendFormat("Prefered Start Date: {0} <br/>", this.StartDate);
+            builder.AppendFormat("Preferred end of service date (for a temporary position): {0} <br/>", this.EndDate);
+            builder.AppendFormat("Childcare qualified nannies only: {0} <br/>", this.QualifiedNannies);
+            builder.AppendFormat("Do you require an Ofsted registered nanny?: {0} <br/>", this.OfstedRequirement);
+            builder.AppendFormat("Salary/week (net): {0} <br/>", this.SalaryPerWeek);
+            builder.AppendFormat("Additional information about your family or staff requirements : {0} <br/>", this.Comments);
+            builder.AppendFormat("Where did you hear about Nationwide Nannies: {0} <br/>", this.HowDidYouHearAboutUs);
+            builder.AppendFormat("Have you used any of our services before: {0} <br/>", this.HaveUsedOurServices);
+            builder.AppendFormat("Please specify how and when you used our services: {0} <br/>", this.UsedOurServicesDetails);
+            builder.AppendFormat("Receive Marketing Emails: {0} <br/>", this.ReceiveMarketingEmails);
+            builder.AppendFormat("Accept Term and Comditions: {0} <br/>", this.AcceptTermComditions);            
+            
             return builder.ToString();
         }
     }

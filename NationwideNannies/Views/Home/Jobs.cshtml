@@ -71,7 +71,7 @@
                                 <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
                             </div>
                             <div class="col-md-6">
-                                <label>Prefered End Date</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field", required = "required" })
+                                <label>Prefered End Date</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field" })
                             </div>
                             <div class="col-md-6">
                                 <label>Date of last DBS obtained</label> @Html.TextBoxFor(m => m.DBSDate, new { @class = "date-field", required = "required" })
@@ -109,7 +109,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label>Please state date when registration was applied for/issued</label> @Html.TextBoxFor(m => m.OfstedDate)
+                                <label>Please state date when registration was applied for/issued</label> @Html.TextBoxFor(m => m.OfstedDate, new { @class = "date-field" })
                             </div>
 
                             <div class="col-md-6">
@@ -158,16 +158,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        $(".date-field").keydown(function (e) {
-            e.preventDefault();
-        });
-
-        $(".date-field").datepicker({
-            dateFormat: "dd MM yy",
-            showAnim: "slideDown",
-            changeMonth: true,
-            changeYear: true
-        });
+        window.NationwideFormsFunctions.initialize();
 
         $('#PreferedPosition').change(function () {
             var ddlbPreferedPosition = $(this);

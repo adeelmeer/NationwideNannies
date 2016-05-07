@@ -115,9 +115,6 @@ namespace NationwideNannies.Utils
             {
                 using (var message = new MailMessage())
                 {
-
-
-
                     message.IsBodyHtml = true;
                     body = body.Replace(System.Environment.NewLine, "<br />");
 

@@ -53,7 +53,7 @@ namespace NationwideNannies.Utils
 
         public static SelectList GetYesNo()
         {
-            List<string> types = new List<string>() { "Yes", "No" };
+            List<string> types = new List<string>() { "No" , "Yes"};
             SelectList selectList = new SelectList(types);
             return selectList;
         }

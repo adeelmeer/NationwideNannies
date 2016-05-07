@@ -43,12 +43,27 @@ namespace NationwideNannies.Controllers
         {
             // get email content
             string emailText = model.GetEmailText();
-            string emailSubject = "Nationwide Nannies";
+            string emailSubject = "Clients from";
+            string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
 
-            // add code to send email
-
-            // add code to save form data in database
-
+            try
+            {
+                Utilities.SendEmail(toEmail, emailSubject, emailText);
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() send email");
+            }
+            try
+            {
+                // add code to save form data in database
+                NationWideDbContext dbContext = new NationWideDbContext();
+                dbContext.SaveParentForm(model);
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+            }
             return View("ParentThankyou");
         }
 
@@ -73,18 +88,32 @@ namespace NationwideNannies.Controllers
 
             // get email content
             string emailText = model.GetEmailText();
-            string emailSubject = "Nationwide Nannies";
+            string emailSubject = "Candidates From";
             string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
 
             // add code to send email
             string fullPathResume = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedResumes, filePathResume);
             string fullPathPhoto = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedPhotos, filePathPhoto);
-            Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
 
-            // add code to save form data in database
-            NationWideDbContext dbContext = new NationWideDbContext();
-            dbContext.SaveJobForm(model);
+            try
+            {
+                Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Jobs() send email");
+            }
 
+            try
+            {
+                // add code to save form data in database
+                NationWideDbContext dbContext = new NationWideDbContext();
+                dbContext.SaveJobForm(model);
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Jobs() database save");
+            }
             return View("JobsThankyou");
         }
 

@@ -61,16 +61,40 @@ namespace NationwideNannies.Models
             StringBuilder builder = new StringBuilder();
 
             builder.AppendFormat("Full Name: {0} <br/>", this.FullName);
-            builder.AppendFormat("Email: {0} <br/>", this.Email);
-            builder.AppendFormat("Phone: {0} <br/>", this.Phone);
+            builder.AppendFormat("Address: {0} <br/>", this.Address);
             builder.AppendFormat("City: {0} <br/>", this.City);
-            builder.AppendFormat("Eligible To Work in UK: {0} <br/>", this.EligibleToWork);
-            builder.AppendFormat("Radius : {0} <br/>", this.Radius);
-            builder.AppendFormat("Employment Type: {0} <br/>", this.EmploymentType);
-            builder.AppendFormat("Child Age Group: {0} <br/>", this.ChildAgeGroup);
-            builder.AppendFormat("Prefered Time For Call: {0} <br/>", this.PreferedTimeForCall);
-            builder.AppendFormat("Comments: {0} <br/>", this.Comments);
-
+            builder.AppendFormat("Post code: {0} <br/>", this.PostalCode);
+            builder.AppendFormat("Preferred contact number: {0} <br/>", this.Phone);
+            builder.AppendFormat("Alternate contact number: {0} <br/>", this.PhoneAlt);
+            builder.AppendFormat("Preferred Time for a Call: {0} <br/>", this.PreferedTimeForCall);
+            builder.AppendFormat("Email: {0} <br/>", this.Email);
+            builder.AppendFormat("Job Radius (in km): {0} <br/>", this.Radius);
+            builder.AppendFormat("Right to live &amp; work in UK: {0} <br/>", this.EligibleToWork);
+            builder.AppendFormat("Preferred position: {0} <br/>", this.PreferedPosition);
+            builder.AppendFormat("Position Type: {0} <br/>", this.JobType);
+            builder.AppendFormat("Position seeking: {0} <br/>", this.JobDurationType);
+            builder.AppendFormat("Hours seeking: {0} <br/>", this.EmploymentType);
+            builder.AppendFormat("Prefered Start Date: {0} <br/>", this.StartDate);
+            builder.AppendFormat("Prefered End Date: {0} <br/>", this.EndDate);
+            builder.AppendFormat("Date of last DBS obtained: {0} <br/>", this.DBSDate);
+            builder.AppendFormat("Marital Status: {0} <br/>", this.MaritalStatus);
+            builder.AppendFormat("Do you have children?: {0} <br/>", this.HaveChildren);
+            builder.AppendFormat("Children Age: {0} <br/>", this.ChildrenDetails);
+            builder.AppendFormat("Nationality: {0} <br/>", this.Nationality);
+            builder.AppendFormat("How long have you been in the UK?: {0} <br/>", this.StayInUKDuration);
+            builder.AppendFormat("Do you have any criminal convictions?: {0} <br/>", this.HaveCriminalConvictions);
+            builder.AppendFormat("Criminal conviction details: {0} <br/>", this.CriminalConvictionDetails);
+            builder.AppendFormat("Do you have any known medical/health conditions?: {0} <br/>", this.HaveMedicalConditions);
+            builder.AppendFormat("Medical/health condition details: {0} <br/>", this.MedicalConditionDetails);
+            builder.AppendFormat("Are you Ofsted registered?: {0} <br/>", this.IsOfstedRegistered);
+            builder.AppendFormat("Please state date when registration was applied for/issued: {0} <br/>", this.OfstedDate);
+            builder.AppendFormat("Days off sick in the last 12 months: {0} <br/>", this.DaysSickLastYear);
+            builder.AppendFormat("Comments for sick days: {0} <br/>", this.DaysSickLastYearDetails);
+            builder.AppendFormat("Expected Salary: {0} <br/>", this.ExpectedSalary);
+            builder.AppendFormat("Experience with age groups: {0} <br/>", this.ChildAgeGroup);
+            builder.AppendFormat("Cover letter that will support your application (including skills, languages spoken, training obtained etc : {0} <br/>", this.Comments);
+            builder.AppendFormat("Accepted Terms and Consitions: {0} <br/>", this.AcceptTermComditions);
+           
             return builder.ToString();
         }
     }
