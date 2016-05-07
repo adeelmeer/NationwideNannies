@@ -13,7 +13,7 @@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">
-    
+
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
     <script src="~/Scripts/jquery-1.11.1.min.js"></script>
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/NationwideFormsFunctions.js"></script>
-    
+
 
     <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400italic' rel='stylesheet' type='text/css'>
 
@@ -45,7 +45,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
 
-                            </button>      
+                            </button>
                             <img src="/images/logoBlack2.jpg" style="width:260px;" />
                         </div>
 
@@ -89,16 +89,7 @@
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
                                 <li class="@Html.IsMenuSelected("/home/contactus")"><a href="/home/contact">Contact Us</a></li>
 
-                                @if (Request.IsAuthenticated)
-                                {
-                                    @**@
-                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <li><a href="javascript:void(0);">Welcome @User.Identity.GetUserName()</a> </li>
-                                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                                    }
-                                }
+                               
 
                                 @*<li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
                                     <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
@@ -118,10 +109,19 @@
                             </div><!-- /.navbar-collapse -->
                         </div><!-- /.container-fluid -->
 
-                    <div class="conactInfo">
-                        Tel:  @System.Configuration.ConfigurationManager.AppSettings["Phone"] @Html.Raw("&nbsp;&nbsp;&nbsp;")
-                        Email: <a href="mailto:@contactEmail">@contactEmail</a>
-                    </div>
+                        <div class="conactInfo">
+                            Tel:  @System.Configuration.ConfigurationManager.AppSettings["Phone"] @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                            Email: <a href="mailto:@contactEmail">@contactEmail</a><p/>
+
+                            @if (Request.IsAuthenticated)
+                            {
+                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                                {
+                                    @Html.AntiForgeryToken()                                    
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Logout: @User.Identity.GetUserName()</a>
+                                }
+                            }
+                        </div>
                     </nav>
 
                 </div>
@@ -140,7 +140,7 @@
                     <a href="#"><i class="icon1"></i></a>
                     <a href="#"><i class="icon2"></i></a>
                     @*<a href="#"><i class="icon3"></i></a>
-                    <a href="#"><i class="icon4"></i></a>*@
+                        <a href="#"><i class="icon4"></i></a>*@
                 </div>
                 <div class="footer-top">
                     <p>&copy; 2016 Nationwide Nannies. All rights reserved .</p>
