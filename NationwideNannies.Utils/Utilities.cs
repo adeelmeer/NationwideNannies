@@ -111,35 +111,39 @@ namespace NationwideNannies.Utils
 
         public static void SendEmail(string toEmail, string subject, string body, List<string> attachmentFilePaths = null)
         {
-            try
+            Task.Run(() =>
             {
-                using (var message = new MailMessage())
+                try
                 {
-                    message.IsBodyHtml = true;
-                    body = body.Replace(System.Environment.NewLine, "<br />");
-
-                    if (attachmentFilePaths != null)
+                    using (var message = new MailMessage())
                     {
+                        message.IsBodyHtml = true;
+                        body = body.Replace(System.Environment.NewLine, "<br />");
 
-                        foreach (var path in attachmentFilePaths)
+                        if (attachmentFilePaths != null)
                         {
-                            if (!string.IsNullOrWhiteSpace(path))
-                                message.Attachments.Add(new Attachment(path));
+
+                            foreach (var path in attachmentFilePaths)
+                            {
+                                if (!string.IsNullOrWhiteSpace(path))
+                                    message.Attachments.Add(new Attachment(path));
+                            }
                         }
+
+                        message.Body = body;
+                        message.Subject = subject;
+                        message.To.Add(toEmail);
+
+                        var client = new SmtpClient();
+                        client.Send(message);
                     }
-
-                    message.Body = body;
-                    message.Subject = subject;
-                    message.To.Add(toEmail);
-
-                    var client = new SmtpClient();
-                    client.Send(message);
                 }
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[Utilities]SendEmail()");
-            }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[Utilities]SendEmail()");
+                }
+            });
+
         }
     }
 }

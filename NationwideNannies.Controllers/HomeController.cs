@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -76,9 +77,13 @@ namespace NationwideNannies.Controllers
             }
             try
             {
-                // add code to save form data in database
-                NationWideDbContext dbContext = new NationWideDbContext();
-                dbContext.SaveParentForm(model);
+                Task.Run(() =>
+                {
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
+                    dbContext.SaveParentForm(model);
+                });
+
             }
             catch (Exception ex)
             {
@@ -126,9 +131,12 @@ namespace NationwideNannies.Controllers
 
             try
             {
-                // add code to save form data in database
-                NationWideDbContext dbContext = new NationWideDbContext();
-                dbContext.SaveJobForm(model);
+                Task.Run(() =>
+                {
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
+                    dbContext.SaveJobForm(model);
+                });
             }
             catch (Exception ex)
             {
