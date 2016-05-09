@@ -273,11 +273,11 @@
                     dialog.dialog("close");
                 }
                 else {
-                    alert("An error occured while sending reusme, please try again. If issue persiste please contact site admin.");
+                    alert("An error occured while sending reusme. message: " + data.responseText);
                 }
             },
             error: function (data, x, y) {
-                 alert("An error occured while sending reusme, please try again. If issue persiste please contact site admin. " + data + " " + x + " " + y);
+                alert("An error occured while sending reusme. message: " + data.responseText + " " + data + " " + x + " " + y);
             },
         });
        }
