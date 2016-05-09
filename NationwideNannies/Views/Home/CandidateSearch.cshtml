@@ -15,18 +15,18 @@
                     <h2>Candidate Search</h2>
 
                     @*<div class="about-info" style="margin-bottom:0px;">
-                        <p>
-                            Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs.
-                            <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.
-                        </p>
-                        <p>If you are interested in a particular vacancy, please state the advert title in your cover statement below. </p>
-                    </div>*@
+                            <p>
+                                Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs.
+                                <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.
+                            </p>
+                            <p>If you are interested in a particular vacancy, please state the advert title in your cover statement below. </p>
+                        </div>*@
 
                     <div class="contact-form">
                         @using (Html.BeginForm("CandidateSearch", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.HiddenFor(m => m.Mode, new { @value = "1" })
-                            
+
                             <div class="col-md-6">
                                 <label>Full Name</label> @Html.TextBoxFor(m => m.SearchCriteria.FullName)
                             </div>
@@ -47,10 +47,10 @@
                             </div>
 
                             @*<div class="col-md-6">
-                                <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                            </div>*@
+                                    <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                                </div>*@
                             <div class="col-md-6">
-                                <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email"})
+                                <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email" })
                             </div>
                             @*<div class="col-md-6">
                                     <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.SearchCriteria.Radius, LookupValuesHelper.GetJobRadius())
@@ -156,6 +156,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Forward To Client</th>
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Alt. Phone</th>
@@ -170,7 +171,7 @@
                 <th>End Date</th>
                 <th>Nationality</th>
                 <th>Crimal</th>
-                <th>Medical</th>               
+                <th>Medical</th>
                 <th>Ofsted</th>
                 <th>Salary</th>
                 <th>Age Group</th>
@@ -187,9 +188,10 @@
                 string endDate = item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 string resumePath = string.Format("/{0}/{1}", @Constants.FolderUploadedResumes, item.ResumeFilePath);
                 string photoPath = string.Format("/{0}/{1}", @Constants.FolderUploadedPhotos, item.ImageFilePath);
-                
-                <tr>
+
+                <tr candidateid="@item.Id">
                     <td>@item.FullName </td>
+                    <td><span class="forawd-to-client" style="cursor:pointer;">Forward</span></td>
                     <td>@item.Email</td>
                     <td>@item.Phone</td>
                     <td>@item.PhoneAlt</td>
@@ -218,11 +220,100 @@
     </table>
 </div>
 
+<div id="dialog-form" class="contact-form" title="Basic dialog" style="display:none;">
+    <form id="form-send-resume">
+        <input type="hidden" id="selectedCandicateId" />
+        <table class="send-resume">
+            <tr>
+                <td>Email</td>
+                <td><input type="email" id="clientEmailAddress" style="width:410px;" required="required" /></td>
+            </tr>
+            <tr>
+                <td>
+                    Message
+                </td>
+                <td><textarea id="clientEmailText" rows="5" name="clientEmailText" required="required" cols="50"></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="button" value="Send" onclick="SendToUser();" />
+                    <input type="button" value="Cancel" onclick="cancelDialog();" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
 <script type="text/javascript">
+    var dialog
+
+    function SendToUser() {
+        var selectedCandicateId = $("#selectedCandicateId").val();
+        var emailAddress = $("#clientEmailAddress").val();
+        var emailText = $("#clientEmailText").val();
+
+        var result = $('#form-send-resume')[0].checkValidity()
+
+        if (!result) {
+            alert("Please provide valid email and message");
+            return;
+        }
+
+     //   alert(emailAddress + " message =" + emailText);
+        var url = "/home/ForwardResumeToClient?clientId=" + selectedCandicateId + "&email=" + emailAddress + "&message=" + emailText
+        $.ajax({
+            type: "GET",
+            url: url,
+            crossDomain: true,
+            contentType: "json",
+            success: function (data) {
+
+                if (data.success) {
+                    alert("Resume was send to client");
+                    dialog.dialog("close");
+                }
+                else {
+                    alert("An error occured while sending reusme, please try again. If issue persiste please contact site admin.");
+                }
+            },
+            error: function (data, x, y) {
+                 alert("An error occured while sending reusme, please try again. If issue persiste please contact site admin. " + data + " " + x + " " + y);
+            },
+        });
+       }
+
+    function cancelDialog() {
+        dialog.dialog("close");
+    }
+
     $(document).ready(function () {
         window.NationwideFormsFunctions.initialize();
         $('.SearchResults-table').DataTable();
+        
+
+        $(document).on('click', '.forawd-to-client', function () {
+            var item = $(this);
+            var tr = item.closest("tr");
+            var candidateId = tr.attr("candidateId");
+            $("#selectedCandicateId").val(candidateId)
+
+             dialog = $("#dialog-form").dialog({
+                autoOpen: false,
+                height: 350,
+                width: 550,
+                modal: true,               
+                close: function () {
+                    //form[0].reset();
+                    //allFields.removeClass("ui-state-error");
+                }
+            });
+
+            dialog.dialog("open");
+        });
+
+
     });
+
 </script>
 
 

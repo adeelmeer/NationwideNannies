@@ -2417,3 +2417,7 @@ table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
 .searchResultsDiv{
     background-color:#B9D3EE;
 }
+
+.send-resume td{
+    padding:10px;
+}
