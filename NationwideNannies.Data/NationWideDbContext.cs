@@ -43,7 +43,33 @@ namespace NationwideNannies.Data
         {
             if (data != null)
             {
+                if (data.AcceptTermComditions == null)
+                {
+                    data.AcceptTermComditions = false;
+                }
+                if (data.ReceiveMarketingEmails == null)
+                {
+                    data.ReceiveMarketingEmails = false;
+                }
+
                 this.ParentRequest.Add(data);
+                this.SaveChanges();
+            }
+        }
+
+        public void UpdateParentForm(ParentRequest data)
+        {
+            if (data != null)
+            {
+                if (data.AcceptTermComditions == null)
+                {
+                    data.AcceptTermComditions = false;
+                }
+                if (data.ReceiveMarketingEmails == null)
+                {
+                    data.ReceiveMarketingEmails = false;
+                }
+                this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
         }
@@ -60,6 +86,11 @@ namespace NationwideNannies.Data
                 if (!string.IsNullOrWhiteSpace(criteria.FullName))
                 {
                     infoData = infoData.Where(i => i.FullName.Contains(criteria.FullName));
+                }
+
+                if (criteria.Id > 0)
+                {
+                    infoData = infoData.Where(i => i.Id == criteria.Id);
                 }
 
                 searchResults = infoData.ToList();

@@ -3,9 +3,16 @@
 
 @{
     ViewBag.Title = "Parents";
+
+    string formAction = "/Home/Parents";
+
+    if (Model.Id > 0)
+    {
+        formAction = "/Home/UpdateClientData";
+    }
 }
 
-<div class="clients-bg">
+<div class="candidates-bg" style="background: url(../images/DSC_0610.jpg);background-size: cover;">
     <div class="image-blur-div">
 
         <div class="content">
@@ -21,8 +28,11 @@
                     </div>
 
                     <div class="contact-form">
-                        @using (Html.BeginForm("Parents", "Home", FormMethod.Post))
-                        {
+
+                        <form method="post" action="@formAction">
+
+                            @Html.HiddenFor(m => m.Id)
+
                             <div class="col-md-6">
                                 <label>Full Name</label> @Html.TextBoxFor(m => m.FullName, new { required = "required" })
                             </div>
@@ -75,7 +85,7 @@
                                 <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
                             </div>
                             <div class="col-md-6">
-                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field"})
+                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field" })
                             </div>
 
                             <div class="col-md-6">
@@ -115,7 +125,8 @@
                             <div class="col-md-12">
                                 <input type="submit" value="Submit">
                             </div>
-                        }
+                        </form>
+
                     </div>
 
                 </div>

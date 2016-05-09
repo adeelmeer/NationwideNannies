@@ -53,9 +53,28 @@ namespace NationwideNannies.Controllers
             return View("ContactUsThankyou");
         }
 
-        public ActionResult Parents()
+        public ActionResult Parents(int? clientId)
         {
-            ParentRequest model = new ParentRequest();
+            ParentRequest model = null;
+            if (clientId.HasValue)
+            {
+                NationWideDbContext dbContext = new NationWideDbContext();
+                var results = dbContext.ClientSearch(new ParentRequest() { Id = clientId.Value });
+                if (results.Count == 1)
+                {
+                    model = results[0];
+                }
+                else
+                {
+
+                }
+            }
+
+            if (model == null)
+            {
+                model = new ParentRequest();
+            }
+
             return View(model);
         }
 
@@ -91,6 +110,31 @@ namespace NationwideNannies.Controllers
             }
             return View("ParentThankyou");
         }
+
+        [HttpPost]
+        public ActionResult UpdateClientData(ParentRequest model)
+        {
+
+            try
+            {
+                Task.Run(() =>
+                {
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
+                    dbContext.UpdateParentForm(model);
+                });
+
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+            }
+
+            System.Web.HttpContext.Current.Response.Redirect("/home/parents?clientId=" + model.Id);
+
+            return View();
+        }
+
 
         [Authorize]
         public ActionResult Admin()
@@ -182,8 +226,9 @@ namespace NationwideNannies.Controllers
         public ActionResult ForwardResumeToClient(int clientId, string email, string message)
         {
             NationWideDbContext dbContext = new NationWideDbContext();
-            NannyJobEmployment searchCriteria = new NannyJobEmployment(){
-                 Id = clientId
+            NannyJobEmployment searchCriteria = new NannyJobEmployment()
+            {
+                Id = clientId
             };
 
             var searchResults = dbContext.CandidateSearch(searchCriteria);
