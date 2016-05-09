@@ -176,6 +176,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\cssreset.css" />
+    <Content Include="Content\dataTables.jqueryui.min.css" />
     <Content Include="Content\flexslider.css" />
     <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery-ui.min.css" />
@@ -183,6 +184,7 @@
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\popuo-box.css" />
@@ -190,52 +192,10 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="images\a1.jpg" />
-    <Content Include="images\a2.jpg" />
-    <Content Include="images\a3.jpg" />
-    <Content Include="images\banner2.jpg" />
     <Content Include="images\close.png" />
-    <Content Include="images\e1.jpg" />
-    <Content Include="images\e2.jpg" />
-    <Content Include="images\e3.jpg" />
-    <Content Include="images\e4.jpg" />
-    <Content Include="images\g1.jpg" />
-    <Content Include="images\g10.jpg" />
-    <Content Include="images\g11.jpg" />
-    <Content Include="images\g12.jpg" />
-    <Content Include="images\g2.jpg" />
-    <Content Include="images\g3.jpg" />
-    <Content Include="images\g4.jpg" />
-    <Content Include="images\g5.jpg" />
-    <Content Include="images\g6.jpg" />
-    <Content Include="images\g7.jpg" />
-    <Content Include="images\g8.jpg" />
-    <Content Include="images\g9.jpg" />
     <Content Include="images\img-sprite.png" />
     <Content Include="images\next.png" />
-    <Content Include="images\NN-Logo.jpg" />
-    <Content Include="images\p1.jpg" />
-    <Content Include="images\p10.jpg" />
-    <Content Include="images\p2.jpg" />
-    <Content Include="images\p3.jpg" />
-    <Content Include="images\p4.jpg" />
-    <Content Include="images\p5.jpg" />
-    <Content Include="images\p6.jpg" />
-    <Content Include="images\p7.jpg" />
-    <Content Include="images\p8.jpg" />
-    <Content Include="images\p9.jpg" />
     <Content Include="images\prev.png" />
-    <Content Include="images\s1.jpg" />
-    <Content Include="images\s2.jpg" />
-    <Content Include="images\s3.jpg" />
-    <Content Include="images\s4.jpg" />
-    <Content Include="images\s5.jpg" />
-    <Content Include="images\s6.jpg" />
-    <Content Include="images\s7.jpg" />
-    <Content Include="images\t1.jpg" />
-    <Content Include="images\t2.jpg" />
-    <Content Include="images\t3.jpg" />
-    <Content Include="images\t4.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\NationwideFormsFunctions.js" />
     <Content Include="Scripts\jquery-1.11.1.min.js" />
@@ -314,6 +274,8 @@
     <Content Include="Views\Candidates\SelectionBabySitters.cshtml" />
     <Content Include="Views\Candidates\CurrentVacancies.cshtml" />
     <Content Include="Views\Home\ContactUsThankyou.cshtml" />
+    <Content Include="Views\Home\ClientSearch.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">

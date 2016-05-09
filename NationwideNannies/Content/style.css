@@ -2395,3 +2395,25 @@ h2.typoh2 {
 .form-group .control-label{
     color:white;
 }
+
+table.dataTable tbody th, table.dataTable tbody td {   
+    border: 1px solid;
+    font-weight:bold;
+}
+table.dataTable th{
+    border:1px solid;
+    background-color:#000000;
+    color:#ffffff;
+}
+
+table.dataTable.stripe tbody tr.odd, table.dataTable.display tbody tr.odd {
+    background-color: #b9d3ee;
+}
+
+table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
+    background-color: #7AA9DD;
+}
+
+.searchResultsDiv{
+    background-color:#B9D3EE;
+}

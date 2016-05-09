@@ -47,6 +47,7 @@
     <Compile Include="ContactUs.cs" />
     <Compile Include="NannyJobEmployment.cs" />
     <Compile Include="ParentRequest.cs" />
+    <Compile Include="ParentSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -32,8 +32,8 @@ namespace NationwideNannies.Models
         public string EmploymentType { get; set; }
         public string LiveInOut { get; set; }
         public int? SalaryPerWeek { get; set; }
-        public bool ReceiveMarketingEmails { get; set; }
-        public bool AcceptTermComditions { get; set; }
+        public bool? ReceiveMarketingEmails { get; set; }
+        public bool? AcceptTermComditions { get; set; }
         public string QualifiedNannies { get; set; }        
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }

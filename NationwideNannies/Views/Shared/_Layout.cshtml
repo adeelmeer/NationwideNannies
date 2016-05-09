@@ -12,7 +12,9 @@
     @*<link href="~/Content/cssreset.css" rel="stylesheet" type="text/css" media="all">*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
-    <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" type="text/css" media="all">
+    <link href="~/Content/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" media="all">
 
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -22,8 +24,12 @@
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="~/Scripts/jquery-1.11.1.min.js"></script>
-    <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/NationwideFormsFunctions.js"></script>
+    <script src="~/Scripts/jquery-ui.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    
+
+    <script src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>
 
 
     <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400italic' rel='stylesheet' type='text/css'>
@@ -86,10 +92,20 @@
                                         @*<li><a href="/Candidates/CurrentVacancies">Current Vacancies</a></li>*@
                                     </ul>
                                 </li>
-                                <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
-                                <li class="@Html.IsMenuSelected("/home/contactus")"><a href="/home/contact">Contact Us</a></li>
+                                
 
-                               
+                                @if (Request.IsAuthenticated)
+                                {
+                                    
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="/home/ClientSearch">Client Search</a></li>
+                                            <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>                                      
+                                        </ul>
+                                    </li>
+                                }
+
 
                                 @*<li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
                                     <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
@@ -111,14 +127,14 @@
 
                         <div class="conactInfo">
                             Tel:  @System.Configuration.ConfigurationManager.AppSettings["Phone"] @Html.Raw("&nbsp;&nbsp;&nbsp;")
-                            Email: <a href="mailto:@contactEmail">@contactEmail</a><p/>
+                            Email: <a href="mailto:@contactEmail">@contactEmail</a><p />
 
                             @if (Request.IsAuthenticated)
                             {
                                 using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
                                 {
-                                    @Html.AntiForgeryToken()                                    
-                                <a href="javascript:document.getElementById('logoutForm').submit()">Logout: @User.Identity.GetUserName()</a>
+                                    @Html.AntiForgeryToken()
+                                    <a href="javascript:document.getElementById('logoutForm').submit()">Logout: @User.Identity.GetUserName()</a>
                                 }
                             }
                         </div>

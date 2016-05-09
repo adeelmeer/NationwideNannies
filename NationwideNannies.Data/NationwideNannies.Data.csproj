@@ -54,6 +54,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NationwideNannies.Logging\NationwideNannies.Logging.csproj">
+      <Project>{4f48d2e5-f829-4a47-95d6-3bdec2254994}</Project>
+      <Name>NationwideNannies.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NationwideNannies.Models\NationwideNannies.Models.csproj">
       <Project>{016156eb-13c2-4054-acb4-53fc304b3e01}</Project>
       <Name>NationwideNannies.Models</Name>

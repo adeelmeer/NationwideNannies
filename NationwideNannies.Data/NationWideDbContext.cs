@@ -39,14 +39,38 @@ namespace NationwideNannies.Data
             }
         }
 
-        public void SaveParentForm(ParentRequest jobData)
+        public void SaveParentForm(ParentRequest data)
         {
-            if (jobData != null)
+            if (data != null)
             {
-                this.ParentRequest.Add(jobData);
+                this.ParentRequest.Add(data);
                 this.SaveChanges();
             }
         }
 
+        public List<ParentRequest> ClientSearch(ParentRequest criteria)
+        {
+            List<ParentRequest> searchResults = null;
+            IQueryable<ParentRequest> infoData = null;
+
+            try
+            {
+                infoData = this.ParentRequest;
+
+                if (!string.IsNullOrWhiteSpace(criteria.FullName))
+                {
+                    infoData = infoData.Where(i => i.FullName.Contains(criteria.FullName));
+                }
+
+                searchResults = infoData.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.Log4NetLogger.ExceptionTrace(ex, "[NationWideDbContext]ClientSearch()");
+                searchResults = new List<ParentRequest>();
+            }
+
+            return searchResults;
+        }
     }
 }

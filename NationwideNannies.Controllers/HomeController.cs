@@ -92,6 +92,32 @@ namespace NationwideNannies.Controllers
             return View("ParentThankyou");
         }
 
+        [Authorize]
+        public ActionResult Admin()
+        {
+            return View();
+        }
+
+        //[Authorize]
+        //public ActionResult ClientSearch()
+        //{
+          
+
+        //    return View();
+        //}
+
+        //[Authorize]
+        
+        public ActionResult ClientSearch(ParentSearch model)
+        {
+            NationWideDbContext dbContext = new NationWideDbContext();
+            var searchResults = dbContext.ClientSearch(model.SearchCriteria);
+
+
+            model.SearchResults = searchResults;
+
+            return View(model);
+        }
 
         public ActionResult Jobs()
         {

@@ -105,11 +105,11 @@
                             </div>
 
                             <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.ReceiveMarketingEmails) <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
+                                @Html.CheckBoxFor(m => m.ReceiveMarketingEmails.Value) <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
                             </div>
 
                             <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.AcceptTermComditions, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
+                                @Html.CheckBoxFor(m => m.AcceptTermComditions.Value, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
                             </div>
 
                             <div class="col-md-12">

@@ -41,7 +41,7 @@ namespace NationwideNannies.Logging
             message = string.Format("{3} -- {0}{2}{1}{2}", ex.Message, ex.StackTrace, Environment.NewLine, message);
             if (ex.InnerException != null)
             {
-                message = string.Format("{0}{1}{2}", message, ex.InnerException.ToString());
+                message = string.Format("{0}{1}{2}", message, ex.InnerException.ToString(), Environment.NewLine);
             }
 
             WriteLog(LogLevel.Error, message);
