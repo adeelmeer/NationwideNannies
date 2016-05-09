@@ -14,6 +14,7 @@ namespace NationwideNannies.Models
             HaveCriminalConvictions = "No"; 
             HaveMedicalConditions = "No";
             IsOfstedRegistered = "No";
+            AcceptTermComditions = false;
         }
 
         [Key]
@@ -46,14 +47,14 @@ namespace NationwideNannies.Models
         public string DaysSickLastYearDetails { get; set; }
         public int? ExpectedSalary { get; set; }
         public string EligibleToWork { get; set; }
-        public int Radius { get; set; }
+        public int? Radius { get; set; }
         public string EmploymentType { get; set; }
         public string ChildAgeGroup { get; set; }
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }
         public string ImageFilePath { get; set; }
         public string ResumeFilePath { get; set; }
-        public bool AcceptTermComditions { get; set; }
+        public bool? AcceptTermComditions { get; set; }
 
 
         public string GetEmailText()

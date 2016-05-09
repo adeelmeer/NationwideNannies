@@ -98,26 +98,33 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
-        //[Authorize]
-        //public ActionResult ClientSearch()
-        //{
-          
-
-        //    return View();
-        //}
-
-        //[Authorize]
-        
+        [Authorize]
         public ActionResult ClientSearch(ParentSearch model)
         {
             NationWideDbContext dbContext = new NationWideDbContext();
-            var searchResults = dbContext.ClientSearch(model.SearchCriteria);
+            if (model.Mode == 1)
+            {
+                var searchResults = dbContext.ClientSearch(model.SearchCriteria);
+                model.SearchResults = searchResults;
+            }
 
-
-            model.SearchResults = searchResults;
-
+            model.Mode = 1;
             return View(model);
         }
+
+        public ActionResult CandidateSearch(CandidateSearchData model)
+        {
+            NationWideDbContext dbContext = new NationWideDbContext();
+            if (model.Mode == 1)
+            {
+                var searchResults = dbContext.CandidateSearch(model.SearchCriteria);
+                model.SearchResults = searchResults;
+            }
+
+            model.Mode = 1;
+            return View(model);
+        }
+
 
         public ActionResult Jobs()
         {
@@ -171,5 +178,49 @@ namespace NationwideNannies.Controllers
             return View("JobsThankyou");
         }
 
+
+        public ActionResult ForwardResumeToClient(int clientId, string email, string message)
+        {
+            NationWideDbContext dbContext = new NationWideDbContext();
+            NannyJobEmployment searchCriteria = new NannyJobEmployment(){
+                 Id = clientId
+            };
+
+            var searchResults = dbContext.CandidateSearch(searchCriteria);
+
+            if (searchResults.Count == 0)
+            {
+                return Json(new { success = false, responseText = "No Record found for Candidate." }, JsonRequestBehavior.AllowGet);
+            }
+
+            if (searchResults.Count > 1)
+            {
+                return Json(new { success = false, responseText = "Multiple records found for for Candidate." }, JsonRequestBehavior.AllowGet);
+            }
+
+            var candidateData = searchResults[0];
+
+            // get email content
+            string emailText = message;
+            string emailSubject = "Nantionwide Nannies";
+            string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
+
+            toEmail = string.Format("{0},{1}", email, toEmail);
+
+            // add code to send email
+            string fullPathResume = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedResumes, candidateData.ResumeFilePath);
+            string fullPathPhoto = Utilities.GetAbsoluteFilePath(Constants.FolderUploadedPhotos, candidateData.ImageFilePath);
+
+            try
+            {
+                Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] ForwardResumeToClient() send email");
+            }
+
+            return Json(new { success = true, responseText = "Your message successfuly sent!" }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

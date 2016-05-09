@@ -571,25 +571,25 @@ ul.callbacks_tabs.callbacks1_tabs {
 
 /*--- slider-css --*/
 .banner1 {
-    background: url(../images/bnr1.png) no-repeat 0px 0px;
+    background: url(../images/bnr1.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height: 750px;
 }
 
 .banner2 {
-    background: url(../images/bnr2.png) no-repeat 0px 0px;
+    background: url(../images/bnr2.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height: 750px;
 }
 
 .banner3 {
-    background: url(../images/bnr3.png) no-repeat 0px 0px;
+    background: url(../images/bnr3.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height: 750px;
 }
 
 .banner4 {
-    background: url(../images/bnr4.png) no-repeat 0px 0px;
+    background: url(../images/bnr4.jpg) no-repeat 0px 0px;
     background-size: cover;
     min-height: 750px;
 }
@@ -2356,7 +2356,7 @@ h2.typoh2 {
 }
 
 .services-bg {
-    background: url(../images/Pic12.png) no-repeat 0px 0px;
+    background: url(../images/Pic12.jpg) no-repeat 0px 0px;
     background-size: cover;
 }
 
@@ -2366,7 +2366,7 @@ h2.typoh2 {
 }
 
 .candidates-bg {
-    background: url(../images/Pic7.png) no-repeat 0px 0px;
+    background: url(../images/Pic7.jpg) no-repeat 0px 0px;
     background-size: cover;
 }
 

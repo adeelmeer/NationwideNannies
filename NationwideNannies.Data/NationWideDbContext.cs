@@ -72,5 +72,34 @@ namespace NationwideNannies.Data
 
             return searchResults;
         }
+
+        public List<NannyJobEmployment> CandidateSearch(NannyJobEmployment criteria)
+        {
+            List<NannyJobEmployment> searchResults = null;
+            IQueryable<NannyJobEmployment> infoData = null;
+
+            try
+            {
+                infoData = this.NannyJobEmployment;
+
+                if (!string.IsNullOrWhiteSpace(criteria.FullName))
+                {
+                    infoData = infoData.Where(i => i.FullName.Contains(criteria.FullName));
+                }
+                if (criteria.Id > 0)
+                {
+                    infoData = infoData.Where(i=>i.Id == criteria.Id);
+                }
+
+                searchResults = infoData.ToList();
+            }
+            catch (Exception ex)
+            {
+                Logging.Log4NetLogger.ExceptionTrace(ex, "[NationWideDbContext]ClientSearch()");
+                searchResults = new List<NannyJobEmployment>();
+            }
+
+            return searchResults;
+        }
     }
 }

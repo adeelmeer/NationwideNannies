@@ -9,6 +9,12 @@ namespace NationwideNannies.Models
 {
    public class ParentRequest
     {
+       public ParentRequest()
+       {
+           ReceiveMarketingEmails = true;
+           AcceptTermComditions = false;
+       }
+
         [Key]
         public int Id { get; set; }
         public string FullName { get; set; }
