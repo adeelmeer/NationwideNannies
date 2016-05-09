@@ -1,4 +1,5 @@
 ﻿using log4net.Config;
+using NationwideNannies.Logging;
 using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,8 @@ namespace NationwideNannies
 
             Utilities.CreateFolder(Constants.FolderUploadedResumes);
             Utilities.CreateFolder(Constants.FolderUploadedPhotos);
+
+            Log4NetLogger.WriteLog(LogLevel.Info, "Application start!!");
            
         }
     }

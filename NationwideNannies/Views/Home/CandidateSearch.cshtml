@@ -1,0 +1,221 @@
+﻿@model NationwideNannies.Models.CandidateSearchData
+@using NationwideNannies.Utils
+
+@{
+    ViewBag.Title = "CandidateSearch";
+}
+
+
+<div class="candidates-bg" style="background: url(../images/DSC_0610.jpg);background-size: cover;">
+    <div class="image-blur-div">
+
+        <div class="content">
+            <div class="about-section">
+                <div class="container">
+                    <h2>Candidate Search</h2>
+
+                    @*<div class="about-info" style="margin-bottom:0px;">
+                        <p>
+                            Thank you for choosing Nationwide Nannies. We are delighted to help you in your search for a position/role that is best suitable for you. Please start by filling out the application form below. Applications with as much information as possible, with regards to relevant childcare experience and qualifications, will be strongly considered.  A member of our dedicated team will be in contact with you shortly thereafter to discuss your employment needs.
+                            <a href="/home/contact" style="text-decoration:underline;">Contact us directly</a> if you have any questions/problems with the process.
+                        </p>
+                        <p>If you are interested in a particular vacancy, please state the advert title in your cover statement below. </p>
+                    </div>*@
+
+                    <div class="contact-form">
+                        @using (Html.BeginForm("CandidateSearch", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.HiddenFor(m => m.Mode, new { @value = "1" })
+                            
+                            <div class="col-md-6">
+                                <label>Full Name</label> @Html.TextBoxFor(m => m.SearchCriteria.FullName)
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>Address</label> @Html.TextBoxFor(m => m.SearchCriteria.Address, new { required = "required" })
+                                </div>*@
+                            <div class="col-md-6">
+                                <label>City</label> @Html.TextBoxFor(m => m.SearchCriteria.City)
+                            </div>
+                            <div class="col-md-6">
+                                <label>Post code</label> @Html.TextBoxFor(m => m.SearchCriteria.PostalCode)
+                            </div>
+                            <div class="col-md-6">
+                                <label>Preferred contact number</label> @Html.TextBoxFor(m => m.SearchCriteria.Phone)
+                            </div>
+                            <div class="col-md-6">
+                                <label>Alternate contact number</label> @Html.TextBoxFor(m => m.SearchCriteria.PhoneAlt)
+                            </div>
+
+                            @*<div class="col-md-6">
+                                <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                            </div>*@
+                            <div class="col-md-6">
+                                <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email"})
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.SearchCriteria.Radius, LookupValuesHelper.GetJobRadius())
+                                </div>*@
+                            @*<div class="col-md-6">
+                                    <label>Right to live &amp; work in UK</label> @Html.DropDownListFor(m => m.SearchCriteria.EligibleToWork, LookupValuesHelper.GetYesNo())
+                                </div>*@
+                            <div class="col-md-6">
+                                <label>Preferred position</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedPosition, LookupValuesHelper.PreferedPosition())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Position Type</label> @Html.DropDownListFor(m => m.SearchCriteria.JobType, LookupValuesHelper.PreferedPosition())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Position seeking</label> @Html.DropDownListFor(m => m.SearchCriteria.JobDurationType, LookupValuesHelper.GetJobDurationType())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Hours seeking</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.SearchCriteria.StartDate, new { @class = "date-field" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Prefered End Date</label> @Html.TextBoxFor(m => m.SearchCriteria.EndDate, new { @class = "date-field" })
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>Date of last DBS obtained</label> @Html.TextBoxFor(m => m.SearchCriteria.DBSDate, new { @class = "date-field", required = "required" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Marital Status</label> @Html.DropDownListFor(m => m.SearchCriteria.MaritalStatus, LookupValuesHelper.GetMaritalStatus())
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Do you have children?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveChildren, LookupValuesHelper.GetYesNo())
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Children Age</label> @Html.TextAreaFor(m => m.SearchCriteria.ChildrenDetails, new { @class = "text-details" })
+                                </div>*@
+                            <div class="col-md-6">
+                                <label>Nationality</label> @Html.TextBoxFor(m => m.SearchCriteria.Nationality)
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>How long have you been in the UK?</label> @Html.TextBoxFor(m => m.SearchCriteria.StayInUKDuration, new { required = "required" })
+                                </div>*@
+                            <div class="col-md-6">
+                                <label>Do you have any criminal convictions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveCriminalConvictions, LookupValuesHelper.GetYesNo())
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>Criminal conviction details</label> @Html.TextAreaFor(m => m.SearchCriteria.CriminalConvictionDetails, new { @class = "text-details" })
+                                </div>*@
+                            <div class="col-md-6">
+                                <label>Do you have any known medical/health conditions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveMedicalConditions, LookupValuesHelper.GetYesNo())
+                            </div>
+                            @*<div class="col-md-6">
+                                    <label>Medical/health condition details</label> @Html.TextAreaFor(m => m.SearchCriteria.MedicalConditionDetails, new { @class = "text-details" })
+                                </div>*@
+
+                            <div class="col-md-6">
+                                <label>Are you Ofsted registered?</label> @Html.DropDownListFor(m => m.SearchCriteria.IsOfstedRegistered, LookupValuesHelper.GetYesNo())
+                            </div>
+
+                            @*<div class="col-md-6">
+                                    <label>Please state date when registration was applied for/issued</label> @Html.TextBoxFor(m => m.SearchCriteria.OfstedDate, new { @class = "date-field" })
+                                </div>*@
+
+                            @*<div class="col-md-6">
+                                    <label>Days off sick in the last 12 months</label> @Html.TextBoxFor(m => m.SearchCriteria.DaysSickLastYear, new { @type = "number", @min = "0", required = "required" })
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Comments for sick days</label> @Html.TextAreaFor(m => m.SearchCriteria.DaysSickLastYearDetails, new { @class = "text-details" })
+                                </div>*@
+
+                            <div class="col-md-6">
+                                <label>Expected Salary</label> @Html.TextBoxFor(m => m.SearchCriteria.ExpectedSalary, new { @type = "number", @min = "0" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Experience with age groups</label> @Html.DropDownListFor(m => m.SearchCriteria.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
+                            </div>
+
+
+                            @*<div class="col-md-12">
+                                    <label>Cover letter that will support your application (including skills, languages spoken, training obtained etc </label> @Html.TextAreaFor(m => m.SearchCriteria.Comments, new { required = "required" })
+                                </div>*@
+
+
+
+                            <div class="col-md-12">
+                                <input type="submit" value="Submit">
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="searchResultsDiv">
+
+    <table id="SearchResults-table" class="stripe SearchResults-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Alt. Phone</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Preferd Time for Call</th>
+                <th>Position</th>
+                <th>Job Type</th>
+                <th>Job Duration</th>
+                <th>Employment Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Nationality</th>
+                <th>Crimal</th>
+                <th>Medical</th>               
+                <th>Ofsted</th>
+                <th>Salary</th>
+                <th>Age Group</th>
+            </tr>
+        </thead>
+
+        @if (Model != null && Model.SearchResults != null)
+        {
+            foreach (var item in Model.SearchResults)
+            {
+                string startDate = item.StartDate.HasValue ? item.StartDate.Value.ToString("dd/MM/yyyy") : string.Empty;
+                string endDate = item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty;
+                <tr>
+                    <td>@item.FullName </td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@item.PhoneAlt</td>
+                    <td>@item.City</td>
+                    <td>@item.PostalCode</td>
+                    <td>@item.PreferedTimeForCall</td>
+                    <td>@item.PreferedPosition</td>
+                    <td>@item.JobType</td>
+                    <td>@item.JobDurationType</td>
+                    <td>@item.EmploymentType</td>
+                    <td>@startDate</td>
+                    <td>@endDate</td>
+                    <td>@item.Nationality</td>
+                    <td>@item.HaveCriminalConvictions</td>
+                    <td>@item.HaveMedicalConditions</td>
+                    <td>@item.IsOfstedRegistered</td>
+                    <td>@item.ExpectedSalary</td>
+                    <td>@item.ChildAgeGroup</td>
+                </tr>
+            }
+        }
+
+
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        window.NationwideFormsFunctions.initialize();
+        $('.SearchResults-table').DataTable();
+    });
+</script>
+
+

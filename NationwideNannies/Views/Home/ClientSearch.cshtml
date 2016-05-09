@@ -13,12 +13,7 @@
         <div class="content">
             <div class="about-section">
                 <div class="container">
-                    <h2>Client Search</h2>
-
-                    @if (Model != null)
-                    {
-                        <h1>search count: @Model.SearchCriteria.FullName @Model.SearchResults.Count</h1>
-                    }
+                    <h2>Client Search</h2>                    
 
                     @*<div class="about-info" style="margin-bottom:0px;">
 
@@ -30,6 +25,8 @@
                     <div class="contact-form">
                         @using (Html.BeginForm("ClientSearch", "Home", FormMethod.Post))
                         {
+                            @Html.HiddenFor(m => m.Mode, new { @value="1"})
+                            
                             <div class="col-md-6">
                                 <label>Full Name</label> @Html.TextBoxFor(m => m.SearchCriteria.FullName)
                             </div>
@@ -123,14 +120,9 @@
                                 <input type="submit" value="Search">
                             </div>
                         }
-                    </div>
-
-                    
-
+                    </div>                  
                 </div>                
-
             </div>
-
         </div>
 
     </div>
@@ -138,7 +130,7 @@
 
 <div class="searchResultsDiv">
 
-    <table id="tableDashBoard" class="stripe view-dashboard-table">
+    <table id="SearchResults-table" class="stripe SearchResults-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -167,26 +159,26 @@
             {
                 string startDate = item.StartDate.HasValue ? item.StartDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 string endDate = item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty;
-        <tr>
-            <td>@item.FullName </td>
-            <td>@item.Email</td>
-            <td>@item.Phone</td>
-            <td>@item.PhoneAlt</td>
-            <td>@item.City</td>
-            <td>@item.PostalCode</td>
-            <td>@item.PreferedTimeForCall</td>
-            <td>@item.TypeOfChildCare</td>
-            <td>@item.JobDurationType</td>
-            <td>@item.EmploymentType</td>
-            <td>@item.LiveInOut</td>
+                <tr>
+                    <td>@item.FullName </td>
+                    <td>@item.Email</td>
+                    <td>@item.Phone</td>
+                    <td>@item.PhoneAlt</td>
+                    <td>@item.City</td>
+                    <td>@item.PostalCode</td>
+                    <td>@item.PreferedTimeForCall</td>
+                    <td>@item.TypeOfChildCare</td>
+                    <td>@item.JobDurationType</td>
+                    <td>@item.EmploymentType</td>
+                    <td>@item.LiveInOut</td>
 
-            <td>@startDate</td>
+                    <td>@startDate</td>
 
-            <td>@endDate</td>
-            <td>@item.QualifiedNannies</td>
-            <td>@item.OfstedRequirement</td>
-            <td>@item.SalaryPerWeek</td>
-        </tr>
+                    <td>@endDate</td>
+                    <td>@item.QualifiedNannies</td>
+                    <td>@item.OfstedRequirement</td>
+                    <td>@item.SalaryPerWeek</td>
+                </tr>
             }
         }
 
@@ -202,7 +194,7 @@
 
             window.NationwideFormsFunctions.initialize();
 
-            $('.view-dashboard-table').DataTable();
+            $('.SearchResults-table').DataTable();
         });
     </script>
 

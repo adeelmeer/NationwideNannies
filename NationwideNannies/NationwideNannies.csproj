@@ -276,6 +276,7 @@
     <Content Include="Views\Home\ContactUsThankyou.cshtml" />
     <Content Include="Views\Home\ClientSearch.cshtml" />
     <Content Include="Views\Home\Admin.cshtml" />
+    <Content Include="Views\Home\CandidateSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">
