@@ -53,22 +53,22 @@
                                 <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email" })
                             </div>
                             <div class="col-md-6">
-                                    <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.SearchCriteria.Radius, LookupValuesHelper.GetJobRadius())
+                                    <label>Job Radius (in km)</label> @Html.DropDownListFor(m => m.SearchCriteria.Radius, LookupValuesHelper.GetJobRadius(true))
                                 </div>
                             @*<div class="col-md-6">
                                     <label>Right to live &amp; work in UK</label> @Html.DropDownListFor(m => m.SearchCriteria.EligibleToWork, LookupValuesHelper.GetYesNo())
                                 </div>*@
                             <div class="col-md-6">
-                                <label>Preferred position</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedPosition, LookupValuesHelper.PreferedPosition())
+                                <label>Preferred position</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedPosition, LookupValuesHelper.PreferedPosition(true))
                             </div>
-                            <div class="col-md-6">
+                            @*<div class="col-md-6">
                                 <label>Position Type</label> @Html.DropDownListFor(m => m.SearchCriteria.JobType, LookupValuesHelper.PreferedPosition())
-                            </div>
+                            </div>*@
                             <div class="col-md-6">
                                 <label>Position seeking</label> @Html.DropDownListFor(m => m.SearchCriteria.JobDurationType, LookupValuesHelper.GetJobDurationType())
                             </div>
                             <div class="col-md-6">
-                                <label>Hours seeking</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                                <label>Hours seeking</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType(true))
                             </div>
                             <div class="col-md-6">
                                 <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.SearchCriteria.StartDate, new { @class = "date-field" })
@@ -95,20 +95,20 @@
                                     <label>How long have you been in the UK?</label> @Html.TextBoxFor(m => m.SearchCriteria.StayInUKDuration, new { required = "required" })
                                 </div>*@
                             <div class="col-md-6">
-                                <label>Do you have any criminal convictions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveCriminalConvictions, LookupValuesHelper.GetYesNo())
+                                <label>Do you have any criminal convictions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveCriminalConvictions, LookupValuesHelper.GetYesNo(true))
                             </div>
                             @*<div class="col-md-6">
                                     <label>Criminal conviction details</label> @Html.TextAreaFor(m => m.SearchCriteria.CriminalConvictionDetails, new { @class = "text-details" })
                                 </div>*@
                             <div class="col-md-6">
-                                <label>Do you have any known medical/health conditions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveMedicalConditions, LookupValuesHelper.GetYesNo())
+                                <label>Do you have any known medical/health conditions?</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveMedicalConditions, LookupValuesHelper.GetYesNo(true))
                             </div>
                             @*<div class="col-md-6">
                                     <label>Medical/health condition details</label> @Html.TextAreaFor(m => m.SearchCriteria.MedicalConditionDetails, new { @class = "text-details" })
                                 </div>*@
 
                             <div class="col-md-6">
-                                <label>Are you Ofsted registered?</label> @Html.DropDownListFor(m => m.SearchCriteria.IsOfstedRegistered, LookupValuesHelper.GetYesNo())
+                                <label>Are you Ofsted registered?</label> @Html.DropDownListFor(m => m.SearchCriteria.IsOfstedRegistered, LookupValuesHelper.GetYesNo(true))
                             </div>
 
                             @*<div class="col-md-6">
@@ -126,7 +126,7 @@
                                 <label>Expected Salary</label> @Html.TextBoxFor(m => m.SearchCriteria.ExpectedSalary, new { @type = "number", @min = "0" })
                             </div>
                             <div class="col-md-6">
-                                <label>Experience with age groups</label> @Html.DropDownListFor(m => m.SearchCriteria.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup())
+                                <label>Experience with age groups</label> @Html.DropDownListFor(m => m.SearchCriteria.ChildAgeGroup, LookupValuesHelper.GetChildAgeGroup(true))
                             </div>
 
 

@@ -9,9 +9,13 @@ namespace NationwideNannies.Utils
 {
     public static class LookupValuesHelper
     {
-        public static SelectList GetEmploymentType()
+        public static SelectList GetEmploymentType(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "Full-time", "Part-time" };
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
@@ -37,37 +41,57 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
-        public static SelectList GetNannyType()
+        public static SelectList GetNannyType(bool addEmpty=false)
         {
             List<string> types = new List<string>() { "Live in", "Live out" };
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
 
-        public static SelectList GetPreferenceTypes()
+        public static SelectList GetPreferenceTypes(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "Not necessary", "Essential", "Preferred" };
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
 
-        public static SelectList GetYesNo()
+        public static SelectList GetYesNo(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "No" , "Yes"};
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
 
-        public static SelectList GetTypeOfChildCare()
+        public static SelectList GetTypeOfChildCare(bool addEmpty= false)
         {
             List<string> types = new List<string>() { "Nanny", "Mother’s help", "Nanny housekeeper", "Maternity/Night nurse", "Afterschool help", "Shared nanny", "Babysitter", "Other" };
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
 
-        public static SelectList PreferedPosition()
+        public static SelectList PreferedPosition(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "Nanny", "Maternity/Night nurse", "Babysitter" };
+            if (addEmpty)
+            {
+                types.Insert(0, "");
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
@@ -79,9 +103,13 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
-        public static SelectList GetChildAgeGroup()
+        public static SelectList GetChildAgeGroup(bool addEmpty)
         {
             List<string> types = new List<string>() { "Newborn", "Toddler", "Pre-Schooler", "School-Aged", "Multiple Ages"};
+            if (addEmpty)
+            {
+                types.Insert(0, string.Empty);
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }
@@ -93,9 +121,13 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
-        public static SelectList GetJobRadius()
+        public static SelectList GetJobRadius(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "5", "10", "15", "20" };
+            if (addEmpty)
+            {
+                types.Insert(0, "0");
+            }
             SelectList selectList = new SelectList(types);
             return selectList;
         }

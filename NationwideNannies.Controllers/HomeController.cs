@@ -160,6 +160,12 @@ namespace NationwideNannies.Controllers
                 var searchResults = dbContext.CandidateSearch(model.SearchCriteria);
                 model.SearchResults = searchResults;
             }
+            else
+            {
+                model.SearchCriteria.HaveCriminalConvictions = string.Empty;
+                model.SearchCriteria.HaveMedicalConditions = string.Empty;
+                model.SearchCriteria.IsOfstedRegistered = string.Empty;
+            }
 
             model.Mode = 1;
             return View(model);

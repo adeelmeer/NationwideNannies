@@ -52,17 +52,17 @@
                                 <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email" })
                             </div>
                             <div class="col-md-6">
-                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.SearchCriteria.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare())
+                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.SearchCriteria.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare(true))
                             </div>
                             <div class="col-md-6">
                                 <label>Length of service</label> @Html.DropDownListFor(m => m.SearchCriteria.JobDurationType, LookupValuesHelper.GetJobDurationType())
                             </div>
 
                             <div class="col-md-6">
-                                <label>Employment Type</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType())
+                                <label>Employment Type</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType(true))
                             </div>
                             <div class="col-md-6">
-                                <label>Live in Status</label> @Html.DropDownListFor(m => m.SearchCriteria.LiveInOut, LookupValuesHelper.GetNannyType())
+                                <label>Live in Status</label> @Html.DropDownListFor(m => m.SearchCriteria.LiveInOut, LookupValuesHelper.GetNannyType(true))
                             </div>
 
                             @*<div class="col-md-6">
@@ -83,10 +83,10 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label>Childcare qualified nannies only</label> @Html.DropDownListFor(m => m.SearchCriteria.QualifiedNannies, LookupValuesHelper.GetYesNo())
+                                <label>Childcare qualified nannies only</label> @Html.DropDownListFor(m => m.SearchCriteria.QualifiedNannies, LookupValuesHelper.GetYesNo(true))
                             </div>
                             <div class="col-md-6">
-                                <label>Do you require an Ofsted registered nanny?</label> @Html.DropDownListFor(m => m.SearchCriteria.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes())
+                                <label>Do you require an Ofsted registered nanny?</label> @Html.DropDownListFor(m => m.SearchCriteria.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes(true))
                             </div>
 
                             <div class="col-md-6">
