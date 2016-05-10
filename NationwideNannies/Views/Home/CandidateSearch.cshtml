@@ -190,7 +190,7 @@
                 string photoPath = string.Format("/{0}/{1}", @Constants.FolderUploadedPhotos, item.ImageFilePath);
 
                 <tr candidateid="@item.Id">
-                    <td>@item.FullName </td>
+                    <td> <a href="/home/Jobs?candidateId=@item.Id" target="_blank">@item.FullName </a></td>
                     <td><span class="forawd-to-client" style="cursor:pointer;">Forward</span></td>
                     <td>@item.Email</td>
                     <td>@item.Phone</td>

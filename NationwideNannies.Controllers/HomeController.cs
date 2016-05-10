@@ -64,10 +64,6 @@ namespace NationwideNannies.Controllers
                 {
                     model = results[0];
                 }
-                else
-                {
-
-                }
             }
 
             if (model == null)
@@ -114,7 +110,7 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult UpdateClientData(ParentRequest model)
         {
-
+            string message = "Record was updates successfully";
             try
             {
                 Task.Run(() =>
@@ -123,16 +119,16 @@ namespace NationwideNannies.Controllers
                     NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.UpdateParentForm(model);
                 });
-
             }
             catch (Exception ex)
             {
                 Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                message = "An error occured while saving the record";
             }
 
-            System.Web.HttpContext.Current.Response.Redirect("/home/parents?clientId=" + model.Id);
+            ViewBag.InfoMessage = message;
 
-            return View();
+            return View("InfoMessage");
         }
 
 
@@ -169,12 +165,59 @@ namespace NationwideNannies.Controllers
             return View(model);
         }
 
-
-        public ActionResult Jobs()
+        [HttpPost]
+        public ActionResult UpdateCandidateData(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
-            NannyJobEmployment model = new NannyJobEmployment();
-            return View(model);
+            string message = "Record was updates successfully";
+
+            string filePathResume = Utilities.SaveUploadedFile(model.FullName, resume, Constants.FolderUploadedResumes);
+            string filePathPhoto = Utilities.SaveUploadedFile(model.FullName, image, Constants.FolderUploadedPhotos);
+
+
+            // update model with file paths
+            model.ResumeFilePath = filePathResume;
+            model.ImageFilePath = filePathPhoto;
+
+            try
+            {
+                Task.Run(() =>
+                {
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
+                    dbContext.UpdateJobForm(model);
+                });
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                message = "An error occured while saving the record";
+            }
+
+            ViewBag.InfoMessage = message;
+
+            return View("InfoMessage");
         }
+
+        public ActionResult Jobs(int? candidateId)
+        {
+            NannyJobEmployment model = null;
+            if (candidateId.HasValue)
+            {
+                NationWideDbContext dbContext = new NationWideDbContext();
+                var results = dbContext.CandidateSearch(new NannyJobEmployment() { Id = candidateId.Value });
+                if (results.Count == 1)
+                {
+                    model = results[0];
+                }
+            }
+
+            if (model == null)
+            {
+                model = new NannyJobEmployment();
+            }
+            
+            return View(model);
+        }        
 
         [HttpPost]
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)

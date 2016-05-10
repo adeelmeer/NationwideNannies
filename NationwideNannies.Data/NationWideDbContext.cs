@@ -33,8 +33,17 @@ namespace NationwideNannies.Data
         public void SaveJobForm(NannyJobEmployment jobData)
         {
             if (jobData != null)
-            {
+            {               
                 this.NannyJobEmployment.Add(jobData);
+                this.SaveChanges();
+            }
+        }
+
+        public void UpdateJobForm(NannyJobEmployment data)
+        {
+            if (data != null)
+            {                             
+                this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
         }
@@ -42,16 +51,7 @@ namespace NationwideNannies.Data
         public void SaveParentForm(ParentRequest data)
         {
             if (data != null)
-            {
-                if (data.AcceptTermComditions == null)
-                {
-                    data.AcceptTermComditions = false;
-                }
-                if (data.ReceiveMarketingEmails == null)
-                {
-                    data.ReceiveMarketingEmails = false;
-                }
-
+            {                
                 this.ParentRequest.Add(data);
                 this.SaveChanges();
             }
@@ -60,15 +60,7 @@ namespace NationwideNannies.Data
         public void UpdateParentForm(ParentRequest data)
         {
             if (data != null)
-            {
-                if (data.AcceptTermComditions == null)
-                {
-                    data.AcceptTermComditions = false;
-                }
-                if (data.ReceiveMarketingEmails == null)
-                {
-                    data.ReceiveMarketingEmails = false;
-                }
+            {                
                 this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }

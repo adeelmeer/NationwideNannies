@@ -3,6 +3,13 @@
 
 @{
     ViewBag.Title = "Jobs";
+
+    string formActionName = "Jobs";
+
+    if (Model.Id > 0)
+    {
+        formActionName = "UpdateCandidateData";
+    }
 }
 
 <div class="candidates-bg" style="background: url(../images/DSC_0610.jpg);background-size: cover;">
@@ -22,8 +29,10 @@
                     </div>
 
                     <div class="contact-form">
-                        @using (Html.BeginForm("Jobs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        @using (Html.BeginForm(formActionName, "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
+                            @Html.HiddenFor(m => m.Id)
+                            
                             <div class="col-md-6">
                                 <label>Full Name</label> @Html.TextBoxFor(m => m.FullName, new { required = "required" })
                             </div>
@@ -137,7 +146,7 @@
                             </div>
 
                             <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.AcceptTermComditions.Value, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
+                                @Html.CheckBoxFor(m => m.AcceptTermConditions, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
                             </div>
 
                             <div class="col-md-12">

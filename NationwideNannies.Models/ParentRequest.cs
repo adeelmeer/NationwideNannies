@@ -10,9 +10,7 @@ namespace NationwideNannies.Models
    public class ParentRequest
     {
        public ParentRequest()
-       {
-           ReceiveMarketingEmails = true;
-           AcceptTermComditions = false;
+       {        
        }
 
         [Key]
@@ -38,8 +36,8 @@ namespace NationwideNannies.Models
         public string EmploymentType { get; set; }
         public string LiveInOut { get; set; }
         public int? SalaryPerWeek { get; set; }
-        public bool? ReceiveMarketingEmails { get; set; }
-        public bool? AcceptTermComditions { get; set; }
+        public bool ReceiveMarketingEmails { get; set; }
+        public bool AcceptTermConditions { get; set; }
         public string QualifiedNannies { get; set; }        
         public string PreferedTimeForCall { get; set; }
         public string Comments { get; set; }
@@ -73,7 +71,7 @@ namespace NationwideNannies.Models
             builder.AppendFormat("Have you used any of our services before: {0} <br/>", this.HaveUsedOurServices);
             builder.AppendFormat("Please specify how and when you used our services: {0} <br/>", this.UsedOurServicesDetails);
             builder.AppendFormat("Receive Marketing Emails: {0} <br/>", this.ReceiveMarketingEmails);
-            builder.AppendFormat("Accept Term and Comditions: {0} <br/>", this.AcceptTermComditions);            
+            builder.AppendFormat("Accept Term and Comditions: {0} <br/>", this.AcceptTermConditions);            
             
             return builder.ToString();
         }

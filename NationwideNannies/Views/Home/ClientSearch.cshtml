@@ -160,7 +160,7 @@
                 string startDate = item.StartDate.HasValue ? item.StartDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 string endDate = item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 <tr>
-                    <td> <a href="/home/Parents?clientId=@item.Id">@item.FullName </a> </td>
+                    <td> <a href="/home/Parents?clientId=@item.Id" target="_blank">@item.FullName </a> </td>
                     <td>@item.Email</td>
                     <td>@item.Phone</td>
                     <td>@item.PhoneAlt</td>

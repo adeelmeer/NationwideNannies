@@ -13,8 +13,7 @@ namespace NationwideNannies.Models
         {
             HaveCriminalConvictions = "No"; 
             HaveMedicalConditions = "No";
-            IsOfstedRegistered = "No";
-            AcceptTermComditions = false;
+            IsOfstedRegistered = "No";           
         }
 
         [Key]
@@ -54,7 +53,7 @@ namespace NationwideNannies.Models
         public string Comments { get; set; }
         public string ImageFilePath { get; set; }
         public string ResumeFilePath { get; set; }
-        public bool? AcceptTermComditions { get; set; }
+        public bool AcceptTermConditions { get; set; }
 
 
         public string GetEmailText()
@@ -94,7 +93,7 @@ namespace NationwideNannies.Models
             builder.AppendFormat("Expected Salary: {0} <br/>", this.ExpectedSalary);
             builder.AppendFormat("Experience with age groups: {0} <br/>", this.ChildAgeGroup);
             builder.AppendFormat("Cover letter that will support your application (including skills, languages spoken, training obtained etc : {0} <br/>", this.Comments);
-            builder.AppendFormat("Accepted Terms and Consitions: {0} <br/>", this.AcceptTermComditions);
+            builder.AppendFormat("Accepted Terms and Consitions: {0} <br/>", this.AcceptTermConditions);
            
             return builder.ToString();
         }
