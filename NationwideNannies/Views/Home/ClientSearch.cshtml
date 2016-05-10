@@ -13,7 +13,7 @@
         <div class="content">
             <div class="about-section">
                 <div class="container">
-                    <h2>Client Search</h2>                    
+                    <h2>Client Search</h2>
 
                     @*<div class="about-info" style="margin-bottom:0px;">
 
@@ -25,8 +25,8 @@
                     <div class="contact-form">
                         @using (Html.BeginForm("ClientSearch", "Home", FormMethod.Post))
                         {
-                            @Html.HiddenFor(m => m.Mode, new { @value="1"})
-                            
+                            @Html.HiddenFor(m => m.Mode, new { @value = "1" })
+
                             <div class="col-md-6">
                                 <label>Full Name</label> @Html.TextBoxFor(m => m.SearchCriteria.FullName)
                             </div>
@@ -66,13 +66,13 @@
                             </div>
 
                             @*<div class="col-md-6">
-                                    <label>Days of the week required </label> @Html.TextAreaFor(m => m.SearchCriteria.DaysOfWeekRequied, new { @class = "text-details", required = "required" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.SearchCriteria.ChildrenDetails, new { @class = "text-details", required = "required" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Do they attend?</label> @Html.DropDownListFor(m => m.SearchCriteria.ChildSchoolType, LookupValuesHelper.GetSchoolType())
+                                    <label>days of the week required </label> @html.textareafor(m => m.searchcriteria.daysofweekrequied, new { @class = "text-details", required = "required" })
+                                </div>*@
+                            @*<div class="col-md-6">
+                                <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.SearchCriteria.ChildrenDetails, new { @class = "text-details", required = "required" })
+                            </div>*@
+                            @*<div class="col-md-6">
+                                    <label>do they attend?</label> @html.dropdownlistfor(m => m.searchcriteria.childschooltype, lookupvalueshelper.getschooltype())
                                 </div>*@
 
                             <div class="col-md-6">
@@ -120,8 +120,8 @@
                                 <input type="submit" value="Search">
                             </div>
                         }
-                    </div>                  
-                </div>                
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -189,12 +189,12 @@
 
 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
+<script type="text/javascript">
+    $(document).ready(function () {
 
-            window.NationwideFormsFunctions.initialize();
+        window.NationwideFormsFunctions.initialize();
 
-            $('.SearchResults-table').DataTable();
-        });
-    </script>
+        $('.SearchResults-table').DataTable();
+    });
+</script>
 
