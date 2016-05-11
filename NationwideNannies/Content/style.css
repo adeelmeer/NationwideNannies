@@ -58,7 +58,7 @@ body {
     font-family: 'Crimson Text', 'serif';
     color: #000000;
     font-size: 1.5em;
-    background-color: #000000;
+    background-color: #000000;    
 }
 
 .header-top {
@@ -594,6 +594,14 @@ ul.callbacks_tabs.callbacks1_tabs {
     min-height: 750px;
 }
 
+.chrome .banner1, .chrome .banner2, .chrome .banner3, .chrome .banner4 {
+     min-height: 950px;
+}
+
+.chrome .caption {
+    margin-top:55em;
+}
+
 .slider {
     position: relative;
 }
@@ -628,6 +636,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     margin: 40em 0em 0 1em;
     background: rgba(255, 255, 255, 0.82);
     padding: .94em 2em;
+    vertical-align:bottom;
 }
 
     .caption h3 {
