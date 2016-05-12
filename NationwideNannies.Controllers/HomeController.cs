@@ -112,6 +112,8 @@ namespace NationwideNannies.Controllers
             try
             {
                 Utilities.SendEmail(toEmail, emailSubject, emailText);
+                string clientEmailText = Utilities.GetEmailTextClients(model.FullName);
+                Utilities.SendEmail(model.Email, "Nationwide Nannies confirmation", clientEmailText);
             }
             catch (Exception ex)
             {
@@ -276,6 +278,8 @@ namespace NationwideNannies.Controllers
             try
             {
                 Utilities.SendEmail(toEmail, emailSubject, emailText, new List<string>() { fullPathResume, fullPathPhoto });
+                string candidateEmailText = Utilities.GetEmailTextCandidates(model.FullName);
+                Utilities.SendEmail(model.Email, "Nationwide Nannies confirmation", candidateEmailText);
             }
             catch (Exception ex)
             {
