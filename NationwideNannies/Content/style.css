@@ -552,6 +552,7 @@ ul.callbacks_tabs.callbacks1_tabs {
     font-size: 0.9em;
     color: #fff;
     font-weight: 400;
+    text-align:center;
 }
 
 .footer-top a {
@@ -2430,3 +2431,15 @@ table.dataTable.stripe tbody tr.even, table.dataTable.display tbody tr.even {
 .send-resume td{
     padding:10px;
 }
+
+.footer-links{
+   text-align:center;
+}
+
+.footer-links a{
+    color:#ffffff;
+    padding-right:20px;
+    text-decoration:underline;
+}
+
+

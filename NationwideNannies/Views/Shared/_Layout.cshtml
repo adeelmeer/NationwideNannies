@@ -4,15 +4,14 @@
 @{
     string contactEmail = System.Configuration.ConfigurationManager.AppSettings["ContactEmail"];
 }
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>@ViewBag.Title</title>
-    <link href="~/Content/cssreset.css" rel="stylesheet" type="text/css" media="all">
+    @*<link href="~/Content/cssreset.css" rel="stylesheet" type="text/css" media="all">*@
     <link href="~/Content/bootstrap.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery-ui.min.css" rel="stylesheet" type="text/css" media="all">
-    <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">    
+    <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" media="all">
 
@@ -24,7 +23,7 @@
     <meta name="description" content="Nationwide Nannies is London’s leading specialists in providing high quality trained nannies and baby sitters. We are available 24/7 and will help you look for nannies, night nannies, maternity nannies and babysitters. We provide a stress and hassle free service, our friendly team will work with you throughout the recruitment process to ensure all your needs are met. UK’s leading Nanny Service - Love and Care - Open 7 days Call UsLondon’s leading Nanny Agency - We understand your childcare needs - Open 7 days Call Us">
     <meta charset="UTF-8">
 
-    
+
     <script src="~/Scripts/css_browser_selector.js"></script>
 
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -32,7 +31,7 @@
     <script src="~/Scripts/NationwideFormsFunctions.js"></script>
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    
+
 
     <script src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>
 
@@ -57,7 +56,7 @@
                                 <span class="icon-bar"></span>
 
                             </button>
-                            <img src="/images/logoBlack2.jpg" style="width:260px;" />
+                            <img src="/images/logoTransparent.png" alt="company logo" style="width:300px;" />
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -97,18 +96,18 @@
                                         @*<li><a href="/Candidates/CurrentVacancies">Current Vacancies</a></li>*@
                                     </ul>
                                 </li>
-                                
+
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
-                                <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li> 
+                                <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li>
 
                                 @if (Request.IsAuthenticated)
                                 {
-                                    
+
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
                                         <ul class="dropdown-menu">
                                             <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="/home/ClientSearch">Client Search</a></li>
-                                            <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>                                      
+                                            <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>
                                         </ul>
                                     </li>
                                 }
@@ -159,12 +158,28 @@
         <!--footer-->
         <div class="footer-section">
             <div class="container">
-                <div class="social-icons">
-                    <a href="#"><i class="icon1"></i></a>
-                    <a href="#"><i class="icon2"></i></a>
-                    @*<a href="#"><i class="icon3"></i></a>
-                        <a href="#"><i class="icon4"></i></a>*@
+                @*<div class="social-icons">
+                        <a href="#"><i class="icon1"></i></a>
+                        <a href="#"><i class="icon2"></i></a>
+                        <a href="#"><i class="icon3"></i></a>
+                            <a href="#"><i class="icon4"></i></a>
+                    </div>*@
+
+                <div style="text-align:left;margin-bottom:10px;">
+
+                    <img src="/images/NannytaxLogo.png" alt="Nanny tax Logo" />
+                    <div class="footer-links">
+                        <a href="/home/AcceptableUsePolicy">Acceptable Use Policy</a>
+                        <a href="/home/CookiePolicy">Cookie Policy</a>
+                        <a href="/home/EqualOpportunites">Equal Opportunites</a>
+                        <a href="/home/PrivacyPolicy"> Privacy Policy</a>
+                        <a href="/home/WebsiteTermsOfUse">Website Terms of Use</a> 
+                    </div>
+
                 </div>
+
+                <div style="clear:both;"></div>
+
                 <div class="footer-top">
                     <p>&copy; 2016 Nationwide Nannies. All rights reserved .</p>
                 </div>

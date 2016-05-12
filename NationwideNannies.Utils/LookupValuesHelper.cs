@@ -103,7 +103,7 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
-        public static SelectList GetChildAgeGroup(bool addEmpty)
+        public static SelectList GetChildAgeGroup(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "Newborn", "Toddler", "Pre-Schooler", "School-Aged", "Multiple Ages"};
             if (addEmpty)

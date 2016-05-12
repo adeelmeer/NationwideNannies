@@ -28,6 +28,33 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
+        public ActionResult AcceptableUsePolicy()
+        {
+            return View();
+        }
+
+        public ActionResult CookiePolicy()
+        {
+            return View();
+        }
+
+        public ActionResult EqualOpportunites()
+        {
+            return View();
+        }
+
+        public ActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+
+        public ActionResult WebsiteTermsOfUse()
+        {
+            return View();
+        }
+
+        
+
         public ActionResult Contact()
         {
             return View();
