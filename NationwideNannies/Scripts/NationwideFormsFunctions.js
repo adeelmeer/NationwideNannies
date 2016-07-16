@@ -12,7 +12,8 @@
                 dateFormat: "dd MM yy",
                 showAnim: "slideDown",
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                yearRange: "-100:+10"
             });
 
             $('#PreferedPosition').change(function () {
@@ -43,6 +44,51 @@
                 });
 
             }).change();
+
+            $('#HaveDBS').change(function () {
+                var ddlb = $(this);
+                var currentValue = ddlb.val();
+                if (currentValue == "Yes") {
+                    $('#DBSDate').attr('required', 'required');
+                }
+                else {
+                    $('#DBSDate').removeAttr('required');
+                }
+            });
+
+            $('#IsLiveInEveningBabbySitting').change(function () {
+                var ddlb = $(this);
+                var currentValue = ddlb.val();
+                if (currentValue == "Yes") {
+                    $('#EveningBabaySittingPerWeek').attr('required', 'required');
+                }
+                else {
+                    $('#EveningBabaySittingPerWeek').removeAttr('required');
+                }
+            });
+
+            $('#LiveInOut').change(function () {
+                var ddlb = $(this);
+                var currentValue = ddlb.val();
+                if (currentValue == "Live in") {
+                    $('#IsLiveInEveningBabbySitting').attr('required', 'required');
+                }
+                else {
+                    $('#IsLiveInEveningBabbySitting').removeAttr('required');
+                }
+            });
+
+            $('#HaveChildcareQualification').change(function () {
+                var ddlb = $(this);                
+                var currentValue = ddlb.val();
+                if (currentValue == "Yes") {
+                    $('#ChildcareQualificationDetails').attr('required', 'required');
+                }
+                else {
+                    $('#ChildcareQualificationDetails').removeAttr('required');
+                }
+            });
+            
         }
 
     };

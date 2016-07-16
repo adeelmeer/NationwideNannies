@@ -48,6 +48,15 @@ namespace NationwideNannies.Data
             }
         }
 
+        public void DeleteJobForm(NannyJobEmployment data)
+        {
+            if (data != null)
+            {
+                this.Entry(data).State = EntityState.Deleted;
+                this.SaveChanges();
+            }
+        }
+
         public void SaveParentForm(ParentRequest data)
         {
             if (data != null)
@@ -62,6 +71,15 @@ namespace NationwideNannies.Data
             if (data != null)
             {                
                 this.Entry(data).State = EntityState.Modified;
+                this.SaveChanges();
+            }
+        }
+
+        public void DeleteParentForm(ParentRequest data)
+        {
+            if (data != null)
+            {
+                this.Entry(data).State = EntityState.Deleted;
                 this.SaveChanges();
             }
         }
@@ -112,7 +130,7 @@ namespace NationwideNannies.Data
 
                 if (!string.IsNullOrWhiteSpace(criteria.TypeOfChildCare))
                 {
-                    infoData = infoData.Where(i => i.TypeOfChildCare.Equals(criteria.Email));
+                    infoData = infoData.Where(i => i.TypeOfChildCare.Equals(criteria.TypeOfChildCare));
                 }
 
                 if (!string.IsNullOrWhiteSpace(criteria.JobDurationType) && criteria.JobDurationType != "Any")
@@ -153,6 +171,21 @@ namespace NationwideNannies.Data
                 if (criteria.SalaryPerWeek.HasValue)
                 {
                     infoData = infoData.Where(i => i.SalaryPerWeek.Value <= criteria.SalaryPerWeek.Value);
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.NannyDriveLicensePreference))
+                {
+                    infoData = infoData.Where(i => i.NannyDriveLicensePreference.Equals(criteria.NannyDriveLicensePreference));
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.ParentNantinalities))
+                {
+                    infoData = infoData.Where(i => i.ParentNantinalities.Contains(criteria.ParentNantinalities));
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.ParentReligions))
+                {
+                    infoData = infoData.Where(i => i.ParentReligions.Contains(criteria.ParentReligions));
                 }
 
                 searchResults = infoData.ToList();
@@ -228,7 +261,7 @@ namespace NationwideNannies.Data
 
                 if (!string.IsNullOrWhiteSpace(criteria.JobDurationType) && criteria.JobDurationType != "Any")
                 {
-                    infoData = infoData.Where(i => i.JobDurationType.Equals(criteria.JobType));
+                    infoData = infoData.Where(i => i.JobDurationType.Equals(criteria.JobDurationType));
                 }
 
                 if (!string.IsNullOrWhiteSpace(criteria.EmploymentType))
@@ -274,6 +307,21 @@ namespace NationwideNannies.Data
                 if (!string.IsNullOrWhiteSpace(criteria.ChildAgeGroup))
                 {
                     infoData = infoData.Where(i => i.ChildAgeGroup.Equals(criteria.ChildAgeGroup));
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.HaveChildcareQualification))
+                {
+                    infoData = infoData.Where(i => i.HaveChildcareQualification.Equals(criteria.HaveChildcareQualification));
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.HaveDrivingLicense))
+                {
+                    infoData = infoData.Where(i => i.HaveDrivingLicense.Equals(criteria.HaveDrivingLicense));
+                }
+
+                if (!string.IsNullOrWhiteSpace(criteria.AdditionalLanguages))
+                {
+                    infoData = infoData.Where(i => i.AdditionalLanguages.Contains(criteria.AdditionalLanguages));
                 }
 
                 searchResults = infoData.ToList();

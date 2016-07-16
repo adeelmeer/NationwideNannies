@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Nationwide Nannies - Nanny Agency & Babysitting Agency";
+    ViewBag.Title = "Home";
     ViewBag.MetaKeywords = "";
     ViewBag.MetaDescription = "";
 
@@ -13,8 +13,8 @@
 <style type="text/css">
     #container
     {
-        max-width: 1175px;
-        margin: auto;
+        max-width: 800px;
+        margin: 2em auto;
     }
 
 
@@ -68,8 +68,24 @@
         zoom: 1;
     }
 
-   
+    .slide-caption h3
+    {
+        color: #fff;
+        font-size: 1.7em;
+        text-transform: capitalize;
+        font-family: 'Crimson Text', 'serif';
+        margin-top: 5px;
+    }
 
+    .slide-caption p
+    {
+        font-size: 1.3em;
+        color: #fff;
+        font-family: 'Crimson Text', 'serif';
+        padding-bottom: 1em;
+        /*line-height: 1.8em;
+        padding: 1em 0 2em;*/
+    }
 </style>
 
 <div id="container">
@@ -90,14 +106,11 @@
                     <!-- Your context goes here -->
 
                     <div class="slide-caption">
-
+                        <h3>UK’s leading childcare experts</h3>
                         <p>
-                            <span class="slide-header">UK's leading childcare agency</span>
-                            <br />
-                            After years of childcare experience, we know the qualities that make the perfect nanny. We believe that each child and family is unique, so we take the time to find the best possible match for you.   
+                            “After years of childcare experience, we know the qualities that make the perfect nanny.  We believe that each child and family is unique, so we take the time to find the best possible match for you.”
+                           &nbsp; &nbsp; <a href="/clients/EmployThroughUs" class="know-more">know more</a>
                         </p>
-
-                        <a href="/clients/EmployThroughUs" class="know-more">KNOW MORE</a>
                     </div>
 
                     <img alt="Uyuni, Bolivia" src="/images/bnr1.jpg">
@@ -111,13 +124,11 @@
                 <figure>
 
                     <div class="slide-caption">
+                        <h3>Get your perfect fit</h3>
                         <p>
-                            <span class="slide-header">Get your perfect fit</span>
-                            <br />
-                            Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.                             
+                            “Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.”
+                            &nbsp; &nbsp;  <a href="/services/Nannies" class="know-more">know more</a>
                         </p>
-
-                        <a href="/services/Nannies" class="know-more">KNOW MORE</a>
 
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr2.jpg">
@@ -127,13 +138,11 @@
                 <figure>
 
                     <div class="slide-caption">
-
+                        <h3>Hassle free recruitment</h3>
                         <p>
-                            <span class="slide-header">Stress free recruitment</span>
-                            <br />
-                            We strive to make what can be a difficult process into a smooth transition, helping you every step of the way, from offer letters to devising contracts and payroll.
+                            “We strive to make what can be a difficult process into a smooth and stress-free transition, helping you every step of the way, from offer letters to devising contracts and payroll.”
+                            &nbsp; &nbsp;  <a href="/clients/StartYourNannySearch" class="know-more">know more</a>
                         </p>
-                        <a href="/clients/StartYourNannySearch" class="know-more">KNOW MORE</a>
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr3.jpg">
                 </figure>
@@ -142,13 +151,12 @@
                 <figure>
 
                     <div class="slide-caption">
-
+                        <h3>Dependable</h3>
                         <p>
-                            <span class="slide-header">Dependable</span>
-                            <br />
-                            Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax.                           
+                            “Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax”
+                            &nbsp; &nbsp; <a href="/services/BabySitters" class="know-more">know more</a>
                         </p>
-                        <a href="/services/BabySitters" class="know-more">KNOW MORE</a>
+
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr4.jpg">
                 </figure>
@@ -170,7 +178,7 @@
 <script>
     $('.slidyContainer').slidy({
         useKeybord: true, // use keys defined below to expand / collapse sections
-        auto: true,       // Start slideshow automatically
+        auto: false,       // Start slideshow automatically
         interval: 5000,     // Time between each slide
         initialInterval: 100  // Initial interval when page loads
     });

@@ -148,13 +148,13 @@ namespace NationwideNannies.Utils
 
         public static string GetEmailTextCandidates(string name)
         {
-            string text = @"Dear #Name#,<br/><br/>
-                            Thank you for contacting Nationwide Nannies. Your application has been submitted successfully and we are pleased to assist you in finding your perfect fit. <br/><br/>
-                            We are in the process of reviewing your application. One of our dedicated team members will give you a call shortly, at your preferred time, to further discuss your needs and any additional details that will help us find your perfect role. <br/><br/>
-                            We screen all candidates and also meet them face to face before putting them forward to our clients. We place both qualified and unqualified candidates however, candidates with no childcare related qualifications must possess relevant experience. <br/><br/>
-                            There are general guidelines on our website regarding expected salaries however, this may vary based on qualifications and experience. <br/><br/>
-                            We look forward to speaking to you soon. <br/><br/>
-                            Warm regards, <br/><br/>
+            string text = @"Dear #Name#,<br/>
+                            Thank you for contacting Nationwide Nannies. Your application has been submitted successfully and we are pleased to assist you in finding your perfect fit. <br/>
+                            We are in the process of reviewing your application. One of our dedicated team members will give you a call shortly, at your preferred time, to further discuss your needs and any additional details that will help us find your perfect role. <br/>
+                            We screen all candidates and also meet them face to face before putting them forward to our clients. We place both qualified and unqualified candidates however, candidates with no childcare related qualifications must possess relevant experience. <br/>
+                            There are general guidelines on our website regarding expected salaries however, this may vary based on qualifications and experience. <br/>
+                            We look forward to speaking to you soon. <br/>
+                            Warm regards,
                             Nationwide Nannies Team
                             ";
 
@@ -163,18 +163,20 @@ namespace NationwideNannies.Utils
 
         public static string GetEmailTextClients(string name)
         {
-            string text = @"Dear  #Name#,<br/><br/>
-                            Thank you for contacting Nationwide Nannies. Your request has been submitted successfully and we are pleased to assist you in finding the best candidates for your current needs/vacancy. <br/><br/>
-                            We are in the process of reviewing your requirements. One of our dedicated team members will give you a call shortly, at your preferred time, to further discuss your needs and any additional details that will help us find your perfect match. <br/><br/>
-                            We advise you to read our terms of business, if you haven’t already. You must read, understand and agree to the terms of business before we can start the search for you. <br/><br/>
-                            We screen all candidates and also meet them face to face before putting them forward to our clients. We place both qualified and unqualified candidates however, candidates with no childcare related qualifications will possess relevant experience. <br/><br/>
-                            There are general guidelines on our website regarding expected salaries however, this may vary based on qualifications and experience. <br/><br/>
-                            We look forward to speaking to you soon. <br/><br/>
-                            Warm regards, <br/><br/>
+            string text = @"Dear  #Name#,<br/>
+                            Thank you for contacting Nationwide Nannies. Your request has been submitted successfully and we are pleased to assist you in finding the best candidates for your current needs/vacancy. <br/>
+                            We are in the process of reviewing your requirements. One of our dedicated team members will give you a call shortly, at your preferred time, to further discuss your needs and any additional details that will help us find your perfect match. <br/>
+                            We advise you to read our terms of business, if you haven’t already. You must read, understand and agree to the terms of business before we can start the search for you. <br/>
+                            We screen all candidates and also meet them face to face before putting them forward to our clients. We place both qualified and unqualified candidates however, candidates with no childcare related qualifications will possess relevant experience. <br/>
+                            There are general guidelines on our website regarding expected salaries however, this may vary based on qualifications and experience. <br/>
+                            We look forward to speaking to you soon. <br/>
+                            Warm regards, 
                             Nationwide Nannies Team
                             ";
 
             return text.Replace("#Name#", name);
         }
+
+       
     }
 }

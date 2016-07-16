@@ -3,6 +3,9 @@
 
 @{
     ViewBag.Title = "ClientSearch";
+    ViewBag.MetaKeywords = "";
+    ViewBag.MetaDescription = "";
+
 }
 
 
@@ -15,12 +18,13 @@
                 <div class="container">
                     <h2>Client Search</h2>
 
-                    @*<div class="about-info" style="margin-bottom:0px;">
+                    @*<div class="about-info" style="margin-bottom: 0px;">
 
-                            <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
+                        <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
 
-                            <p>Please note the below form is for <span style="font-weight:bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration:underline;">click here</a></p>
-                        </div>*@
+                        <p>Please note the below form is for <span style="font-weight: bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration: underline;">click here</a></p>
+                    </div>
+                    *@
 
                     <div class="contact-form">
                         @using (Html.BeginForm("ClientSearch", "Home", FormMethod.Post))
@@ -28,97 +32,144 @@
                             @Html.HiddenFor(m => m.Mode, new { @value = "1" })
 
                             <div class="col-md-6">
-                                <label>Full Name</label> @Html.TextBoxFor(m => m.SearchCriteria.FullName)
+                                <label>Full Name</label>
+                                @Html.TextBoxFor(m => m.SearchCriteria.FullName)
                             </div>
+                        @*<div class="col-md-6">
+                            <label>Address</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.Address, new { required = "required" })
+                        </div>
+                        *@
+                            <div class="col-md-6">
+                                <label>City</label>
+                                @Html.TextBoxFor(m => m.SearchCriteria.City)
+                            </div>
+                        <div class="col-md-6">
+                            <label>Post code</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.PostalCode)
+                        </div>
+                        <div class="col-md-6">
+                            <label>Preferred contact number</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.Phone)
+                        </div>
+                        <div class="col-md-6">
+                            <label>Alternate contact number</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.PhoneAlt)
+                        </div>
+                        @*<div class="col-md-6">
+                            <label>Preferred Time for a Call</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                        </div>
+                        *@
+                            <div class="col-md-6">
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email" })
+                            </div>
+                        <div class="col-md-6">
+                            <label>Type of childcare you are looking for</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare(true))
+                        </div>
+                        <div class="col-md-6">
+                            <label>Length of service</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.JobDurationType, LookupValuesHelper.GetJobDurationType())
+                        </div>
+
+                        <div class="col-md-6">
+                            <label>Employment Type</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType(true))
+                        </div>
+                        <div class="col-md-6">
+                            <label>Live in Status</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.LiveInOut, LookupValuesHelper.GetNannyType(true))
+                        </div>
+
+                        @*<div class="col-md-6">
+                            <label>days of the week required </label>
+                            @html.textareafor(m => m.searchcriteria.daysofweekrequied, new { @class = "text-details", required = "required" })
+                        </div>
+                        *@
                             @*<div class="col-md-6">
-                                    <label>Address</label> @Html.TextBoxFor(m => m.SearchCriteria.Address, new { required = "required" })
-                                </div>*@
-                            <div class="col-md-6">
-                                <label>City</label> @Html.TextBoxFor(m => m.SearchCriteria.City)
+                                <label>Number of children caring for (including names, date of birth & gender)</label>
+                                @Html.TextAreaFor(m => m.SearchCriteria.ChildrenDetails, new { @class = "text-details", required = "required" })
                             </div>
-                            <div class="col-md-6">
-                                <label>Post code</label> @Html.TextBoxFor(m => m.SearchCriteria.PostalCode)
-                            </div>
-                            <div class="col-md-6">
-                                <label>Preferred contact number</label> @Html.TextBoxFor(m => m.SearchCriteria.Phone)
-                            </div>
-                            <div class="col-md-6">
-                                <label>Alternate contact number</label> @Html.TextBoxFor(m => m.SearchCriteria.PhoneAlt)
-                            </div>
+                        *@
                             @*<div class="col-md-6">
-                                    <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.SearchCriteria.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
-                                </div>*@
-                            <div class="col-md-6">
-                                <label>Email</label> @Html.TextBoxFor(m => m.SearchCriteria.Email, new { @type = "email" })
+                                <label>do they attend?</label>
+                                @html.dropdownlistfor(m => m.searchcriteria.childschooltype, lookupvalueshelper.getschooltype())
                             </div>
-                            <div class="col-md-6">
-                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.SearchCriteria.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare(true))
-                            </div>
-                            <div class="col-md-6">
-                                <label>Length of service</label> @Html.DropDownListFor(m => m.SearchCriteria.JobDurationType, LookupValuesHelper.GetJobDurationType())
-                            </div>
+                        *@
 
                             <div class="col-md-6">
-                                <label>Employment Type</label> @Html.DropDownListFor(m => m.SearchCriteria.EmploymentType, LookupValuesHelper.GetEmploymentType(true))
+                                <label>Prefered Start Date</label>
+                                @Html.TextBoxFor(m => m.SearchCriteria.StartDate, new { @class = "date-field" })
                             </div>
-                            <div class="col-md-6">
-                                <label>Live in Status</label> @Html.DropDownListFor(m => m.SearchCriteria.LiveInOut, LookupValuesHelper.GetNannyType(true))
-                            </div>
+                        <div class="col-md-6">
+                            <label>Preferred end of service date (for a temporary position)</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.EndDate)
+                        </div>
 
-                            @*<div class="col-md-6">
-                                    <label>days of the week required </label> @html.textareafor(m => m.searchcriteria.daysofweekrequied, new { @class = "text-details", required = "required" })
-                                </div>*@
-                            @*<div class="col-md-6">
-                                <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.SearchCriteria.ChildrenDetails, new { @class = "text-details", required = "required" })
-                            </div>*@
-                            @*<div class="col-md-6">
-                                    <label>do they attend?</label> @html.dropdownlistfor(m => m.searchcriteria.childschooltype, lookupvalueshelper.getschooltype())
-                                </div>*@
+                        <div class="col-md-6">
+                            <label>Childcare qualified nannies only</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.QualifiedNannies, LookupValuesHelper.GetYesNo(true))
+                        </div>
+                        <div class="col-md-6">
+                            <label>Do you require an Ofsted registered nanny?</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes(true))
+                        </div>
 
-                            <div class="col-md-6">
-                                <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.SearchCriteria.StartDate, new { @class = "date-field" })
-                            </div>
-                            <div class="col-md-6">
-                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.SearchCriteria.EndDate)
-                            </div>
+                        <div class="col-md-6">
+                            <label>Salary/week (net)</label>
+                            @Html.TextBoxFor(m => m.SearchCriteria.SalaryPerWeek, new { @type = "number", @min = "0" })
+                        </div>
 
-                            <div class="col-md-6">
-                                <label>Childcare qualified nannies only</label> @Html.DropDownListFor(m => m.SearchCriteria.QualifiedNannies, LookupValuesHelper.GetYesNo(true))
-                            </div>
-                            <div class="col-md-6">
-                                <label>Do you require an Ofsted registered nanny?</label> @Html.DropDownListFor(m => m.SearchCriteria.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes(true))
-                            </div>
+                        @*<div class="col-md-12">
+                            <label>Additional information about your family or staff requirements </label>
+                            @Html.TextAreaFor(m => m.SearchCriteria.Comments)
+                        </div>
 
-                            <div class="col-md-6">
-                                <label>Salary/week (net)</label> @Html.TextBoxFor(m => m.SearchCriteria.SalaryPerWeek, new { @type = "number", @min = "0" })
-                            </div>
+                        <div class="col-md-6">
+                            <label>Where did you hear about Nationwide Nannies</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions(), new { required = "required" })
+                        </div>
+                        <div class="col-md-6">
+                            <label>Have you used any of our services before</label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.HaveUsedOurServices, LookupValuesHelper.GetYesNo())
+                        </div>
 
-                            @*<div class="col-md-12">
-                                    <label>Additional information about your family or staff requirements </label> @Html.TextAreaFor(m => m.SearchCriteria.Comments)
-                                </div>
+                        <div class="col-md-12">
+                            <label>Please specify how and when you used our services</label>
+                            @Html.TextAreaFor(m => m.SearchCriteria.UsedOurServicesDetails, new { @class = "text-details" })
+                        </div>
 
-                                <div class="col-md-6">
-                                    <label>Where did you hear about Nationwide Nannies</label> @Html.DropDownListFor(m => m.SearchCriteria.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions(), new { required = "required" })
-                                </div>
-                                <div class="col-md-6">
-                                    <label>Have you used any of our services before</label> @Html.DropDownListFor(m => m.SearchCriteria.HaveUsedOurServices, LookupValuesHelper.GetYesNo())
-                                </div>
+                        <div class="col-md-12">
+                            @Html.CheckBoxFor(m => m.SearchCriteria.ReceiveMarketingEmails)
+                            <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
+                        </div>
 
-                                <div class="col-md-12">
-                                    <label>Please specify how and when you used our services</label> @Html.TextAreaFor(m => m.SearchCriteria.UsedOurServicesDetails, new { @class = "text-details" })
-                                </div>
+                        <div class="col-md-12">
+                            @Html.CheckBoxFor(m => m.SearchCriteria.AcceptTermComditions, new { required = "required" })
+                            <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
+                        </div>
+                        *@      
+                 
+                        <div class="col-md-6">
+                            <label>Should the nanny have a driving licence? </label>
+                            @Html.DropDownListFor(m => m.SearchCriteria.NannyDriveLicensePreference, LookupValuesHelper.GetPreferenceTypes(true))
+                        </div>
 
-                                <div class="col-md-12">
-                                    @Html.CheckBoxFor(m => m.SearchCriteria.ReceiveMarketingEmails) <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
-                                </div>
+                        <div class="col-md-6">
+                            <label>Nationalities of Father and Mother  </label>
+                            @Html.TextAreaFor(m => m.SearchCriteria.ParentNantinalities, new { @class = "text-details" })
+                        </div>
 
-                                <div class="col-md-12">
-                                    @Html.CheckBoxFor(m => m.SearchCriteria.AcceptTermComditions, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
-                                </div>*@
+                        <div class="col-md-6">
+                            <label>Religion of Father and Mother   </label>
+                            @Html.TextAreaFor(m => m.SearchCriteria.ParentReligions, new { @class = "text-details"})
+                        </div>
 
-                            <div class="col-md-12">
-                                <input type="submit" value="Search">
-                            </div>
+                        <div class="col-md-12">
+                            <input type="submit" value="Search">
+                        </div>
                         }
                     </div>
                 </div>
@@ -160,7 +211,7 @@
                 string startDate = item.StartDate.HasValue ? item.StartDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 string endDate = item.EndDate.HasValue ? item.EndDate.Value.ToString("dd/MM/yyyy") : string.Empty;
                 <tr>
-                    <td> <a href="/home/Parents?clientId=@item.Id" target="_blank">@item.FullName </a> </td>
+                    <td><a href="/home/Parents?clientId=@item.Id" target="_blank">@item.FullName </a></td>
                     <td>@item.Email</td>
                     <td>@item.Phone</td>
                     <td>@item.PhoneAlt</td>
@@ -179,7 +230,7 @@
                     <td>@item.OfstedRequirement</td>
                     <td>@item.SalaryPerWeek</td>
                 </tr>
-            }
+        }
         }
 
 

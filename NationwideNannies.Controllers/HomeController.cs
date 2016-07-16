@@ -23,6 +23,21 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
+        public ActionResult Index2()
+        {
+            return View();
+        }
+
+        public ActionResult Index3()
+        {
+            return View();
+        }
+
+        public ActionResult Index4()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();
@@ -53,7 +68,7 @@ namespace NationwideNannies.Controllers
             return View();
         }
 
-        
+
 
         public ActionResult Contact()
         {
@@ -90,6 +105,7 @@ namespace NationwideNannies.Controllers
                 if (results.Count == 1)
                 {
                     model = results[0];
+                    model.HandleMultiSelectFromDB();
                 }
             }
 
@@ -104,6 +120,18 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult Parents(ParentRequest model)
         {
+            string validationMessage = string.Empty;
+            bool isFromValid = ValidateClientsForm(model, out validationMessage);
+
+            if (!isFromValid)
+            {
+                ViewBag.ValidationMessage = validationMessage;
+                return View(model);
+            }
+
+            model.HandleMultiSelectFromView();
+
+
             // get email content
             string emailText = model.GetEmailText();
             string emailSubject = "Clients from";
@@ -119,41 +147,72 @@ namespace NationwideNannies.Controllers
             {
                 Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() send email");
             }
-            try
-            {
+            
                 Task.Run(() =>
                 {
-                    // save form in database
-                    NationWideDbContext dbContext = new NationWideDbContext();
-                    dbContext.SaveParentForm(model);
+                    try
+                    {
+                        // save form in database
+                        NationWideDbContext dbContext = new NationWideDbContext();
+                        dbContext.SaveParentForm(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                    }
                 });
 
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-            }
+            
+            
             return View("ParentThankyou");
+        }
+
+        [HttpPost]
+        public ActionResult DeleteClientData(ParentRequest model)
+        {
+            string message = "Record was deleted successfully";
+
+           
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        // save form in database
+                        NationWideDbContext dbContext = new NationWideDbContext();
+                        dbContext.DeleteParentForm(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteClientData() database save");
+                        message = "An error occured while saving the record";
+                    }
+                });
+                       
+            ViewBag.InfoMessage = message;
+
+            return View("InfoMessage");
         }
 
         [HttpPost]
         public ActionResult UpdateClientData(ParentRequest model)
         {
             string message = "Record was updates successfully";
-            try
-            {
+            model.HandleMultiSelectFromView();
+           
                 Task.Run(() =>
                 {
-                    // save form in database
-                    NationWideDbContext dbContext = new NationWideDbContext();
-                    dbContext.UpdateParentForm(model);
-                });
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-                message = "An error occured while saving the record";
-            }
+                    try
+                    {
+                        // save form in database
+                        NationWideDbContext dbContext = new NationWideDbContext();
+                        dbContext.UpdateParentForm(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                        message = "An error occured while saving the record";
+                    }
+                });                    
 
             ViewBag.InfoMessage = message;
 
@@ -201,6 +260,32 @@ namespace NationwideNannies.Controllers
         }
 
         [HttpPost]
+        public ActionResult DeleteCandidateData(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
+        {
+            string message = "Record was deleted successfully";
+
+           
+                Task.Run(() =>
+                {
+                    try
+                    {
+                        // save form in database
+                        NationWideDbContext dbContext = new NationWideDbContext();
+                        dbContext.DeleteJobForm(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteCandidateData() database save");
+                        message = "An error occured while saving the record";
+                    }
+                });
+                      
+            ViewBag.InfoMessage = message;
+
+            return View("InfoMessage");
+        }
+
+        [HttpPost]
         public ActionResult UpdateCandidateData(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
             string message = "Record was updates successfully";
@@ -213,21 +298,22 @@ namespace NationwideNannies.Controllers
             model.ResumeFilePath = filePathResume;
             model.ImageFilePath = filePathPhoto;
 
-            try
-            {
+           
                 Task.Run(() =>
                 {
-                    // save form in database
-                    NationWideDbContext dbContext = new NationWideDbContext();
-                    dbContext.UpdateJobForm(model);
+                    try
+                    {
+                        // save form in database
+                        NationWideDbContext dbContext = new NationWideDbContext();
+                        dbContext.UpdateJobForm(model);
+                    }
+                    catch (Exception ex)
+                    {
+                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                        message = "An error occured while saving the record";
+                    }
                 });
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-                message = "An error occured while saving the record";
-            }
-
+                      
             ViewBag.InfoMessage = message;
 
             return View("InfoMessage");
@@ -250,13 +336,22 @@ namespace NationwideNannies.Controllers
             {
                 model = new NannyJobEmployment();
             }
-            
+
             return View(model);
-        }        
+        }
 
         [HttpPost]
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
+            string validationMessage = string.Empty;
+            bool isFromValid = ValidateCandidatesForm(model, image, resume, out validationMessage);
+
+            if (!isFromValid)
+            {
+                ViewBag.ValidationMessage = validationMessage;
+                return View(model);
+            }
+
             // save files to disk
             string filePathResume = Utilities.SaveUploadedFile(model.FullName, resume, Constants.FolderUploadedResumes);
             string filePathPhoto = Utilities.SaveUploadedFile(model.FullName, image, Constants.FolderUploadedPhotos);
@@ -286,19 +381,20 @@ namespace NationwideNannies.Controllers
                 Log4NetLogger.ExceptionTrace(ex, "[HomeController] Jobs() send email");
             }
 
-            try
+            Task.Run(() =>
             {
-                Task.Run(() =>
+                try
                 {
                     // save form in database
                     NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.SaveJobForm(model);
-                });
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[HomeController] Jobs() database save");
-            }
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] Jobs() database save");
+                }
+            });
+
             return View("JobsThankyou");
         }
 
@@ -326,7 +422,7 @@ namespace NationwideNannies.Controllers
             var candidateData = searchResults[0];
 
             // get email content
-            string emailText = message;
+            string emailText = message.Replace("[para]", "<br /><br />").Replace("[newline]", "<br />").Replace("[CandidateName]", candidateData.FullName);
             string emailSubject = "Nantionwide Nannies";
             string toEmail = ConfigurationManager.AppSettings["EmployeeEmails"];
 
@@ -347,5 +443,284 @@ namespace NationwideNannies.Controllers
 
             return Json(new { success = true, responseText = "Your message successfuly sent!" }, JsonRequestBehavior.AllowGet);
         }
+
+
+        #region Validation
+        public bool ValidateCandidatesForm(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume, out string message)
+        {
+            bool result = true;
+            message = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(model.FullName))
+            {
+                result = false;
+                message += "<li> Name  </li>";
+            }
+            if (model.DOB == null)
+            {
+                result = false;
+                message += "<li> Date of Birth </li>";
+            }
+            if (string.IsNullOrWhiteSpace(model.Address))
+            {
+                result = false;
+                message += "<li>  Address  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.City))
+            {
+                result = false;
+                message += "<li>  City  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.PostalCode))
+            {
+                result = false;
+                message += "<li>  Postal Code  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Phone))
+            {
+                result = false;
+                message += "<li>  Preferred contact number  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Email))
+            {
+                result = false;
+                message += "<li>  Email  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.IsSmoker))
+            {
+                result = false;
+                message += "<li>  Are you a smoker?  </li>";
+            }
+
+            if (model.HaveDBS.Equals("Yes", StringComparison.InvariantCultureIgnoreCase) && model.DBSDate == null)
+            {
+                result = false;
+                message += "<li>  Date of last DBS obtained?  </li>";
+            }
+
+            if (model.StartDate == null)
+            {
+                result = false;
+                message += "<li>  Prefered Start Date  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Nationality))
+            {
+                result = false;
+                message += "<li>  Nationality  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.StayInUKDuration))
+            {
+                result = false;
+                message += "<li>  How long have you been in the UK?  </li>";
+            }
+
+            if (model.DaysSickLastYear == null)
+            {
+                result = false;
+                message += "<li>  Days off sick in the last 12 months  </li>";
+            }
+
+            if (model.ExpectedSalary == null)
+            {
+                result = false;
+                message += "<li>  Salary/week (net) </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Comments))
+            {
+                result = false;
+                message += "<li>  Cover letter  </li>";
+            }
+
+            if (!model.AcceptTermConditions)
+            {
+                result = false;
+                message += "<li>  Accept terms and conditions  </li>";
+            }
+
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                message = "Please provide following <ul>" + message + "</ul>";
+            }
+
+            if (image == null)
+            {
+                result = false;
+                message += "<li> Photo  </li>";
+            }
+
+
+            if (resume == null)
+            {
+                result = false;
+                message += "<li> Resume  </li>";
+            }
+
+            return result;
+        }
+
+        public bool ValidateClientsForm(ParentRequest model, out string message)
+        {
+            bool result = true;
+            message = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(model.FullName))
+            {
+                result = false;
+                message += "<li> Name  </li>";
+            }
+            if (string.IsNullOrWhiteSpace(model.Address))
+            {
+                result = false;
+                message += "<li>  Address  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.City))
+            {
+                result = false;
+                message += "<li>  City  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.PostalCode))
+            {
+                result = false;
+                message += "<li>  Postal Code  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Phone))
+            {
+                result = false;
+                message += "<li>  Preferred contact number  </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.Email))
+            {
+                result = false;
+                message += "<li>  Email  </li>";
+            }
+
+            if (model.StartDate == null)
+            {
+                result = false;
+                message += "<li>  Prefered Start Date  </li>";
+            }
+
+
+            if (string.IsNullOrWhiteSpace(model.DaysOfWeekRequied))
+            {
+                result = false;
+                message += "<li>  Days of the week required   </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.ChildrenDetails))
+            {
+                result = false;
+                message += "<li>  Number of children caring for   </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.ParentNantinalities))
+            {
+                result = false;
+                message += "<li> Nationalities of Father and Mother </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.ParentOccupations))
+            {
+                result = false;
+                message += "<li> Occupations of Father and Mother   </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.ParentReligions))
+            {
+                result = false;
+                message += "<li> Religion of Father and Mother </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.ParentLanguages))
+            {
+                result = false;
+                message += "<li> What language(s) does your family speak? </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.MaritialStatus))
+            {
+                result = false;
+                message += "<li> Maritial status </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.HavePets))
+            {
+                result = false;
+                message += "<li> Do you have any pets </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.IsNannyRequiredToTravel))
+            {
+                result = false;
+                message += "<li> Is Nanny required to accompany the family on trips abroad or within the UK?</li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.IsCarProvided))
+            {
+                result = false;
+                message += "<li> Is a car provided? </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.NannyDriveLicensePreference))
+            {
+                result = false;
+                message += "<li> Should the nanny have a driving licence? </li>";
+            }
+
+            if ("Live in".Equals(model.LiveInOut, StringComparison.InvariantCultureIgnoreCase) && string.IsNullOrWhiteSpace(model.IsLiveInEveningBabbySitting))
+            {
+                result = false;
+                message += "<li> If live in, will you require babysitting in the evening </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.IsNannySoleCarer))
+            {
+                result = false;
+                message += "<li> Will the nanny be the sole carer when parents are at work? </li>";
+            }
+
+            if (string.IsNullOrWhiteSpace(model.NannyDriveLicensePreference))
+            {
+                result = false;
+                message += "<li> Should the nanny have a driving licence?  </li>";
+            }
+
+            if (model.SalaryPerWeek == null)
+            {
+                result = false;
+                message += "<li>  Salary/week (net) </li>";
+            }
+
+            if (!model.AcceptTermConditions)
+            {
+                result = false;
+                message += "<li>  Accept terms and conditions  </li>";
+            }
+
+
+
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                message = "Please provide following <ul>" + message + "</ul>";
+            }
+
+
+
+
+            return result;
+        }
+        #endregion
     }
 }

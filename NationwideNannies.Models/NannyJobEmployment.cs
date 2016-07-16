@@ -31,6 +31,7 @@ namespace NationwideNannies.Models
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public DateTime? DBSDate { get; set; }
+        public string HaveDBS { get; set; } // new
         public string Nationality { get; set; }
         public string StayInUKDuration { get; set; }
         public string MaritalStatus { get; set; }
@@ -46,6 +47,8 @@ namespace NationwideNannies.Models
         public string DaysSickLastYearDetails { get; set; }
         public int? ExpectedSalary { get; set; }
         public string EligibleToWork { get; set; }
+        public string IsSmoker { get; set; } // new
+        public DateTime? DOB { get; set; } // new
         public int? Radius { get; set; }
         public string EmploymentType { get; set; }
         public string ChildAgeGroup { get; set; }
@@ -56,11 +59,21 @@ namespace NationwideNannies.Models
         public bool AcceptTermConditions { get; set; }
 
 
+
+        public string HaveChildcareQualification     { get; set; }
+        public string ChildcareQualificationDetails { get; set; }
+        public string HaveDrivingLicense { get; set; }
+        public string AdditionalLanguages { get; set; }
+
+
         public string GetEmailText()
         {
             StringBuilder builder = new StringBuilder();
 
+          
+
             builder.AppendFormat("Full Name: {0} <br/>", this.FullName);
+            builder.AppendFormat("Date of birth: {0} <br/>", this.DOB);
             builder.AppendFormat("Address: {0} <br/>", this.Address);
             builder.AppendFormat("City: {0} <br/>", this.City);
             builder.AppendFormat("Post code: {0} <br/>", this.PostalCode);
@@ -69,6 +82,7 @@ namespace NationwideNannies.Models
             builder.AppendFormat("Preferred Time for a Call: {0} <br/>", this.PreferedTimeForCall);
             builder.AppendFormat("Email: {0} <br/>", this.Email);
             builder.AppendFormat("Job Radius (in km): {0} <br/>", this.Radius);
+            builder.AppendFormat("Are you a smoker?: {0} <br/>", this.IsSmoker);
             builder.AppendFormat("Right to live &amp; work in UK: {0} <br/>", this.EligibleToWork);
             builder.AppendFormat("Preferred position: {0} <br/>", this.PreferedPosition);
             builder.AppendFormat("Position Type: {0} <br/>", this.JobType);
@@ -76,7 +90,14 @@ namespace NationwideNannies.Models
             builder.AppendFormat("Hours seeking: {0} <br/>", this.EmploymentType);
             builder.AppendFormat("Prefered Start Date: {0} <br/>", this.StartDate);
             builder.AppendFormat("Prefered End Date: {0} <br/>", this.EndDate);
+            builder.AppendFormat("Do you have an in date DBS?: {0} <br/>", this.HaveDBS);
             builder.AppendFormat("Date of last DBS obtained: {0} <br/>", this.DBSDate);
+
+            builder.AppendFormat("Do you have a childcare qualification? {0} <br/>", this.HaveChildcareQualification);
+            builder.AppendFormat("Details of qualification obtained {0} <br/>", this.ChildcareQualificationDetails);
+            builder.AppendFormat("Do you have a valid UK driving license  {0} <br/>", this.HaveDrivingLicense);
+            builder.AppendFormat("Do you speak any other language (other than English)?   {0} <br/>", this.AdditionalLanguages);
+
             builder.AppendFormat("Marital Status: {0} <br/>", this.MaritalStatus);
             builder.AppendFormat("Do you have children?: {0} <br/>", this.HaveChildren);
             builder.AppendFormat("Children Age: {0} <br/>", this.ChildrenDetails);

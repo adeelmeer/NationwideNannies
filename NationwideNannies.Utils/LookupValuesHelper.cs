@@ -29,7 +29,7 @@ namespace NationwideNannies.Utils
 
         public static SelectList GetMaritalStatus()
         {
-            List<string> types = new List<string>() { "Single", "Married", "Separated" };
+            List<string> types = new List<string>() { "Single", "Married", "Separated", "Widowed", "Divorced", "Co-Habitating" };
             SelectList selectList = new SelectList(types);
             return selectList;
         }
@@ -103,6 +103,17 @@ namespace NationwideNannies.Utils
             return selectList;
         }
 
+        public static SelectList GetLanguageSkill(bool addEmpty = false)
+        {
+            List<string> types = new List<string>() { "Basic", "Intermediate", "Fluent" };
+            if (addEmpty)
+            {
+                types.Insert(0, "");
+            }
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
         public static SelectList GetChildAgeGroup(bool addEmpty = false)
         {
             List<string> types = new List<string>() { "Newborn", "Toddler", "Pre-Schooler", "School-Aged", "Multiple Ages"};
@@ -110,6 +121,13 @@ namespace NationwideNannies.Utils
             {
                 types.Insert(0, string.Empty);
             }
+            SelectList selectList = new SelectList(types);
+            return selectList;
+        }
+
+        public static SelectList GetLiveInNannyFacilities()
+        {
+            List<string> types = new List<string>() { "Separate bedroom", "Bath room", "TV in room", "Separate accommodation" };
             SelectList selectList = new SelectList(types);
             return selectList;
         }

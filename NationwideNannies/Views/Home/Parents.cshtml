@@ -2,17 +2,26 @@
 @using NationwideNannies.Utils
 
 @{
-    ViewBag.Title = "Parents";
+    bool isUpdate = false;
+    ViewBag.Title = "Looking for a Babysitter? Register Here - Nationwide Nannies";
+    ViewBag.MetaKeywords = "";
+    ViewBag.MetaDescription = "";
+
 
     string formAction = "/Home/Parents";
 
     if (Model.Id > 0)
     {
         formAction = "/Home/UpdateClientData";
+        isUpdate = true;
     }
+
+ List<string> liveInNannyFacilities = new List<string>() { "Separate bedroom", "Bath room", "TV in room", "Separate accommodation" };
 }
 
-<div class="candidates-bg" style="background: url(../images/DSC_0610.jpg);background-size: cover;">
+
+
+<div class="candidates-bg" style="background: url(../images/DSC_0610.jpg); background-size: cover;">
     <div class="image-blur-div">
 
         <div class="content">
@@ -20,110 +29,301 @@
                 <div class="container">
                     <h2>Client Registration Form</h2>
 
-                    <div class="about-info" style="margin-bottom:0px;">
+                    <div class="about-info" style="margin-bottom: 0px;">
 
                         <p>Nationwide Nannies is pleased to assist you in your search for the desired candidate that best fits your current needs/requirements. The speediest way is to fill out the form with as much detail as possible, so we can embark on the task of finding you a suitable nanny. Once completed, the form will be sent to us immediately. A member of our dedicated team will give you a follow up call shortly thereafter to talk through your requirements and any additional information.</p>
 
-                        <p>Please note the below form is for <span style="font-weight:bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration:underline;">click here</a></p>
+                        <p>Please note the below form is for <span style="font-weight: bold;">parents only.</span> If you are seeking employment <a href="/home/jobs" style="text-decoration: underline;">click here</a></p>
                     </div>
 
                     <div class="contact-form">
 
-                        <form method="post" action="@formAction">
+                        <form method="post" action="@formAction" id="ClientForm">
+
+                            <div style="font-weight: bold; color: red;">
+                                @Html.Raw(ViewBag.ValidationMessage)
+                            </div>
 
                             @Html.HiddenFor(m => m.Id)
 
                             <div class="col-md-6">
-                                <label>Full Name</label> @Html.TextBoxFor(m => m.FullName, new { required = "required" })
+                                <label>Full Name</label>
+                                @Html.TextBoxFor(m => m.FullName, new { required = "required", maxlength="199" })
                             </div>
                             <div class="col-md-6">
-                                <label>Address</label> @Html.TextBoxFor(m => m.Address, new { required = "required" })
+                                <label>Address</label>
+                                @Html.TextBoxFor(m => m.Address, new { required = "required" , maxlength="199"})
                             </div>
                             <div class="col-md-6">
-                                <label>City</label> @Html.TextBoxFor(m => m.City, new { required = "required" })
+                                <label>City</label>
+                                @Html.TextBoxFor(m => m.City, new { required = "required", maxlength="199" })
                             </div>
                             <div class="col-md-6">
-                                <label>Post code</label> @Html.TextBoxFor(m => m.PostalCode, new { required = "required" })
+                                <label>Post code</label>
+                                @Html.TextBoxFor(m => m.PostalCode, new { required = "required", maxlength="99" })
                             </div>
                             <div class="col-md-6">
-                                <label>Preferred contact number</label> @Html.TextBoxFor(m => m.Phone, new { required = "required" })
+                                <label>Preferred contact number</label>
+                                @Html.TextBoxFor(m => m.Phone, new { required = "required", maxlength="99" })
                             </div>
                             <div class="col-md-6">
-                                <label>Alternate contact number</label> @Html.TextBoxFor(m => m.PhoneAlt)
+                                <label>Alternate contact number</label>
+                                @Html.TextBoxFor(m => m.PhoneAlt, new { maxlength="99" })
                             </div>
                             <div class="col-md-6">
-                                <label>Preferred Time for a Call</label> @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
+                                <label>Preferred Time for a Call</label>
+                                @Html.DropDownListFor(m => m.PreferedTimeForCall, LookupValuesHelper.GetTimeForCall())
                             </div>
                             <div class="col-md-6">
-                                <label>Email</label> @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required" })
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @type = "email", required = "required", maxlength="199" })
                             </div>
                             <div class="col-md-6">
-                                <label>Type of childcare you are looking for</label> @Html.DropDownListFor(m => m.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare())
+                                <label>Type of childcare you are looking for</label>
+                                @Html.DropDownListFor(m => m.TypeOfChildCare, LookupValuesHelper.GetTypeOfChildCare())
                             </div>
                             <div class="col-md-6">
-                                <label>Length of service</label> @Html.DropDownListFor(m => m.JobDurationType, LookupValuesHelper.GetJobDurationType(), new { required = "required" })
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Employment Type</label> @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
-                            </div>
-                            <div class="col-md-6">
-                                <label>Live in Status</label> @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType())
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Days of the week required </label> @Html.TextAreaFor(m => m.DaysOfWeekRequied, new { @class = "text-details", required = "required" })
-                            </div>
-                            <div class="col-md-6">
-                                <label>Number of children caring for (including names, date of birth & gender)</label> @Html.TextAreaFor(m => m.ChildrenDetails, new { @class = "text-details", required = "required" })
-                            </div>
-                            <div class="col-md-6">
-                                <label>Do they attend?</label> @Html.DropDownListFor(m => m.ChildSchoolType, LookupValuesHelper.GetSchoolType())
+                                <label>Length of service</label>
+                                @Html.DropDownListFor(m => m.JobDurationType, LookupValuesHelper.GetJobDurationType(), new { required = "required" })
                             </div>
 
                             <div class="col-md-6">
-                                <label>Prefered Start Date</label> @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
+                                <label>Employment Type</label>
+                                @Html.DropDownListFor(m => m.EmploymentType, LookupValuesHelper.GetEmploymentType())
                             </div>
                             <div class="col-md-6">
-                                <label>Preferred end of service date (for a temporary position)</label> @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field" })
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Childcare qualified nannies only</label> @Html.DropDownListFor(m => m.QualifiedNannies, LookupValuesHelper.GetYesNo())
-                            </div>
-                            <div class="col-md-6">
-                                <label>Do you require an Ofsted registered nanny?</label> @Html.DropDownListFor(m => m.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes())
+                                <label>Live in Status</label>
+                                @Html.DropDownListFor(m => m.LiveInOut, LookupValuesHelper.GetNannyType(true), new { required = "required" })
                             </div>
 
                             <div class="col-md-6">
-                                <label>Salary/week (net)</label> @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0", required = "required" })
+                                <label>Days and hours of work required </label>
+                                @Html.TextAreaFor(m => m.DaysOfWeekRequied, new { @class = "text-details", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Number of children caring for (including names, date of birth & gender)</label>
+                                @Html.TextAreaFor(m => m.ChildrenDetails, new { @class = "text-details", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Known illnesses and/or allergies</label>
+                                @Html.TextAreaFor(m => m.IllnessOrAlergies, new { @class = "text-details"  })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Special dietary needs </label>
+                                @Html.TextAreaFor(m => m.SpecialDietaryNeeds, new { @class = "text-details"  })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Children’s hobbies and interests  </label>
+                                @Html.TextAreaFor(m => m.ChildernHobbies, new { @class = "text-details"  })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Nationalities of Father and Mother  </label>
+                                @Html.TextAreaFor(m => m.ParentNantinalities, new { @class = "text-details", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Occupations of Father and Mother   </label>
+                                @Html.TextAreaFor(m => m.ParentOccupations, new { @class = "text-details", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Religion of Father and Mother   </label>
+                                @Html.TextAreaFor(m => m.ParentReligions, new { @class = "text-details", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Maritial status </label>
+                                @Html.DropDownListFor(m => m.MaritialStatus, LookupValuesHelper.GetMaritalStatus(), new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>What language(s) does your family speak?   </label>
+                                @Html.TextAreaFor(m => m.ParentLanguages, new { @class = "text-details", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Additional people in household - please specify:     </label>
+                                @Html.TextAreaFor(m => m.AdditionalPeopleInHouse, new { @class = "text-details" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>What are your family hobbies and interests?      </label>
+                                @Html.TextAreaFor(m => m.FamilyHobbies, new { @class = "text-details" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Do you have pets?</label>
+                                @Html.DropDownListFor(m => m.HavePets, LookupValuesHelper.GetYesNo(true), new {  required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Pet Details:      </label>
+                                @Html.TextAreaFor(m => m.PetDetails, new { @class = "text-details" })
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <label>Do they attend?</label>
+                                @Html.DropDownListFor(m => m.ChildSchoolType, LookupValuesHelper.GetSchoolType())
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Prefered Start Date</label>
+                                @Html.TextBoxFor(m => m.StartDate, new { @class = "date-field", required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Preferred end of service date (for a temporary position)</label>
+                                @Html.TextBoxFor(m => m.EndDate, new { @class = "date-field" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Childcare qualified nannies only</label>
+                                @Html.DropDownListFor(m => m.QualifiedNannies, LookupValuesHelper.GetYesNo())
+                            </div>
+                            <div class="col-md-6">
+                                <label>Do you require an Ofsted registered nanny?</label>
+                                @Html.DropDownListFor(m => m.OfstedRequirement, LookupValuesHelper.GetPreferenceTypes())
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Is Nanny required to accompany the family on trips abroad or within the UK?       </label>
+                                @Html.DropDownListFor(m => m.IsNannyRequiredToTravel, LookupValuesHelper.GetYesNo(true), new { required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Number of trips per  year</label>
+                                @Html.TextBoxFor(m => m.TripsPerYear, new { @type = "number", @min = "0"})
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Approximate length of a trip (days):   </label>
+                                @Html.TextBoxFor(m => m.LengthOfTrip, new { @type = "number", @min = "0"})
+                            </div>
+                            <div class="col-md-6">
+                                <label>Is a car provided?</label>
+                                @Html.DropDownListFor(m => m.IsCarProvided, LookupValuesHelper.GetYesNo(true), new {  required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>If yes, will the nanny have use of the car</label>
+                                @Html.DropDownListFor(m => m.CanNannyUseCar, LookupValuesHelper.GetYesNo(true))
+                            </div>
+                            <div class="col-md-6">
+                                <label>Should the nanny have a driving licence? </label>
+                                @Html.DropDownListFor(m => m.NannyDriveLicensePreference, LookupValuesHelper.GetPreferenceTypes(true), new {  required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Should the nanny speak any other language (other than English)?  </label>
+                                @Html.TextBoxFor(m => m.NannyAdditionalLanguage, new{ maxlength="499"})
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>If yes, what level?     </label>
+                                @Html.DropDownListFor(m => m.AdditionalLanguageLevel, LookupValuesHelper.GetLanguageSkill(true))
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Do you employ other domestic staff? </label>
+                                @Html.TextAreaFor(m => m.OtherDomesticStaff, new { @class = "text-details"  })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Should the nanny be a non-smoker?  </label>
+                                @Html.DropDownListFor(m => m.NannySmokingPreference, LookupValuesHelper.GetPreferenceTypes(true), new {  required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Do you have a minimum relevant experience criteria?  </label>
+                                @Html.TextAreaFor(m => m.MinRelevantCriteria, new { @class = "text-details"  })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>If live in, will the nanny have: </label><br />
+                               
+                                    @foreach (var item in liveInNannyFacilities) {
+                                       string isCheckedAttr = string.Empty;
+                                        if(Model.ListOfFacilitiesForLiveinNannies.Contains(item)){
+                                            isCheckedAttr = "checked='checked'";
+                                        }
+
+                                        <input type="checkbox" id="ListOfFacilitiesForLiveinNannies" name="ListOfFacilitiesForLiveinNannies" value="@item" @isCheckedAttr> <label> @item</label><br />
+                                    }
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>If live in, will you require babysitting in the evening:  </label>
+                                @Html.DropDownListFor(m => m.IsLiveInEveningBabbySitting, LookupValuesHelper.GetYesNo(true))
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>How many evenings per week?   </label>
+                                @Html.TextBoxFor(m => m.EveningBabaySittingPerWeek, new { @type = "number", @min = "0", @max="3" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Will the nanny be the sole carer when parents are at work?     </label>
+                                @Html.DropDownListFor(m => m.IsNannySoleCarer, LookupValuesHelper.GetYesNo(true), new {  required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>If yes, please specify the times parents are away for:  </label>
+                                @Html.TextAreaFor(m => m.TimesParentsAway, new { @class = "text-details" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Please specify responsibilities of the nanny?                            </label>
+                                @Html.TextAreaFor(m => m.NannyResponsibilities, new { @class = "text-details"})
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Please specify any additional responsibilities of a live in nanny?    </label>
+                                @Html.TextAreaFor(m => m.AdditionalNannyResponsibilities, new { @class = "text-details" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Holiday entitlement in addition to the statutory holiday?  </label>
+                                @Html.TextAreaFor(m => m.HolidayEntitlement, new { @class = "text-details" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Salary/week (net)</label>
+                                @Html.TextBoxFor(m => m.SalaryPerWeek, new { @type = "number", @min = "0", required = "required" })
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Addition benefits (as part of the package)?                                         </label>
+                                @Html.TextAreaFor(m => m.AdditioanlBenefits, new { @class = "text-details" })
+                            </div>
+
+                            
+
+                            <div class="col-md-12">
+                                <label>Additional information about your family or staff requirements </label>
+                                @Html.TextAreaFor(m => m.Comments)
+                            </div>
+
+                            <div class="col-md-6">
+                                <label>Where did you hear about Nationwide Nannies</label>
+                                @Html.DropDownListFor(m => m.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions(), new { required = "required" })
+                            </div>
+                            <div class="col-md-6">
+                                <label>Have you used any of our services before</label>
+                                @Html.DropDownListFor(m => m.HaveUsedOurServices, LookupValuesHelper.GetYesNo())
                             </div>
 
                             <div class="col-md-12">
-                                <label>Additional information about your family or staff requirements </label> @Html.TextAreaFor(m => m.Comments)
-                            </div>
-
-                            <div class="col-md-6">
-                                <label>Where did you hear about Nationwide Nannies</label> @Html.DropDownListFor(m => m.HowDidYouHearAboutUs, LookupValuesHelper.GetHearAboutUsOptions(), new { required = "required" })
-                            </div>
-                            <div class="col-md-6">
-                                <label>Have you used any of our services before</label> @Html.DropDownListFor(m => m.HaveUsedOurServices, LookupValuesHelper.GetYesNo())
+                                <label>Please specify how and when you used our services</label>
+                                @Html.TextAreaFor(m => m.UsedOurServicesDetails, new { @class = "text-details" })
                             </div>
 
                             <div class="col-md-12">
-                                <label>Please specify how and when you used our services</label> @Html.TextAreaFor(m => m.UsedOurServicesDetails, new { @class = "text-details" })
+                                @Html.CheckBoxFor(m => m.ReceiveMarketingEmails)
+                                <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
                             </div>
 
                             <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.ReceiveMarketingEmails) <label>I would like to receive occasional emails from Nationwide Nannies Ltd and partners regarding offers and services </label>
-                            </div>
-
-                            <div class="col-md-12">
-                                @Html.CheckBoxFor(m => m.AcceptTermConditions, new { required = "required" }) <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
+                                @Html.CheckBoxFor(m => m.AcceptTermConditions, new { required = "required" })
+                                <label>I hereby confirm that the above information, to the best of my knowledge, is accurate and I have read, understood and agree to the terms and conditions set out by Nationwide Nannies Ltd . </label>
                             </div>
 
                             <div class="col-md-12">
                                 <input type="submit" value="Submit">
+                                @if(isUpdate){
+                                    <input type="button" value="Delete" onclick="DeleteRecord(@Model.Id);" />
+                                }
                             </div>
                         </form>
 
@@ -140,13 +340,22 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-
         window.NationwideFormsFunctions.initialize();
 
+       
     });
+
+    function DeleteRecord(recordId) {
+        var r = confirm("This record will be deleted permanatly. Are you sure you wish to delete this record?");
+        if (r == true) {
+            x = "You pressed OK!";
+        } else {
+            return;
+        }
+
+        var formAction = "/Home/DeleteClientData";
+        var form = $("#ClientForm");
+        form.attr("action", formAction);
+        form.submit();
+    }
 </script>
-
-
-
-
-
