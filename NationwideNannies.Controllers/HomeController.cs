@@ -147,23 +147,23 @@ namespace NationwideNannies.Controllers
             {
                 Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() send email");
             }
-            
-                Task.Run(() =>
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    try
-                    {
                         // save form in database
                         NationWideDbContext dbContext = new NationWideDbContext();
-                        dbContext.SaveParentForm(model);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-                    }
-                });
+                    dbContext.SaveParentForm(model);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                }
+            });
 
-            
-            
+
+
             return View("ParentThankyou");
         }
 
@@ -172,22 +172,22 @@ namespace NationwideNannies.Controllers
         {
             string message = "Record was deleted successfully";
 
-           
-                Task.Run(() =>
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    try
-                    {
                         // save form in database
                         NationWideDbContext dbContext = new NationWideDbContext();
-                        dbContext.DeleteParentForm(model);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteClientData() database save");
-                        message = "An error occured while saving the record";
-                    }
-                });
-                       
+                    dbContext.DeleteParentForm(model);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteClientData() database save");
+                    message = "An error occured while saving the record";
+                }
+            });
+
             ViewBag.InfoMessage = message;
 
             return View("InfoMessage");
@@ -198,21 +198,21 @@ namespace NationwideNannies.Controllers
         {
             string message = "Record was updates successfully";
             model.HandleMultiSelectFromView();
-           
-                Task.Run(() =>
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    try
-                    {
                         // save form in database
                         NationWideDbContext dbContext = new NationWideDbContext();
-                        dbContext.UpdateParentForm(model);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-                        message = "An error occured while saving the record";
-                    }
-                });                    
+                    dbContext.UpdateParentForm(model);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                    message = "An error occured while saving the record";
+                }
+            });
 
             ViewBag.InfoMessage = message;
 
@@ -264,22 +264,22 @@ namespace NationwideNannies.Controllers
         {
             string message = "Record was deleted successfully";
 
-           
-                Task.Run(() =>
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    try
-                    {
                         // save form in database
                         NationWideDbContext dbContext = new NationWideDbContext();
-                        dbContext.DeleteJobForm(model);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteCandidateData() database save");
-                        message = "An error occured while saving the record";
-                    }
-                });
-                      
+                    dbContext.DeleteJobForm(model);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] DeleteCandidateData() database save");
+                    message = "An error occured while saving the record";
+                }
+            });
+
             ViewBag.InfoMessage = message;
 
             return View("InfoMessage");
@@ -298,22 +298,22 @@ namespace NationwideNannies.Controllers
             model.ResumeFilePath = filePathResume;
             model.ImageFilePath = filePathPhoto;
 
-           
-                Task.Run(() =>
+
+            Task.Run(() =>
+            {
+                try
                 {
-                    try
-                    {
                         // save form in database
                         NationWideDbContext dbContext = new NationWideDbContext();
-                        dbContext.UpdateJobForm(model);
-                    }
-                    catch (Exception ex)
-                    {
-                        Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
-                        message = "An error occured while saving the record";
-                    }
-                });
-                      
+                    dbContext.UpdateJobForm(model);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[HomeController] Parents() database save");
+                    message = "An error occured while saving the record";
+                }
+            });
+
             ViewBag.InfoMessage = message;
 
             return View("InfoMessage");
@@ -325,7 +325,15 @@ namespace NationwideNannies.Controllers
             if (candidateId.HasValue)
             {
                 NationWideDbContext dbContext = new NationWideDbContext();
-                var results = dbContext.CandidateSearch(new NannyJobEmployment() { Id = candidateId.Value });
+                var searchCriteria = new NannyJobEmployment()
+                {
+                    Id = candidateId.Value,
+                    HaveCriminalConvictions = string.Empty,
+                    HaveMedicalConditions = string.Empty,
+                    IsOfstedRegistered = string.Empty
+                };
+
+                var results = dbContext.CandidateSearch(searchCriteria);
                 if (results.Count == 1)
                 {
                     model = results[0];
