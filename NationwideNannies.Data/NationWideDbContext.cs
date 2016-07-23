@@ -63,7 +63,8 @@ namespace NationwideNannies.Data
         public void SaveParentForm(ParentRequest data)
         {
             if (data != null)
-            {                
+            {
+                data.IsActive = true;    
                 this.ParentRequest.Add(data);
                 this.SaveChanges();
             }
@@ -72,7 +73,8 @@ namespace NationwideNannies.Data
         public void UpdateParentForm(ParentRequest data)
         {
             if (data != null)
-            {                
+            {
+                data.IsActive = true;       
                 this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
@@ -82,7 +84,8 @@ namespace NationwideNannies.Data
         {
             if (data != null)
             {
-                this.Entry(data).State = EntityState.Deleted;
+                data.IsActive = false;
+                this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
         }
@@ -95,6 +98,8 @@ namespace NationwideNannies.Data
             try
             {
                 infoData = this.ParentRequest;
+
+                infoData = infoData.Where(i=>i.IsActive);
 
                 if (!string.IsNullOrWhiteSpace(criteria.FullName))
                 {

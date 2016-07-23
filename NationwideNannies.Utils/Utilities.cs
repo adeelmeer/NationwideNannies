@@ -126,7 +126,13 @@ namespace NationwideNannies.Utils
                             foreach (var path in attachmentFilePaths)
                             {
                                 if (!string.IsNullOrWhiteSpace(path))
-                                    message.Attachments.Add(new Attachment(path));
+                                    try
+                                    {
+                                        message.Attachments.Add(new Attachment(path));
+                                    }catch(Exception ex)
+                                    {
+                                        Log4NetLogger.ExceptionTrace(ex, "[Utilities]SendEmail()");
+                                    }
                             }
                         }
 

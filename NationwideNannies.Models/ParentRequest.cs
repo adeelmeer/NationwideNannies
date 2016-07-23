@@ -80,6 +80,7 @@ namespace NationwideNannies.Models
         public string AdditionalNannyResponsibilities { get; set; }
         public string AdditioanlBenefits { get; set; }
         public string HolidayEntitlement { get; set; }
+        public bool IsActive { get; set; }
 
 
         public void HandleMultiSelectFromView()
