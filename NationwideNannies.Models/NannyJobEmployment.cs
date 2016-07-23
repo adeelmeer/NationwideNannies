@@ -64,6 +64,7 @@ namespace NationwideNannies.Models
         public string ChildcareQualificationDetails { get; set; }
         public string HaveDrivingLicense { get; set; }
         public string AdditionalLanguages { get; set; }
+        public bool IsActive { get; set; }
 
 
         public string GetEmailText()

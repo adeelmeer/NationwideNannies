@@ -33,7 +33,8 @@ namespace NationwideNannies.Data
         public void SaveJobForm(NannyJobEmployment jobData)
         {
             if (jobData != null)
-            {               
+            {
+                jobData.IsActive = true;
                 this.NannyJobEmployment.Add(jobData);
                 this.SaveChanges();
             }
@@ -42,7 +43,8 @@ namespace NationwideNannies.Data
         public void UpdateJobForm(NannyJobEmployment data)
         {
             if (data != null)
-            {                             
+            {
+                data.IsActive = true;                  
                 this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
@@ -52,7 +54,8 @@ namespace NationwideNannies.Data
         {
             if (data != null)
             {
-                this.Entry(data).State = EntityState.Deleted;
+                data.IsActive = false;
+                this.Entry(data).State = EntityState.Modified;
                 this.SaveChanges();
             }
         }
@@ -207,6 +210,8 @@ namespace NationwideNannies.Data
             try
             {
                 infoData = this.NannyJobEmployment;
+
+                infoData = infoData.Where(i=>i.IsActive);
 
                 if (!string.IsNullOrWhiteSpace(criteria.FullName))
                 {
