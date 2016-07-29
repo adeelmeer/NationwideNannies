@@ -1,82 +1,221 @@
 ﻿@{
-    ViewBag.Title = "Home";
-    ViewBag.MetaKeywords = "";
+    ViewBag.Title = "Nationwide Nannies - Nanny Agency & Babysitting Agency";
+    ViewBag.MetaKeywords = "Nationwide Nannies are London’s leading specialists in providing high quality trained nannies and babysitters. Visit our site today. We are available 24/7";
     ViewBag.MetaDescription = "";
 
 }
 
-<link href="~/Content/owl.carousel.css" rel="stylesheet">
-
-<script src="~/Scripts/responsiveslides.min.js"></script>
-<script src="~/Scripts/owl.carousel.js"></script>
+<div id="fb-root"></div>
 <script>
-    $(function () {
-        $("#slider").responsiveSlides({
-            auto: true,
-            nav: false,
-            speed: 500,
-            namespace: "callbacks",
-            pager: true
-        });
-    });
-</script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<link href="~/Content/slidy.css" rel="stylesheet">
 
 
-<script>
-    $(document).ready(function () {
-        $("#owl-demo").owlCarousel({
-            items: 1,
-            lazyLoad: true,
-            autoPlay: true,
-            navigation: false,
-            navigationText: false,
-            pagination: true
-        });
-    });
-</script>
 
-<!---banner--->
-<div class="slider">
-    <div class="callbacks_container">
-        <ul class="rslides" id="slider">
-            <div class="slid banner1">
-                <div class="caption">
-                    <h3>UK’s leading childcare experts</h3>
-                    <p>
-                        “After years of childcare experience, we know the qualities that make the perfect nanny.  We believe that each child and family is unique, so we take the time to find the best possible match for you.”
-                    </p>
 
-                    <a href="/clients/EmployThroughUs" class="button">know more</a>
-                </div>
+<style type="text/css">
+    #container
+    {
+        max-width: 1175px;
+        margin: auto;
+    }
+
+
+    .hidden
+    {
+        display: none;
+        visibility: hidden;
+    }
+
+    .visuallyhidden
+    {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+        .visuallyhidden.focusable:active,
+        .visuallyhidden.focusable:focus
+        {
+            clip: auto;
+            height: auto;
+            margin: 0;
+            overflow: visible;
+            position: static;
+            width: auto;
+        }
+
+    .invisible
+    {
+        visibility: hidden;
+    }
+
+    .clearfix:before, .clearfix:after
+    {
+        content: "";
+        display: table;
+    }
+
+    .clearfix:after
+    {
+        clear: both;
+    }
+
+    .clearfix
+    {
+        zoom: 1;
+    }
+
+ .rotator-images{
+     max-width:900px;
+     display:inline-block;
+    
+ }
+
+ .social-media-posts{
+     /*width:180px;*/
+      display:inline-block;      
+ }
+
+ .fb_iframe_widget{
+     display:block;
+     margin-bottom:10px;
+ }
+
+ .slidyContainer{
+     margin:0;
+ }
+
+</style>
+
+<div id="container">
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    @*<div class="addthis_sharing_toolbox"></div>*@
+
+
+    <div id="main" role="main" class="rotator-images">
+
+        <div id="slidyBanner" class="slidyContainer" title="">
+            <div class="slidySlides">
+
+                <!-- Each slide is wrapped in figure section -->
+
+                <!-- Slide 1 -->
+                <!-- add the 'slidyCurrent' class to which slide you want as default -->
+                <figure class="slidyCurrent">
+                    <!-- Your context goes here -->
+
+                    <div class="slide-caption">
+
+                        <p>
+                            <span class="slide-header">UK's leading childcare agency</span>
+                            <br />
+                            After years of childcare experience, we know the qualities that make the perfect nanny. We believe that each child and family is unique, so we take the time to find the best possible match for you.   
+                        </p>
+
+                        <a href="/clients/EmployThroughUs" class="know-more">KNOW MORE</a>
+                    </div>
+
+                    <img alt="Uyuni, Bolivia" src="/images/bnr1.jpg">
+                    <!-- Use the figcaption element to add captions -->
+
+
+
+                </figure>
+
+                <!-- Slide 2 -->
+                <figure>
+
+                    <div class="slide-caption">
+                        <p>
+                            <span class="slide-header">Get your perfect fit</span>
+                            <br />
+                            Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.                             
+                        </p>
+
+                        <a href="/services/Nannies" class="know-more">KNOW MORE</a>
+
+                    </div>
+                    <img alt="Shanghai, China" src="/images/bnr2.jpg">
+                </figure>
+
+                <!-- Slide 3 -->
+                <figure>
+
+                    <div class="slide-caption">
+
+                        <p>
+                            <span class="slide-header">Stress free recruitment</span>
+                            <br />
+                            We strive to make what can be a difficult process into a smooth transition, helping you every step of the way, from offer letters to devising contracts and payroll.
+                        </p>
+                        <a href="/clients/StartYourNannySearch" class="know-more">KNOW MORE</a>
+                    </div>
+                    <img alt="Shanghai, China" src="/images/bnr3.jpg">
+                </figure>
+
+                <!-- Slide 4 -->
+                <figure>
+
+                    <div class="slide-caption">
+
+                        <p>
+                            <span class="slide-header">Dependable</span>
+                            <br />
+                            Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax.                           
+                        </p>
+                        <a href="/services/BabySitters" class="know-more">KNOW MORE</a>
+                    </div>
+                    <img alt="Shanghai, China" src="/images/bnr4.jpg">
+                </figure>
+
+
+
+
+
             </div>
-            <div class="slid banner2">
-                <div class="caption">
-                    <h3>Get your perfect fit</h3>
-                    <p>
-                        “Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.”
-                    </p>
-                    <a href="/services/Nannies" class="button">know more</a>
-                </div>
-            </div>
-            <div class="slid banner3">
-                <div class="caption">
-                    <h3>Hassle free recruitment</h3>
-                    <p>
-                        “We strive to make what can be a difficult process into a smooth and stress-free transition, helping you every step of the way, from offer letters to devising contracts and payroll.”
-                    </p>                    
-                    <a href="/clients/StartYourNannySearch" class="button">know more</a>
-                </div>
-            </div>
-            <div class="slid banner4">
-                <div class="caption">
-                    <h3>Dependable</h3>
-                    <p>
-                        “Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax”
-                    </p>                    
-                    <a href="/services/BabySitters" class="button">know more</a>
-                </div>
-            </div>
-        </ul>
+        </div>
+
     </div>
+    <div class="social-media-posts">
+        <div class="fb-page" data-href="https://www.facebook.com/NationwideNannies.org/" data-tabs="timeline" data-small-header="true"
+              data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true" data-height="285" data-width="225">
+        <blockquote cite="https://www.facebook.com/NationwideNannies.org/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/NationwideNannies.org/">Nationwide Nannies Ltd</a>
+        </blockquote></div>
+
+        <a class="twitter-timeline" data-width="225" data-height="285" data-link-color="#2B7BB9" href="https://twitter.com/InfoNannies">Tweets by InfoNannies</a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
+
+   
 </div>
-<!---banner--->
+
+<div style="clear:both;"></div>
+
+
+<script src="~/Scripts/slidy.js"></script>
+
+<script>
+    $('.slidyContainer').slidy({
+        useKeybord: true, // use keys defined below to expand / collapse sections
+        auto: true,       // Start slideshow automatically
+        interval: 5000,     // Time between each slide
+        initialInterval: 100  // Initial interval when page loads
+    });
+
+
+
+	</script>
