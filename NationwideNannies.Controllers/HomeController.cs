@@ -120,12 +120,12 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult Parents(ParentRequest model)
         {
-            string validationMessage = string.Empty;
-            bool isFromValid = ValidateClientsForm(model, out validationMessage);
+           
+            var vInfo = ValidateClientsForm(model);
 
-            if (!isFromValid)
+            if (!vInfo.IsValid)
             {
-                ViewBag.ValidationMessage = validationMessage;
+                ViewBag.ValidationMessage = vInfo.Message;
                 return View(model);
             }
 
@@ -152,8 +152,8 @@ namespace NationwideNannies.Controllers
             {
                 try
                 {
-                        // save form in database
-                        NationWideDbContext dbContext = new NationWideDbContext();
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.SaveParentForm(model);
                 }
                 catch (Exception ex)
@@ -177,8 +177,8 @@ namespace NationwideNannies.Controllers
             {
                 try
                 {
-                        // save form in database
-                        NationWideDbContext dbContext = new NationWideDbContext();
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.DeleteParentForm(model);
                 }
                 catch (Exception ex)
@@ -203,8 +203,8 @@ namespace NationwideNannies.Controllers
             {
                 try
                 {
-                        // save form in database
-                        NationWideDbContext dbContext = new NationWideDbContext();
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.UpdateParentForm(model);
                 }
                 catch (Exception ex)
@@ -269,8 +269,8 @@ namespace NationwideNannies.Controllers
             {
                 try
                 {
-                        // save form in database
-                        NationWideDbContext dbContext = new NationWideDbContext();
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.DeleteJobForm(model);
                 }
                 catch (Exception ex)
@@ -303,8 +303,8 @@ namespace NationwideNannies.Controllers
             {
                 try
                 {
-                        // save form in database
-                        NationWideDbContext dbContext = new NationWideDbContext();
+                    // save form in database
+                    NationWideDbContext dbContext = new NationWideDbContext();
                     dbContext.UpdateJobForm(model);
                 }
                 catch (Exception ex)
@@ -351,12 +351,11 @@ namespace NationwideNannies.Controllers
         [HttpPost]
         public ActionResult Jobs(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
-            string validationMessage = string.Empty;
-            bool isFromValid = ValidateCandidatesForm(model, image, resume, out validationMessage);
+            var vInfo = ValidateCandidatesForm(model, image, resume);
 
-            if (!isFromValid)
+            if (!vInfo.IsValid)
             {
-                ViewBag.ValidationMessage = validationMessage;
+                ViewBag.ValidationMessage = vInfo.Message;
                 return View(model);
             }
 
@@ -454,10 +453,16 @@ namespace NationwideNannies.Controllers
 
 
         #region Validation
-        public bool ValidateCandidatesForm(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume, out string message)
+
+        public class FormValidationInfo
+        {
+            public bool IsValid { get; set; }
+            public string Message { get; set; }
+        }
+        public FormValidationInfo ValidateCandidatesForm(NannyJobEmployment model, HttpPostedFileBase image, HttpPostedFileBase resume)
         {
             bool result = true;
-            message = string.Empty;
+            string message = string.Empty;
 
             if (string.IsNullOrWhiteSpace(model.FullName))
             {
@@ -571,13 +576,15 @@ namespace NationwideNannies.Controllers
                 message += "<li> Resume  </li>";
             }
 
-            return result;
+            FormValidationInfo vInfo = new FormValidationInfo() { IsValid = result, Message = message };
+
+            return vInfo;
         }
 
-        public bool ValidateClientsForm(ParentRequest model, out string message)
+        public FormValidationInfo ValidateClientsForm(ParentRequest model)
         {
             bool result = true;
-            message = string.Empty;
+           string message = string.Empty;
 
             if (string.IsNullOrWhiteSpace(model.FullName))
             {
@@ -725,9 +732,9 @@ namespace NationwideNannies.Controllers
             }
 
 
+            FormValidationInfo vInfo = new FormValidationInfo() { IsValid = result, Message = message };
 
-
-            return result;
+            return vInfo;
         }
         #endregion
     }

@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogController.cs" />
     <Compile Include="CandidatesController.cs" />
     <Compile Include="ClientsController.cs" />
     <Compile Include="HomeController.cs" />
