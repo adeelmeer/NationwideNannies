@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace NationwideNannies.Services
 {
@@ -44,10 +45,17 @@ namespace NationwideNannies.Services
                 return null;
             }
 
+            bool getPublishedOnly = true;
+            if (HttpContext.Current.Request.IsAuthenticated)
+            {
+                getPublishedOnly = false;
+            }
+
             try
             {
-                var param = new SqlParameter("@slug", slug);
-                var results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetBlogPostDetails @slug", param).ToList();
+                var results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetBlogPostDetails @slug, @getPublishedOnly",
+                    new SqlParameter("@slug", slug),
+                    new SqlParameter("@getPublishedOnly", getPublishedOnly)).ToList();
 
                 if(results != null)
                 {

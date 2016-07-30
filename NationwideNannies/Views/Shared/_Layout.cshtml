@@ -14,11 +14,13 @@
     string metaKeywords = "London Nanny Services,London Nannying Services,West London Nannying Service,Central London Nannying Service,UK Nanny service,London Nanny Agency,London Nanny Company,London’s leading Nannying Service,London Babysitting services,London babysitter Service,West London Babysitting Service,Central London Babysitting Service,UK Babysitting service,London’s leading Babysitting Service";
     string metaDescription = "Nationwide Nannies is London’s leading specialists in providing high quality trained nannies and babysitters. We are available 24/7 and will help you look for nannies, night nannies, maternity nannies and babysitters. We provide a stress and hassle free service, our friendly team will work with you throughout the recruitment process to ensure all your needs are met. UK’s leading Nanny Service - Love and Care - Open 7 days Call UsLondon’s leading Nanny Agency - We understand your childcare needs - Open 7 days Call Us";
 
-    if (!string.IsNullOrWhiteSpace(ViewBag.MetaKeywords)){
+    if (!string.IsNullOrWhiteSpace(ViewBag.MetaKeywords))
+    {
         metaKeywords = ViewBag.MetaKeywords;
     }
 
-    if (!string.IsNullOrWhiteSpace(ViewBag.MetaDescription)){
+    if (!string.IsNullOrWhiteSpace(ViewBag.MetaDescription))
+    {
         metaDescription = ViewBag.MetaDescription;
     }
 
@@ -33,7 +35,7 @@
     <link href="~/Content/jquery-ui.theme.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="~/Content/dataTables.jqueryui.min.css" rel="stylesheet" type="text/css" media="all">
-    
+
 
     <link href="~/Content/style.css" rel="stylesheet" type="text/css" media="all" />
 
@@ -51,30 +53,30 @@
     <script src="~/Scripts/NationwideFormsFunctions.js"></script>
     <script src="~/Scripts/jquery-ui.min.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
-   
+
 
 
     <script src="http://code.jquery.com/qunit/qunit-1.15.0.js"></script>
 
 
-   
+
 
     <script src="~/Scripts/bootstrap.js"></script>
 </head>
 <body>
 
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-            (i[r].q = i[r].q || []).push(arguments)
-        }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', 'UA-79719065-1', 'auto');
-    ga('send', 'pageview');
+        ga('create', 'UA-79719065-1', 'auto');
+        ga('send', 'pageview');
 
-</script>
+    </script>
 
 
     <!--header-->
@@ -92,7 +94,7 @@
                                 <span class="icon-bar"></span>
 
                             </button>
-                           <a href="/" style="text-decoration:none; outline:0;"> <img src="/images/logoTransparent.png" alt="company logo" style="width:240px;" /></a>
+                            <a href="/" style="text-decoration:none; outline:0;"> <img src="/images/logoTransparent.png" alt="company logo" style="width:240px;" /></a>
                         </div>
 
                         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -113,7 +115,7 @@
                                     <ul class="dropdown-menu">
                                         <li><a href="/clients/EmployThroughUs">Employ through us?</a></li>
                                         <li><a href="/clients/EmployingNanny">Employing a Nanny</a></li>
-                                        <li><a href="/clients/StartYourNannySearch">Nab a Nanny !</a></li>                                       
+                                        <li><a href="/clients/StartYourNannySearch">Nab a Nanny !</a></li>
                                         <li><a href="/clients/ChildcareQualificationsGuide">Childcare Qualifications Guide</a></li>
                                         <li><a href="/clients/EmployerResponsibilities">Employer’s Responsibilities</a></li>
                                         <li><a href="/clients/TermsConditions">Terms and Conditions</a></li>
@@ -134,7 +136,11 @@
                                 </li>
 
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
-                                @*<li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blogs</a></li>*@
+
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blogs</a></li>
+                                }
                                 <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li>
 
                                 @if (Request.IsAuthenticated)
@@ -148,84 +154,84 @@
                                             <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>
                                         </ul>
                                     </li>
-                                }                            
-
-                                    @*<li class="dropdown">
-                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <li><a href="gallery.html">Gallery1</a></li>
-                                                <li><a href="gallery.html">Gallery2</a></li>
-                                                <li><a href="gallery.html">Gallery3</a></li>
-                                            </ul>
-                                        </li>*@
-                                    @*<li><a href="codes.html">Codes</a></li>*@
-
-                                </ul>
-
-
-                            </div><!-- /.navbar-collapse -->
-                        </div><!-- /.container-fluid -->
-
-                        <div class="conactInfo">
-                            <a href="tel:@contactPhone">@contactPhone</a> 
-                             @Html.Raw("&nbsp;&nbsp;&nbsp;")
-                            <a href="mailto:@contactEmail">@contactEmail</a><p />
-
-                            @if (Request.IsAuthenticated)
-                            {
-                                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                {
-                                    @Html.AntiForgeryToken()
-                                    <a href="javascript:document.getElementById('logoutForm').submit()">Logout: @User.Identity.GetUserName()</a>
                                 }
-                            }
-                        </div>
-                    </nav>
 
+                                @*<li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="gallery.html">Gallery1</a></li>
+                                            <li><a href="gallery.html">Gallery2</a></li>
+                                            <li><a href="gallery.html">Gallery3</a></li>
+                                        </ul>
+                                    </li>*@
+                                @*<li><a href="codes.html">Codes</a></li>*@
+
+                            </ul>
+
+
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+
+                    <div class="conactInfo">
+                        <a href="tel:@contactPhone">@contactPhone</a>
+                        @Html.Raw("&nbsp;&nbsp;&nbsp;")
+                        <a href="mailto:@contactEmail">@contactEmail</a><p />
+
+                        @if (Request.IsAuthenticated)
+                        {
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Logout: @User.Identity.GetUserName()</a>
+                            }
+                        }
+                    </div>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+    <!--header-->
+
+    <div class="pageContent">
+        @RenderBody()
+    </div>
+
+    <!--footer-->
+    <div class="footer-section">
+        <div class="container">
+            <div class="social-icons">
+
+                <img src="/images/NannytaxLogo.png" alt="Nanny tax Logo" style="float:left;" />
+
+                <a href="https://www.facebook.com/NationwideNannies.org/" target="_blank"><i class="icon1"></i></a>
+                <a href="https://twitter.com/InfoNannies" target="_blank"><i class="icon2"></i></a>
+                @*<a href="#"><i class="icon3"></i></a>
+                    <a href="#"><i class="icon4"></i></a>*@
+
+                <div class="footer-links">
+                    <a href="/home/AcceptableUsePolicy">Acceptable Use Policy</a>
+                    <a href="/home/CookiePolicy">Cookie Policy</a>
+                    <a href="/home/EqualOpportunites">Equal Opportunites</a>
+                    <a href="/home/PrivacyPolicy"> Privacy Policy</a>
+                    <a href="/home/WebsiteTermsOfUse">Website Terms of Use</a>
+                </div>
+
+
+                <div class="footer-top">
+                    <p>&copy; 2016 Nationwide Nannies. All rights reserved .</p>
                 </div>
             </div>
+
+
+
         </div>
-        <!--header-->
-
-        <div class="pageContent">
-            @RenderBody()
-        </div>
-
-        <!--footer-->
-        <div class="footer-section">
-            <div class="container">
-                <div class="social-icons">
-
-            <img src="/images/NannytaxLogo.png" alt="Nanny tax Logo" style="float:left;"/>
-
-                        <a href="https://www.facebook.com/NationwideNannies.org/" target="_blank"><i class="icon1"></i></a>
-                        <a href="https://twitter.com/InfoNannies" target="_blank"><i class="icon2"></i></a>
-                        @*<a href="#"><i class="icon3"></i></a>
-                        <a href="#"><i class="icon4"></i></a>*@
-
-                         <div class="footer-links">
-                            <a href="/home/AcceptableUsePolicy">Acceptable Use Policy</a>
-                            <a href="/home/CookiePolicy">Cookie Policy</a>
-                            <a href="/home/EqualOpportunites">Equal Opportunites</a>
-                            <a href="/home/PrivacyPolicy"> Privacy Policy</a>
-                            <a href="/home/WebsiteTermsOfUse">Website Terms of Use</a> 
-                        </div>
-
-
-                        <div class="footer-top">
-                            <p>&copy; 2016 Nationwide Nannies. All rights reserved .</p>
-                        </div>
-                    </div>
-
-
-
-            </div>
-        </div>
-        <!--footer-->
-        @RenderSection("scripts", required: false)
+    </div>
+    <!--footer-->
+    @RenderSection("scripts", required: false)
 
     <!-- Go to www.addthis.com/dashboard to customize your tools -->
     <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-579b12918f86b46f"></script>
 
-    </body>
+</body>
 </html>
