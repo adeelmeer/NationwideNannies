@@ -1,12 +1,12 @@
-﻿
-@{
-    @{
-        ViewBag.Title = "Our Blog - Nationwide Nannies";
-        ViewBag.MetaKeywords = "";
-        ViewBag.MetaDescription = "";
+﻿@model List<NationwideNannies.Models.BlogPost>
 
-    }
+@{
+    ViewBag.Title = "Our Blog - Nationwide Nannies";
+    ViewBag.MetaKeywords = "";
+    ViewBag.MetaDescription = "";
+
 }
+
 
 
 <div class="aboutus-bg">
@@ -16,34 +16,74 @@
             <div class="about-section">
                 <div class="container">
                     <h2>Our Blog</h2>
-                    <div class="services-grids">
-                        <div class="col-md-4 services-grid">
-                            <div class="ser1">
-                                <h4>Solor sit amet</h4>
-                                <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 services-grid">
-                            <div class="ser1">
-                                <h4>Lorem ipsum dolor</h4>
-                                <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4 services-grid">
-                            <div class="ser1">
-                                <h4>Pamet erosorem</h4>
-                                <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
-                            </div>
-                        </div>
+
+                    @if (Model == null || Model.Count == 0)
+                    {
                         <br />
-                        <div class="col-md-4 services-grid">
-                            <div class="ser1">
-                                <h4>Pamet erosorem</h4>
-                                <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
-                            </div>
+                        <h4>There are no blog posts available at the moment, we will add posts soon.</h4>
+                    }
+                    else
+                    {
+                        <div class="services-grids">
+                            @foreach (var post in Model)
+                                        {
+                                            if (!post.DateCreated.HasValue)
+                                            {
+                                                post.DateCreated = DateTime.Now;
+                                            }
+
+                                            string postDetailsLink = string.Format("blog/post/{0}", post.Slug);
+
+                                            if (!string.IsNullOrWhiteSpace(post.Description) && post.Description.Length > 100)
+                                            {
+                                                post.Description = post.Description.Substring(0, 100);
+                                            }
+
+                                            post.Description = string.Format("{0} ... <a href='{1}' target='_blank' style='text-decoration:underline; font-weight:bold; '> read more</a>",post.Description, postDetailsLink);
+
+
+
+
+                                            <div class="col-md-4 services-grid">
+                                    <div class="ser1">
+                                        <h4><a href="@postDetailsLink" target="_blank">@Html.Raw(post.Title)</a></h4>
+                                        <h5>@post.DateCreated.Value.ToString("MMMM dd, yyyy")</h5>
+                                        <p>@Html.Raw(post.Description)</p>
+                                    </div>
+                                </div>
+                            }
+                            <div class="clearfix"></div>
                         </div>
-                        <div class="clearfix"></div>
-                    </div>
+                    }
+
+                    @*<div class="services-grids">
+                            <div class="col-md-4 services-grid">
+                                <div class="ser1">
+                                    <h4>Solor sit amet</h4>
+                                    <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 services-grid">
+                                <div class="ser1">
+                                    <h4>Lorem ipsum dolor</h4>
+                                    <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 services-grid">
+                                <div class="ser1">
+                                    <h4>Pamet erosorem</h4>
+                                    <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="col-md-4 services-grid">
+                                <div class="ser1">
+                                    <h4>Pamet erosorem</h4>
+                                    <p>Were dolor in hendrerit in vulputate velit esse molestie con sequat,Nulla consectetur maximus sem vel aliquet. Donec blandit condimentum varius</p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>*@
                 </div>
             </div>
         </div>

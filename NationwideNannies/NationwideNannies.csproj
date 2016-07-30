@@ -309,6 +309,10 @@
       <Project>{016156eb-13c2-4054-acb4-53fc304b3e01}</Project>
       <Name>NationwideNannies.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NationwideNannies.Services\NationwideNannies.Services.csproj">
+      <Project>{93699bf4-740d-4ea6-bb92-9c9851210996}</Project>
+      <Name>NationwideNannies.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NationwideNannies.Utils\NationwideNannies.Utils.csproj">
       <Project>{25d266e0-65ee-4d4b-8e4f-79ac024a06f5}</Project>
       <Name>NationwideNannies.Utils</Name>

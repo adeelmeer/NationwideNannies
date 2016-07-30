@@ -4,7 +4,13 @@
 @{
     string contactEmail = System.Configuration.ConfigurationManager.AppSettings["ContactEmail"];
     string contactPhone = System.Configuration.ConfigurationManager.AppSettings["Phone"];
-    
+
+    string blogSiteUrl = System.Configuration.ConfigurationManager.AppSettings["blogSitebaseUrl"];
+    if (!string.IsNullOrWhiteSpace(blogSiteUrl))
+    {
+        blogSiteUrl = string.Format("{0}/admin", blogSiteUrl);
+    }
+
     string metaKeywords = "London Nanny Services,London Nannying Services,West London Nannying Service,Central London Nannying Service,UK Nanny service,London Nanny Agency,London Nanny Company,London’s leading Nannying Service,London Babysitting services,London babysitter Service,West London Babysitting Service,Central London Babysitting Service,UK Babysitting service,London’s leading Babysitting Service";
     string metaDescription = "Nationwide Nannies is London’s leading specialists in providing high quality trained nannies and babysitters. We are available 24/7 and will help you look for nannies, night nannies, maternity nannies and babysitters. We provide a stress and hassle free service, our friendly team will work with you throughout the recruitment process to ensure all your needs are met. UK’s leading Nanny Service - Love and Care - Open 7 days Call UsLondon’s leading Nanny Agency - We understand your childcare needs - Open 7 days Call Us";
 
@@ -15,7 +21,7 @@
     if (!string.IsNullOrWhiteSpace(ViewBag.MetaDescription)){
         metaDescription = ViewBag.MetaDescription;
     }
-   
+
 }
 <!DOCTYPE html>
 <html>
@@ -128,24 +134,21 @@
                                 </li>
 
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
-                                <li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blogs</a></li>
+                                @*<li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blogs</a></li>*@
                                 <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li>
 
                                 @if (Request.IsAuthenticated)
                                 {
 
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search<span class="caret"></span></a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                                         <ul class="dropdown-menu">
+                                            <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="@blogSiteUrl" target="_blank">Blog Admin</a></li>
                                             <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="/home/ClientSearch">Client Search</a></li>
                                             <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>
                                         </ul>
                                     </li>
-                                }
-
-
-                                @*<li class="@Html.IsMenuSelected("/home/parents")"><a href="/home/parents">Parents</a></li>
-                                    <li class="@Html.IsMenuSelected("/home/jobs")"><a href="/home/jobs">Jobs</a></li>*@
+                                }                            
 
                                     @*<li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gallery <span class="caret"></span></a>

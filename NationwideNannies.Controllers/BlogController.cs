@@ -1,6 +1,7 @@
 ﻿using NationwideNannies.Data;
 using NationwideNannies.Logging;
 using NationwideNannies.Models;
+using NationwideNannies.Services;
 using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
@@ -14,15 +15,23 @@ namespace NationwideNannies.Controllers
 {
     public class BlogController : Controller
     {
+        BlogService service = null;
+        public BlogController()
+        {
+            this.service = new BlogService();
+        }
+
         public ActionResult Index()
-        {                   
-            return View();
+        {          
+            List<BlogPost> posts = this.service.GetBlogPosts(false);
+            return View(posts);
         }
 
         [Route("blog/post/{slug?}")]
         public ActionResult Post(string slug)
         {
-            return View();
+            var post = this.service.GetPostDetails(slug);
+            return View(post);
         }
     }
 }

@@ -1,7 +1,34 @@
-﻿@{
+﻿@model NationwideNannies.Models.BlogPost
+@using NationwideNannies.Utils
+
+@{
     ViewBag.Title = "Blog Post - Nationwide Nannies";
     ViewBag.MetaKeywords = "";
     ViewBag.MetaDescription = "";
+
+    if(Model != null)
+    {
+        if (!string.IsNullOrWhiteSpace(Model.Title))
+        {
+            ViewBag.Title = string.Format("{0} - Nationwide Nannies", Model.Title);
+            ViewBag.MetaKeywords = ViewBag.Title;
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            ViewBag.MetaDescription = Model.Description;
+        }
+
+        if (!string.IsNullOrWhiteSpace(Model.PostContent))
+        {
+            string blogSiteUrl = System.Configuration.ConfigurationManager.AppSettings["blogSitebaseUrl"];
+            string textForImageSrc = "/image.axd?";
+            string textForFileSrc = "/file.axd?";
+
+            Model.PostContent = Model.PostContent.Replace(textForImageSrc, blogSiteUrl + textForImageSrc);
+            Model.PostContent = Model.PostContent.Replace(textForFileSrc, blogSiteUrl + textForFileSrc);
+        }
+    }
 
 }
 
@@ -11,17 +38,38 @@
         <div class="content">
             <div class="about-section">
                 <div class="container">
-                    <h2>Title of Post</h2>
 
-                    <div class="about-info">
-                        content of post
+                    @if (Model == null)
+                    {
+                        <p> This post is no longer available</p>
+                    }
+                    else
+                    {
+                        if (!Model.DateCreated.HasValue)
+                        {
+                            Model.DateCreated = DateTime.Now;
+                        }
 
-                    </div>
+                        <h2>@Html.Raw(Model.Title)</h2>
+                        <p>
+                            <span class="paragraph-header">
+                                @Model.DateCreated.Value.ToString("MMMM dd yyyy")
+                            </span>
+                        </p>
+
+                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_sharing_toolbox"></div>
+
+                        <div class="about-info">
+                            @Html.Raw(Model.PostContent)
+
+                        </div>
+
+                        <div class="addthis_sharing_toolbox"></div>
+                    }
                 </div>
             </div>
         </div>
 
     </div>
 </div>
-
-
