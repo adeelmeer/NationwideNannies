@@ -974,26 +974,32 @@ a.button {
 }
 
 .ser1 {
-    background: #000000;
-    color: #ffffff;
+    background: #e8daef;
+    color: #000000;
     padding: 2em;
-    border:1px solid #ffffff;
+    border:3px solid #8B668B;
     margin-bottom:5px;
     height:200px;
 
 }
 
 .ser1 a{
-    color:#ffffff;    
+    color:#000000;    
 }
 .ser1:hover a{
     color:#000000
 }
 
     .ser1:hover{
-        background: #ffffff;
+        /*background: #ffffff;
         color: #000000;
-        border:1px solid black;
+        border:1px solid black;*/
+         border:7px solid #8B668B;
+    }
+
+    .ser1 h5{
+        padding-top:10px;
+        padding-bottom:10px;
     }
 
 .features {

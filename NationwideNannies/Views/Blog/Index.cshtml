@@ -9,13 +9,14 @@
 
 
 
-<div class="aboutus-bg">
-    <div class="image-blur-div">
+<div  style="background-color:#CDB5CD;">
+
+        <div style="min-height:700px;">
 
         <div class="content">
             <div class="about-section">
                 <div class="container">
-                    <h2>Our Blog</h2>
+                    <h2 style="color:#000000; font-size:2em;">Our Blog</h2>
 
                     @if (Model == null || Model.Count == 0)
                     {
@@ -26,25 +27,25 @@
                     {
                         <div class="services-grids">
                             @foreach (var post in Model)
-                                        {
-                                            if (!post.DateCreated.HasValue)
-                                            {
-                                                post.DateCreated = DateTime.Now;
-                                            }
+                            {
+                                if (!post.DateCreated.HasValue)
+                                {
+                                    post.DateCreated = DateTime.Now;
+                                }
 
-                                            string postDetailsLink = string.Format("blog/post/{0}", post.Slug);
+                                string postDetailsLink = string.Format("blog/post/{0}", post.Slug);
 
-                                            if (!string.IsNullOrWhiteSpace(post.Description) && post.Description.Length > 100)
-                                            {
-                                                post.Description = post.Description.Substring(0, 100);
-                                            }
+                                if (!string.IsNullOrWhiteSpace(post.Description) && post.Description.Length > 100)
+                                {
+                                    post.Description = post.Description.Substring(0, 100);
+                                }
 
-                                            post.Description = string.Format("{0} ... <a href='{1}' target='_blank' style='text-decoration:underline; font-weight:bold; '> read more</a>",post.Description, postDetailsLink);
-
-
+                                post.Description = string.Format("{0} ... <a href='{1}' target='_blank' style='text-decoration:underline; font-weight:bold; '> read more</a>", post.Description, postDetailsLink);
 
 
-                                            <div class="col-md-4 services-grid">
+
+
+                                <div class="col-md-4 services-grid">
                                     <div class="ser1">
                                         <h4><a href="@postDetailsLink" target="_blank">@Html.Raw(post.Title)</a></h4>
                                         <h5>@post.DateCreated.Value.ToString("MMMM dd, yyyy")</h5>
@@ -90,4 +91,6 @@
 
     </div>
 </div>
+
+
 
