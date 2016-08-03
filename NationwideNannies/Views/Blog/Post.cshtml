@@ -52,15 +52,16 @@
                             Model.DateCreated = DateTime.Now;
                         }
 
+                         <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                        <div class="addthis_sharing_toolbox"></div>
+
                         <h2>@Html.Raw(Model.Title)</h2>
                         <p>
-                            <span class="paragraph-header">
+                            <span class="paragraph-header" style="color:darkblue;">
                                 @Model.DateCreated.Value.ToString("MMMM dd yyyy")
                             </span>
                         </p>
-
-                        <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                        <div class="addthis_sharing_toolbox"></div>
+                       
 
                         <div class="about-info">
                             @Html.Raw(Model.PostContent)
