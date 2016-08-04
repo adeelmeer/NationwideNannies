@@ -1,9 +1,21 @@
-﻿@{
-    ViewBag.Title = "Home";
-    ViewBag.MetaKeywords = "";
+﻿@model List<NationwideNannies.Models.BlogPost>
+
+@{
+    ViewBag.Title = "Nationwide Nannies - Nanny Agency & Babysitting Agency";
+    ViewBag.MetaKeywords = "Nationwide Nannies are London’s leading specialists in providing high quality trained nannies and babysitters. Visit our site today. We are available 24/7";
     ViewBag.MetaDescription = "";
 
 }
+
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 <link href="~/Content/slidy.css" rel="stylesheet">
 
@@ -11,21 +23,18 @@
 
 
 <style type="text/css">
-    #container
-    {
-        max-width: 800px;
-        margin: 2em auto;
+    #container {
+        max-width: 1135px;
+        margin: auto;
     }
 
 
-    .hidden
-    {
+    .hidden {
         display: none;
         visibility: hidden;
     }
 
-    .visuallyhidden
-    {
+    .visuallyhidden {
         border: 0;
         clip: rect(0 0 0 0);
         height: 1px;
@@ -37,8 +46,7 @@
     }
 
         .visuallyhidden.focusable:active,
-        .visuallyhidden.focusable:focus
-        {
+        .visuallyhidden.focusable:focus {
             clip: auto;
             height: auto;
             margin: 0;
@@ -47,70 +55,74 @@
             width: auto;
         }
 
-    .invisible
-    {
+    .invisible {
         visibility: hidden;
     }
 
-    .clearfix:before, .clearfix:after
-    {
+    .clearfix:before, .clearfix:after {
         content: "";
         display: table;
     }
 
-    .clearfix:after
-    {
+    .clearfix:after {
         clear: both;
     }
 
-    .clearfix
-    {
+    .clearfix {
         zoom: 1;
     }
 
-    .slide-caption h3
-    {
-        color: #fff;
-        font-size: 1.7em;
-        text-transform: capitalize;
-        font-family: 'Crimson Text', 'serif';
-        margin-top: 5px;
+    .rotator-images {
+        max-width: 800px;
+        float: left;
+        margin-right: 5px;
+        margin-bottom: 10px;
     }
 
-    .slide-caption p
-    {
-        font-size: 1.3em;
-        color: #fff;
-        font-family: 'Crimson Text', 'serif';
-        padding-bottom: 1em;
-        /*line-height: 1.8em;
-        padding: 1em 0 2em;*/
+    .social-media-posts {
+    }
+
+    .fb_iframe_widget {
+        margin-bottom: 10px;
+    }
+
+    .twitter-timeline {
+        display: block;
+        float: left;
+        margin-right: 5px;
+    }
+
+    .slidyContainer {
+        margin: 0;
     }
 </style>
 
 <div id="container">
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    @*<div class="addthis_sharing_toolbox"></div>*@
 
-    <div id="main" role="main">
 
-
+    <div id="main" role="main" class="rotator-images">
 
         <div id="slidyBanner" class="slidyContainer" title="">
             <div class="slidySlides">
 
                 <!-- Each slide is wrapped in figure section -->
-
                 <!-- Slide 1 -->
                 <!-- add the 'slidyCurrent' class to which slide you want as default -->
                 <figure class="slidyCurrent">
                     <!-- Your context goes here -->
 
                     <div class="slide-caption">
-                        <h3>UK’s leading childcare experts</h3>
+
                         <p>
-                            “After years of childcare experience, we know the qualities that make the perfect nanny.  We believe that each child and family is unique, so we take the time to find the best possible match for you.”
-                           &nbsp; &nbsp; <a href="/clients/EmployThroughUs" class="know-more">know more</a>
+                            <span class="slide-header">UK's leading childcare agency</span>
+                            <br />
+                            After years of childcare experience, we know the qualities that make the perfect nanny. We believe that each child and family is unique, so we take the time to find the best possible match for you.
                         </p>
+
+                        <a href="/clients/EmployThroughUs" class="know-more">KNOW MORE</a>
                     </div>
 
                     <img alt="Uyuni, Bolivia" src="/images/bnr1.jpg">
@@ -124,11 +136,13 @@
                 <figure>
 
                     <div class="slide-caption">
-                        <h3>Get your perfect fit</h3>
                         <p>
-                            “Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.”
-                            &nbsp; &nbsp;  <a href="/services/Nannies" class="know-more">know more</a>
+                            <span class="slide-header">Get your perfect fit</span>
+                            <br />
+                            Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.
                         </p>
+
+                        <a href="/services/Nannies" class="know-more">KNOW MORE</a>
 
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr2.jpg">
@@ -138,11 +152,13 @@
                 <figure>
 
                     <div class="slide-caption">
-                        <h3>Hassle free recruitment</h3>
+
                         <p>
-                            “We strive to make what can be a difficult process into a smooth and stress-free transition, helping you every step of the way, from offer letters to devising contracts and payroll.”
-                            &nbsp; &nbsp;  <a href="/clients/StartYourNannySearch" class="know-more">know more</a>
+                            <span class="slide-header">Stress free recruitment</span>
+                            <br />
+                            We strive to make what can be a difficult process into a smooth transition, helping you every step of the way, from offer letters to devising contracts and payroll.
                         </p>
+                        <a href="/clients/StartYourNannySearch" class="know-more">KNOW MORE</a>
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr3.jpg">
                 </figure>
@@ -151,12 +167,13 @@
                 <figure>
 
                     <div class="slide-caption">
-                        <h3>Dependable</h3>
-                        <p>
-                            “Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax”
-                            &nbsp; &nbsp; <a href="/services/BabySitters" class="know-more">know more</a>
-                        </p>
 
+                        <p>
+                            <span class="slide-header">Dependable</span>
+                            <br />
+                            Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax.
+                        </p>
+                        <a href="/services/BabySitters" class="know-more">KNOW MORE</a>
                     </div>
                     <img alt="Shanghai, China" src="/images/bnr4.jpg">
                 </figure>
@@ -168,9 +185,47 @@
             </div>
         </div>
 
+        @if (Model != null && Model.Count != 0)
+        {
+            <div id="testinmoinal-wrapper" class="testinmoinal-wrapper">
+
+                @for (int i = 0;  i< Model.Count; i++)
+                {
+                    var item = Model[i];
+                    string style = " style=display:none;";
+
+                    if (i == 0)
+                    {
+                        style = " style=display:block;";
+                    }
+
+                    <div class="homepagetestinmonial" @style>
+                        “@item.Title” -- @item.Description
+                    </div>
+                }
+               
+            </div>
+
+        }
 
     </div>
+
+    <div class="social-media-posts">
+        <div class="fb-page" data-href="https://www.facebook.com/NationwideNannies.org/" data-tabs="timeline" data-small-header="true"
+             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-height="285" data-width="225">
+            <blockquote cite="https://www.facebook.com/NationwideNannies.org/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/NationwideNannies.org/">Nationwide Nannies Ltd</a>
+            </blockquote>
+        </div>
+
+        <a class="twitter-timeline" data-width="225" data-height="285" data-link-color="#2B7BB9" href="https://twitter.com/InfoNannies">Tweets by InfoNannies</a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </div>
+
+
+
+<div style="clear:both;"></div>
 
 
 <script src="~/Scripts/slidy.js"></script>
@@ -178,11 +233,46 @@
 <script>
     $('.slidyContainer').slidy({
         useKeybord: true, // use keys defined below to expand / collapse sections
-        auto: false,       // Start slideshow automatically
+        auto: true,       // Start slideshow automatically
         interval: 5000,     // Time between each slide
         initialInterval: 100  // Initial interval when page loads
     });
 
+    var testimonialDivs = [];
+    var numberOfTestimonials = 0;
+    var currentTestimonialIndex = 1;
+
+    $(document).ready(function () {
 
 
-	</script>
+
+        $(".homepagetestinmonial").each(function (index) {
+            var div = $(this);
+          //  div.hide();
+            testimonialDivs.push(div);
+        });
+
+        numberOfTestimonials = testimonialDivs.length;
+
+        window.setInterval(ShowTestimonial, 4000);
+
+    });
+
+    function ShowTestimonial() {
+        var previousIndex = currentTestimonialIndex - 1;
+        if (previousIndex == -1) {
+
+            previousIndex = numberOfTestimonials - 1;
+        }
+
+        testimonialDivs[previousIndex].hide();
+
+        testimonialDivs[currentTestimonialIndex].fadeIn(3000, 'linear');
+
+        currentTestimonialIndex++;
+        if (currentTestimonialIndex == numberOfTestimonials) {
+            currentTestimonialIndex = 0;
+        }
+    }
+
+</script>

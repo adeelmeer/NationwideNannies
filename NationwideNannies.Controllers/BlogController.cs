@@ -23,7 +23,7 @@ namespace NationwideNannies.Controllers
 
         public ActionResult Index()
         {          
-            List<BlogPost> posts = this.service.GetBlogPosts(false);
+            List<BlogPost> posts = this.service.GetBlogPosts();
             return View(posts);
         }
 

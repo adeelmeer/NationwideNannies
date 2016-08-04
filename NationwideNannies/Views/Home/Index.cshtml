@@ -5,27 +5,34 @@
 
 }
 
+<div id="fb-root"></div>
+<script>
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
 <link href="~/Content/slidy.css" rel="stylesheet">
 
 
 
 
 <style type="text/css">
-    #container
-    {
-        max-width: 1175px;
+    #container {
+        max-width: 1135px;
         margin: auto;
     }
 
 
-    .hidden
-    {
+    .hidden {
         display: none;
         visibility: hidden;
     }
 
-    .visuallyhidden
-    {
+    .visuallyhidden {
         border: 0;
         clip: rect(0 0 0 0);
         height: 1px;
@@ -37,8 +44,7 @@
     }
 
         .visuallyhidden.focusable:active,
-        .visuallyhidden.focusable:focus
-        {
+        .visuallyhidden.focusable:focus {
             clip: auto;
             height: auto;
             margin: 0;
@@ -47,43 +53,60 @@
             width: auto;
         }
 
-    .invisible
-    {
+    .invisible {
         visibility: hidden;
     }
 
-    .clearfix:before, .clearfix:after
-    {
+    .clearfix:before, .clearfix:after {
         content: "";
         display: table;
     }
 
-    .clearfix:after
-    {
+    .clearfix:after {
         clear: both;
     }
 
-    .clearfix
-    {
+    .clearfix {
         zoom: 1;
     }
 
-   
+    .rotator-images {
+        max-width: 900px;
+        float: left;
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
 
+    .social-media-posts {
+    }
+
+    .fb_iframe_widget {
+        margin-bottom: 10px;
+    }
+
+    .twitter-timeline {
+        display: block;
+        float: left;
+        margin-right: 5px;
+    }
+
+    .slidyContainer {
+        margin: 0;
+    }
 </style>
 
 <div id="container">
 
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    @*<div class="addthis_sharing_toolbox"></div>*@
 
-    <div id="main" role="main">
 
-
+    <div id="main" role="main" class="rotator-images">
 
         <div id="slidyBanner" class="slidyContainer" title="">
             <div class="slidySlides">
 
                 <!-- Each slide is wrapped in figure section -->
-
                 <!-- Slide 1 -->
                 <!-- add the 'slidyCurrent' class to which slide you want as default -->
                 <figure class="slidyCurrent">
@@ -94,7 +117,7 @@
                         <p>
                             <span class="slide-header">UK's leading childcare agency</span>
                             <br />
-                            After years of childcare experience, we know the qualities that make the perfect nanny. We believe that each child and family is unique, so we take the time to find the best possible match for you.   
+                            After years of childcare experience, we know the qualities that make the perfect nanny. We believe that each child and family is unique, so we take the time to find the best possible match for you.
                         </p>
 
                         <a href="/clients/EmployThroughUs" class="know-more">KNOW MORE</a>
@@ -114,7 +137,7 @@
                         <p>
                             <span class="slide-header">Get your perfect fit</span>
                             <br />
-                            Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.                             
+                            Whether you require a bilingual nanny, a maternity nurse, help with the housekeeping/mothers helper, live in or live out nanny, on a temporary or permanent basis we are sure that we have the right person to fit your specifications.
                         </p>
 
                         <a href="/services/Nannies" class="know-more">KNOW MORE</a>
@@ -146,7 +169,7 @@
                         <p>
                             <span class="slide-header">Dependable</span>
                             <br />
-                            Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax.                           
+                            Nationwide Nannies offers a wide variety of emergency childcare services ranging from day time to evening and weekend babysitting. Our staff go through a stringent vetting process with a ‘must have’ clear DBS. We are here for you 365 days of the year, so just sit back and relax.
                         </p>
                         <a href="/services/BabySitters" class="know-more">KNOW MORE</a>
                     </div>
@@ -160,9 +183,24 @@
             </div>
         </div>
 
+    </div>
 
+    <div class="social-media-posts">
+        <div class="fb-page" data-href="https://www.facebook.com/NationwideNannies.org/" data-tabs="timeline" data-small-header="true"
+             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false" data-height="285" data-width="225">
+            <blockquote cite="https://www.facebook.com/NationwideNannies.org/" class="fb-xfbml-parse-ignore">
+                <a href="https://www.facebook.com/NationwideNannies.org/">Nationwide Nannies Ltd</a>
+            </blockquote>
+        </div>
+
+        <a class="twitter-timeline" data-width="225" data-height="285" data-link-color="#2B7BB9" href="https://twitter.com/InfoNannies">Tweets by InfoNannies</a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
+
+
+
+<div style="clear:both;"></div>
 
 
 <script src="~/Scripts/slidy.js"></script>
@@ -177,4 +215,4 @@
 
 
 
-	</script>
+</script>

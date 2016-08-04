@@ -976,30 +976,30 @@ a.button {
 .ser1 {
     background: #e8daef;
     color: #000000;
-    padding: 2em;
-    border:3px solid #8B668B;
-    margin-bottom:5px;
-    height:200px;
-
+    padding: 1em;
+    border: 3px solid #8B668B;
+    margin-bottom: 5px;
+    height: 160px;
 }
 
-.ser1 a{
-    color:#000000;    
-}
-.ser1:hover a{
-    color:#000000
-}
+    .ser1 a {
+        color: #000000;
+    }
 
-    .ser1:hover{
+    .ser1:hover a {
+        color: #000000;
+    }
+
+    .ser1:hover {
         /*background: #ffffff;
         color: #000000;
         border:1px solid black;*/
-         border:7px solid #8B668B;
+        border: 7px solid #8B668B;
     }
 
-    .ser1 h5{
-        padding-top:10px;
-        padding-bottom:10px;
+    .ser1 h5 {
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
 .features {
@@ -2553,3 +2553,13 @@ h3 {
 }
 
 
+.homepagetestinmonial {   
+     padding:10px;
+}
+
+.testinmoinal-wrapper {
+    background-color: #000000;
+    color: #ffffff;
+    min-height:64px;
+    /*border:2px solid  #8B668B;*/
+}

@@ -139,11 +139,7 @@
                                 </li>
 
                                 <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
-
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blog</a></li>
-                                }
+                                <li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blog</a></li>
                                 <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li>
 
                                 @if (Request.IsAuthenticated)

@@ -1,6 +1,7 @@
 ﻿using NationwideNannies.Data;
 using NationwideNannies.Logging;
 using NationwideNannies.Models;
+using NationwideNannies.Services;
 using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,9 @@ namespace NationwideNannies.Controllers
 
         public ActionResult Index3()
         {
-            return View();
+            BlogService blogService = new BlogService();
+            var testimonials = blogService.GetTestimonails();
+            return View(testimonials);
         }
 
         public ActionResult Index4()
@@ -224,6 +227,13 @@ namespace NationwideNannies.Controllers
         public ActionResult Admin()
         {
             return View();
+        }
+
+        [Authorize]
+        public string ClearCache()
+        {
+            CacheHelper.ClearCache();
+            return "Cache is cleared";
         }
 
         [Authorize]

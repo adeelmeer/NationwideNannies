@@ -1,6 +1,7 @@
 ﻿using NationwideNannies.Data;
 using NationwideNannies.Logging;
 using NationwideNannies.Models;
+using NationwideNannies.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -20,19 +21,53 @@ namespace NationwideNannies.Services
             this.dbContext = new NationWideDbContext();
         }
 
-        public List<BlogPost> GetBlogPosts(bool isTestimonial)
+        public List<BlogPost> GetBlogPosts()
         {
             List<BlogPost> results = null;
+            string cacheKey = "PublishedBlogPosts";
+
+            results =  CacheHelper.GetFromCache<List<BlogPost>>(cacheKey);
+
+            if(results != null && results.Count != 0)
+            {
+                return results;
+            }
 
             try
-            {
-                var param = new SqlParameter("@isTestimonial", isTestimonial);
-                results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetBlogPosts @isTestimonial", param).ToList();
+            {               
+                results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetPublishedBlogPosts").ToList();
+                CacheHelper.AddToCache<List<BlogPost>>(results, cacheKey);
             }
             catch (Exception ex)
             {
                 Log4NetLogger.ExceptionTrace(ex, "[BlogService] GetBlogPosts()");
             }
+           
+            return results;
+        }
+
+        public List<BlogPost> GetTestimonails()
+        {
+            List<BlogPost> results = null;
+            string cacheKey = "Testimonails";
+
+            results = CacheHelper.GetFromCache<List<BlogPost>>(cacheKey);
+
+            if (results != null && results.Count != 0)
+            {
+                return results;
+            }
+
+            try
+            {
+                results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetTestimonials").ToList();
+                CacheHelper.AddToCache(results, cacheKey);
+            }
+            catch (Exception ex)
+            {
+                Log4NetLogger.ExceptionTrace(ex, "[BlogService] GetTestimonails()");
+            }
+
             return results;
         }
 
