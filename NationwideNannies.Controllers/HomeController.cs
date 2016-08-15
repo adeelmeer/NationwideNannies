@@ -32,13 +32,20 @@ namespace NationwideNannies.Controllers
         public ActionResult Index3()
         {
             BlogService blogService = new BlogService();
-            var testimonials = blogService.GetTestimonails();
+            var testimonials = blogService.GetTestimonails(true);
             return View(testimonials);
         }
 
         public ActionResult Index4()
         {
             return View();
+        }
+
+        public ActionResult Testimonials()
+        {
+            BlogService blogService = new BlogService();
+            var testimonials = blogService.GetTestimonails(false);
+            return View(testimonials);
         }
 
         public ActionResult About()
@@ -421,7 +428,10 @@ namespace NationwideNannies.Controllers
             NationWideDbContext dbContext = new NationWideDbContext();
             NannyJobEmployment searchCriteria = new NannyJobEmployment()
             {
-                Id = clientId
+                Id = clientId,
+                HaveCriminalConvictions = string.Empty,
+                HaveMedicalConditions = string.Empty,
+                IsOfstedRegistered = string.Empty
             };
 
             var searchResults = dbContext.CandidateSearch(searchCriteria);

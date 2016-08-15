@@ -8,7 +8,7 @@ CREATE procedure [dbo].[usp_GetPublishedBlogPosts]
 as
 begin
 	
-	select p.Title, p.Description, p.DateCreated, p.Slug
+	select p.Title, p.Description, p.DateCreated, p.Slug, p.IsCommentEnabled
 	from be_Posts p
 	left join be_PostCategory pc on pc.PostID = p.PostID
 	left join be_Categories c on c.CategoryID = pc.CategoryID

@@ -24,6 +24,8 @@
         metaDescription = ViewBag.MetaDescription;
     }
 
+    string baseUrl = System.Configuration.ConfigurationManager.AppSettings["baseUrl"];
+    string ogImageUrl = string.Format("{0}/images/bnr3.jpg", baseUrl);
 }
 <!DOCTYPE html>
 <html>
@@ -47,6 +49,8 @@
 
     <meta property="og:title" content="@metaKeywords" />
     <meta property="og:description" content="@metaDescription" />
+    <meta property="og:image" content="@ogImageUrl" />
+    <meta property="og:url" content="@System.Web.HttpContext.Current.Request.Url.AbsoluteUri" />
 
 
     <script src="~/Scripts/css_browser_selector.js"></script>
@@ -138,7 +142,23 @@
                                     </ul>
                                 </li>
 
-                                <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Us<span class="caret"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/home/about">Meet the team</a></li>
+                                            <li><a href="/home/Testimonials">Testimonials</a></li>
+                                            @*<li><a href="/Candidates/CurrentVacancies">Current Vacancies</a></li>*@
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>
+                                }
+
+                                @*<li class="@Html.IsMenuSelected("/home/about")"><a href="/home/about">About Us</a></li>*@
                                 <li class="@Html.IsMenuSelected("/home/blog")"><a href="/blog">Our Blog</a></li>
                                 <li class="@Html.IsMenuSelected("/home/contact")"><a href="/home/contact">Contact Us</a></li>
 
@@ -148,9 +168,10 @@
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
                                         <ul class="dropdown-menu">
-                                            <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="@blogSiteUrl" target="_blank">Blog Admin</a></li>
+                                            <li class="@Html.IsMenuSelected("/home/blogadmin")"><a href="@blogSiteUrl" target="_blank">Blog Admin</a></li>
                                             <li class="@Html.IsMenuSelected("/home/ClientSearch")"><a href="/home/ClientSearch">Client Search</a></li>
                                             <li class="@Html.IsMenuSelected("/home/CandidateSearch")"><a href="/home/CandidateSearch">Candidate Search</a></li>
+                                            <li class="@Html.IsMenuSelected("/home/clearcache")"><a href="/home/clearcache" target="_blank">Clear Cache</a></li>
                                         </ul>
                                     </li>
                                 }

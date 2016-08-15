@@ -14,5 +14,6 @@ namespace NationwideNannies.Models
         public string PostContent { get; set; }
         public DateTime? DateCreated { get; set; }
         public string Slug { get; set; }
+        public bool IsCommentEnabled { get; set; }
     }
 }

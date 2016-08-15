@@ -8,7 +8,7 @@ CREATE procedure [dbo].[usp_GetTestimonials]
 as
 begin
 	
-	select p.Title, p.Description, p.DateCreated, p.Slug, p.PostContent
+	select p.Title, p.Description, p.DateCreated, p.Slug, p.PostContent, c.CategoryName, p.IsCommentEnabled
 	from be_Posts p
 	left join be_PostCategory pc on pc.PostID = p.PostID
 	left join be_Categories c on c.CategoryID = pc.CategoryID

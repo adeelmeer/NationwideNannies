@@ -46,26 +46,29 @@ namespace NationwideNannies.Services
             return results;
         }
 
-        public List<BlogPost> GetTestimonails()
+        public List<BlogPost> GetTestimonails(bool homePageOnly)
         {
             List<BlogPost> results = null;
             string cacheKey = "Testimonails";
 
             results = CacheHelper.GetFromCache<List<BlogPost>>(cacheKey);
 
-            if (results != null && results.Count != 0)
+            if (results == null || results.Count == 0)
             {
-                return results;
+                try
+                {
+                    results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetTestimonials").ToList();
+                    CacheHelper.AddToCache(results, cacheKey);
+                }
+                catch (Exception ex)
+                {
+                    Log4NetLogger.ExceptionTrace(ex, "[BlogService] GetTestimonails()");
+                }
             }
 
-            try
+            if (homePageOnly && results != null)
             {
-                results = this.dbContext.Database.SqlQuery<BlogPost>("usp_GetTestimonials").ToList();
-                CacheHelper.AddToCache(results, cacheKey);
-            }
-            catch (Exception ex)
-            {
-                Log4NetLogger.ExceptionTrace(ex, "[BlogService] GetTestimonails()");
+                return results.Where(x => x.IsCommentEnabled).ToList();
             }
 
             return results;

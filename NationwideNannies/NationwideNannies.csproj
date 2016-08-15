@@ -295,6 +295,7 @@
     <Content Include="Views\Home\Index4.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
     <Content Include="Views\Blog\Post.cshtml" />
+    <Content Include="Views\Home\Testimonials.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NationwideNannies.Controllers\NationwideNannies.Controllers.csproj">
